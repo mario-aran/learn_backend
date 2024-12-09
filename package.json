@@ -1,0 +1,41 @@
+{
+  "name": "learn_sql",
+  "scripts": {
+    "dev": "ts-node-dev -r tsconfig-paths/register --respawn ./src/app/index.ts",
+    "build": "tsc && tsc-alias",
+    "start": "node ./dist/app/index.js",
+    "prettier": "prettier --write \"**/*.{ts,tsx}\"",
+    "typecheck": "tsc --noEmit",
+    "eslint": "eslint . --fix",
+    "drizzle:generate": "drizzle-kit generate",
+    "drizzle:migrate": "ts-node -r tsconfig-paths/register ./src/libs/drizzle/migrate.ts",
+    "files:to- lf": "find . \\( -name 'node_modules' -o -name 'dist' \\) -prune -o -type f -exec dos2unix {} +",
+    "clean:files": "find . \\( -name 'package-lock.json' -o -name 'yarn.lock' -o -name 'pnpm-lock.yaml' -o -name '*.tsbuildinfo' \\) -exec rm -f {} +",
+    "clean:folders": "find . \\( -name 'node_modules' -o -name 'dist' -o -name 'build' \\) -exec rm -rf {} +",
+    "clean:all": "pnpm clean:folders && pnpm clean:files"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.38.0",
+    "express": "^4.21.2",
+    "postgres": "^3.4.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.16.0",
+    "@types/eslint__js": "^8.42.3",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.1",
+    "drizzle-kit": "^0.30.0",
+    "eslint": "^9.16.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-check-file": "^2.8.0",
+    "globals": "^15.13.0",
+    "prettier": "^3.4.2",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "tsc-alias": "^1.8.10",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.0"
+  }
+}
