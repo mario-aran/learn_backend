@@ -1,5 +1,11 @@
 import { relations } from 'drizzle-orm';
-import { pgTable, timestamp, uuid, varchar } from 'drizzle-orm/pg-core';
+import {
+  integer,
+  pgTable,
+  timestamp,
+  uuid,
+  varchar,
+} from 'drizzle-orm/pg-core';
 import { productCategories } from './product-categories.schema';
 import { sales } from './sales.schema';
 
@@ -11,6 +17,7 @@ export const products = pgTable('products', {
     .$onUpdate(() => new Date()),
   id: uuid('id').primaryKey().defaultRandom(),
   name: varchar('name').notNull(),
+  price: integer('price').notNull(),
   productCategoryId: uuid('product_category_id')
     .notNull()
     .references(() => productCategories.id),
