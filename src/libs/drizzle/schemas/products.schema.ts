@@ -1,8 +1,9 @@
 import { relations } from 'drizzle-orm';
 import { pgTable, timestamp, uuid, varchar } from 'drizzle-orm/pg-core';
-import { productCategoriesSchema } from './product-categories.schema';
+import { productCategories } from './product-categories.schema';
+import { productsToSales } from './products-to-sales.schema';
 
-export const productsSchema = pgTable('products', {
+export const products = pgTable('products', {
   createdAt: timestamp('created_at').notNull().defaultNow(),
   updatedAt: timestamp('updated_at')
     .notNull()
@@ -10,12 +11,15 @@ export const productsSchema = pgTable('products', {
     .$onUpdate(() => new Date()),
   id: uuid('id').primaryKey().defaultRandom(),
   name: varchar('name').notNull(),
-  productCategoryId: uuid('product_category_id'),
+  productCategoryId: uuid('product_category_id')
+    .notNull()
+    .references(() => productCategories.id),
 });
 
-export const productsRelations = relations(productsSchema, ({ one }) => ({
-  productCategory: one(productCategoriesSchema, {
-    fields: [productsSchema.productCategoryId],
-    references: [productCategoriesSchema.id],
+export const productsRelations = relations(products, ({ one, many }) => ({
+  productCategory: one(productCategories, {
+    fields: [products.productCategoryId],
+    references: [productCategories.id],
   }),
+  productsToSales: many(productsToSales),
 }));
