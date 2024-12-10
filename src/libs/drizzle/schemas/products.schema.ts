@@ -1,7 +1,7 @@
 import { relations } from 'drizzle-orm';
 import { pgTable, timestamp, uuid, varchar } from 'drizzle-orm/pg-core';
 import { productCategories } from './product-categories.schema';
-import { productsToSales } from './products-to-sales.schema';
+import { sales } from './sales.schema';
 
 export const products = pgTable('products', {
   createdAt: timestamp('created_at').notNull().defaultNow(),
@@ -21,5 +21,5 @@ export const productsRelations = relations(products, ({ one, many }) => ({
     fields: [products.productCategoryId],
     references: [productCategories.id],
   }),
-  productsToSales: many(productsToSales),
+  sales: many(sales),
 }));
