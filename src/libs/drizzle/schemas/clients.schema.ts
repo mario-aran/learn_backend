@@ -1,5 +1,5 @@
 import { relations } from 'drizzle-orm';
-import { pgTable, timestamp, uuid, varchar } from 'drizzle-orm/pg-core';
+import { integer, pgTable, timestamp, varchar } from 'drizzle-orm/pg-core';
 import { sales } from './sales.schema';
 
 export const clients = pgTable('clients', {
@@ -8,7 +8,7 @@ export const clients = pgTable('clients', {
     .notNull()
     .defaultNow()
     .$onUpdate(() => new Date()),
-  id: uuid('id').primaryKey().defaultRandom(),
+  id: integer().primaryKey().generatedAlwaysAsIdentity(),
   name: varchar('name').notNull(),
 });
 
