@@ -1,6 +1,6 @@
 # Learn SQL
 
-## Select
+## Selection
 
 - Select Syntax
 - Arithmetic Operators: `+`, `-`, `*`, `/`, `%`, `()`
@@ -8,18 +8,24 @@
 - Aliases
 - Select Distinct
 
-## Where
+## Filters
 
 - Where Syntax
 - Comparison Operators: `=`, `>`, `<`, `>=`, `<=`, `<>`
 - Logical Operators: `NOT`, `AND`, `OR`, `BETWEEN`, `IN`, `LIKE`
 - Null Values: `IS NULL`, `IS NOT NULL`
 
-<!-- ## Order By
+## Aggregation
 
-- Order By Syntax: `ORDER BY`
+- Aggregate Functions: `COUNT`, `SUM`, `AVG`, `MIN`, `MAX`
+- Group By
+- Having
+
+## Order
+
+- Order By
 - By Columns
-- By Direction: `ASC`, `DESC` -->
+- By Direction: `ASC`, `DESC`
 
 <!-- ---
 
@@ -56,9 +62,6 @@
 
 - Agrupación de datos: `GROUP BY`, `HAVING`
 - Joins: `INNER JOIN`, `LEFT JOIN`, `RIGHT JOIN`, `FULL OUTER JOIN`
-- Subconsultas: `UNION`, `INTERSECT`, `EXCEPT`
-- Operadores de concatenación: `||`, `||`
-- Case: `CASE`, `WHEN`, `THEN`, `ELSE`
 
 ## Manipulación de Datos
 
@@ -66,3 +69,5 @@
 - Actualizar: `UPDATE`, `SET`
 - Borrar: `DELETE FROM`
   all dates format -->
+
+- Subconsultas: `UNION`, `INTERSECT`, `EXCEPT`

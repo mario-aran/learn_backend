@@ -1,6 +1,6 @@
-/* Select */
+/* Selection */
 
--- Select Syntax
+-- Select
 SELECT value; -- Single value
 SELECT 1, 2, 3; -- Multiple values separated by commas
 
@@ -26,5 +26,5 @@ SELECT column AS "custom_alias"; -- Column alias
 SELECT column FROM table_name AS "custom_alias"; -- Table alias
 SELECT column custom_name FROM table_name tn; -- Without `AS` or ""
 
--- Select Distinct
+-- Distinct
 SELECT DISTINCT column1, column2 FROM table_name; -- Select distinct values

@@ -1,6 +1,6 @@
-/* Where */
+/* Filters */
 
--- Where Syntax
+-- Where
 SELECT * FROM table_name WHERE condition;
 
 -- Comparison Operators: `=`, `>`, `<`, `>=`, `<=`, `<>`
