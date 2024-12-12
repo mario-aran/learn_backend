@@ -1,13 +1,12 @@
 # Learn SQL
 
-<!-- ## Select
+## Select
 
-- Select Syntax: `SELECT`
-- Aliases: `AS`
+- Select Syntax
 - Arithmetic Operators: `+`, `-`, `*`, `/`, `%`, `()`
-- Select From: `FROM`
-- Select Distinct: `DISTINCT`
-- Aggregate Functions: `COUNT`, `SUM`, `AVG`, `MIN`, `MAX` -->
+- From
+- Aliases
+- Select Distinct
 
 <!-- ## Order By
 
@@ -22,7 +21,7 @@
 - Logical Operators: `NOT`, `AND`, `OR`, `BETWEEN`, `IN`, `LIKE`
 - Null Values: `IS NULL`, `IS NOT NULL` -->
 
----
+<!-- ---
 
 ## Conceptos
 
@@ -45,14 +44,9 @@
 - Una línea: `--`
 - Multilínea: `/* */`
 
-## Select
-
-- Alias columnas y tablas: `AS`
-
 ## Operadores
 
 - Case: `CASE`,`WHEN THEN`, `ELSE`, `END`
-- Group By: `GROUP BY`
 
 ## Joins
 
@@ -71,5 +65,4 @@
 - Insertar: `INSERT INTO`, `VALUES`, `DEFAULT VALUES`, `SELECT`
 - Actualizar: `UPDATE`, `SET`
 - Borrar: `DELETE FROM`
-
-all DATES
+  all dates format -->
