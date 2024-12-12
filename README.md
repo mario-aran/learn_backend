@@ -8,18 +8,18 @@
 - Aliases
 - Select Distinct
 
+## Where
+
+- Where Syntax
+- Comparison Operators: `=`, `>`, `<`, `>=`, `<=`, `<>`
+- Logical Operators: `NOT`, `AND`, `OR`, `BETWEEN`, `IN`, `LIKE`
+- Null Values: `IS NULL`, `IS NOT NULL`
+
 <!-- ## Order By
 
 - Order By Syntax: `ORDER BY`
 - By Columns
 - By Direction: `ASC`, `DESC` -->
-
-<!-- ## Filters
-
-- Filters Syntax: `WHERE`
-- Comparison Operators: `=`, `>`, `<`, `>=`, `<=`, `<>`
-- Logical Operators: `NOT`, `AND`, `OR`, `BETWEEN`, `IN`, `LIKE`
-- Null Values: `IS NULL`, `IS NOT NULL` -->
 
 <!-- ---
 
