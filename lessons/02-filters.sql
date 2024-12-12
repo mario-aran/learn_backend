@@ -22,3 +22,14 @@ WHERE string_column LIKE 'a__%'; -- String with wildcards, at least 3 characters
 -- Null Values: `IS NULL`, `IS NOT NULL`
 WHERE column IS NULL;
 WHERE column IS NOT NULL;
+
+-- Case
+SELECT CASE
+    WHEN condition1 THEN result1
+    WHEN condition2 THEN result2
+    ELSE result
+END; -- Syntax
+
+CASE WHEN condition THEN result END; -- Single condition with null as default
+CASE WHEN condition THEN result ELSE default_result END; -- Single condition with default result
+CASE WHEN condition1 THEN result1 WHEN condition2 THEN result2 ELSE result END; -- Multiple conditions with default result
