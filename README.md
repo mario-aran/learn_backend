@@ -2,20 +2,20 @@
 
 ## Basics - ok
 
-- Concepts: SQL, DB, Tables, Columns, Keys, Rows
-- Tools: RDBMS, Clients
-- Syntax: Queries, Semicolon, Case Insensitive, UPPERCASE, snake_case
-- Data Types: number, text, date&time, boolean, null
-- Comments: `--`, `/* */`
+- Concepts
+- Tools
+- Syntax
+- Data Types
+- Comments
 
-## Retrieving Data - ok
+## Retrieving - ok
 
 - `SELECT FROM`
 - `SELECT DISTINCT`
 - Arithmetic Operators: `+`, `-`, `*`, `/`, `%`, P.E.M.D.A.S.
 - Aliases: `AS`
 
-## Filtering Data - ok
+## Filtering - ok
 
 - `WHERE`
 - Comparison Operators: `=`, `>`, `<`, `>=`, `<=`, `<>`
@@ -23,13 +23,13 @@
 - Null Values: `IS NULL`, `IS NOT NULL`
 - Logical Operators: `AND`, `OR`, `NOT`
 
-## Sorting and Limiting Data
+## Sorting and Limiting
 
 - `ORDER BY`
 - `LIMIT`
 - `OFFSET`
 
-## Aggregating Data
+## Aggregating
 
 - Aggregate Functions: `COUNT`, `SUM`, `AVG`, `MIN`, `MAX`
 - `GROUP BY`
@@ -39,14 +39,14 @@
 
 - `CASE`
 
-## Combining Data
+## Combining
 
 - Joins
 - Unions
 
 ## Subqueries
 
-## Data Modification
+## Modification
 
 - `INSERT INTO`
 - `UPDATE SET`

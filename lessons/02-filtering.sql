@@ -1,4 +1,4 @@
-/* Filtering Data */
+/* Filtering */
 
 -- `WHERE`
 SELECT * FROM table_name WHERE condition;

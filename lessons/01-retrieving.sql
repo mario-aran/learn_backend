@@ -1,4 +1,4 @@
-/* Retrieving Data */
+/* Retrieving */
 
 -- `SELECT FROM`
 SELECT 1, 2, 3; -- One or multiple values separated by commas
