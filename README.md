@@ -40,8 +40,8 @@
 
 ## Combining
 
-- Joins
-- Unions
+- Joins: `(INNER) JOIN`, `LEFT (OUTER) JOIN`, `RIGHT (OUTER) JOIN`, `FULL (OUTER) JOIN`, Self join
+- Set operations: `UNION`, `INTERSECT`, `EXCEPT`
 
 ## Subqueries
 

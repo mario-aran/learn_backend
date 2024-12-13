@@ -17,7 +17,7 @@ SELECT COUNT(column1), column2, column3 FROM table_name GROUP BY column2, column
 
 -- Having
 /*
-- Replacement of `WHERE` in aggregate functions
+- To filter aggregate functions
 */
 SELECT SUM(column1), column2 FROM table_name GROUP BY column2 HAVING SUM(column1) > 1; -- Single condition
 SELECT AVG(column1), column2 FROM table_name GROUP BY column2 HAVING AVG(column1) < 2 OR AVG(column1) = 4; -- Multiple conditions
