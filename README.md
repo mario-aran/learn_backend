@@ -34,13 +34,15 @@
 - `GROUP BY`
 - `HAVING`
 
-## Conditional Expressions
+## Case - ok
 
-- `CASE`
+- Case Syntax: `CASE`
+- Case with Select
+- Case with Other Commands
 
 ## Combining
 
-- Joins: `(INNER) JOIN`, `LEFT (OUTER) JOIN`, `RIGHT (OUTER) JOIN`, `FULL (OUTER) JOIN`, Self join
+- Joins: `INNER JOIN`, `LEFT JOIN`, `RIGHT JOIN`, `FULL JOIN`, Self join
 - Set operations: `UNION`, `INTERSECT`, `EXCEPT`
 
 ## Subqueries
@@ -50,12 +52,3 @@
 - `INSERT INTO`
 - `UPDATE SET`
 - `DELETE FROM`
-
----
-
-<!-- ## Manipulación de Datos
-
-- all dates format
-- Subconsultas: `UNION`, `INTERSECT`, `EXCEPT` -->
-
-UNION
