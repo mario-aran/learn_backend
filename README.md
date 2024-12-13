@@ -1,53 +1,62 @@
 # Learn SQL
 
-## Intro
+## Basics - ok
 
-- Concepts: SQL, DB, Tables, Columns
+- Concepts: SQL, DB, Tables, Columns, Keys, Rows
 - Tools: RDBMS, Clients
-- Syntax: Sentences, `;`
+- Syntax: Queries, Semicolon, Case Insensitive, UPPERCASE, snake_case
+- Data Types: number, text, date&time, boolean, null
 - Comments: `--`, `/* */`
 
-## Selection
+## Retrieving Data - ok
 
-- `SELECT`
-- Arithmetic Operators: `+`, `-`, `*`, `/`, `%`, `()`
-- `FROM`
+- `SELECT FROM`
+- `SELECT DISTINCT`
+- Arithmetic Operators: `+`, `-`, `*`, `/`, `%`, P.E.M.D.A.S.
 - Aliases: `AS`
-- `DISTINCT`
 
-## Filters
+## Filtering Data - ok
 
 - `WHERE`
 - Comparison Operators: `=`, `>`, `<`, `>=`, `<=`, `<>`
-- Logical Operators: `NOT`, `AND`, `OR`, `BETWEEN`, `IN`, `LIKE`
+- Conditional Operators: `BETWEEN`, `IN`, `LIKE`
 - Null Values: `IS NULL`, `IS NOT NULL`
-- `CASE`
+- Logical Operators: `AND`, `OR`, `NOT`
 
-## Aggregation
+## Sorting and Limiting Data
+
+- `ORDER BY`
+- `LIMIT`
+- `OFFSET`
+
+## Aggregating Data
 
 - Aggregate Functions: `COUNT`, `SUM`, `AVG`, `MIN`, `MAX`
 - `GROUP BY`
 - `HAVING`
 
-## Order
+## Conditional Expressions
 
-- `ORDER BY`
-- By Columns
-- By Direction: `ASC`, `DESC`
+- `CASE`
 
-## Joins
+## Combining Data
 
-- `(INNER) JOIN`
-- `LEFT (OUTER) JOIN`
-- `RIGHT (OUTER) JOIN`
-- `FULL (OUTER) JOIN`
+- Joins
+- Unions
+
+## Subqueries
+
+## Data Modification
+
+- `INSERT INTO`
+- `UPDATE SET`
+- `DELETE FROM`
 
 ---
 
 <!-- ## Manipulación de Datos
 
-- Insertar: `INSERT INTO`, `VALUES`, `DEFAULT VALUES`, `SELECT`
-- Actualizar: `UPDATE`, `SET`
-- Borrar: `DELETE FROM`
 - all dates format
 - Subconsultas: `UNION`, `INTERSECT`, `EXCEPT` -->
+
+UNION
