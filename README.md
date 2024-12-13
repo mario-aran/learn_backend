@@ -28,7 +28,7 @@
 - `ORDER BY`
 - `LIMIT OFFSET`
 
-## Aggregating
+## Aggregating - ok
 
 - Aggregate Functions: `COUNT`, `SUM`, `AVG`, `MIN`, `MAX`
 - `GROUP BY`
