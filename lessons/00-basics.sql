@@ -13,7 +13,7 @@
 - Clients: -- "DBeaver", "SQL Server Management Studio", "MySQL Workbench".
 - DBeaver: -- Installation and settings "https://dbeaver.io/download/"
     -- Connection: new database connection -> all -> postgresql -> host, port, database, user, password
-    -- Uppercase commands: window -> preferences -> editors ->sql editor -> formatting -> keyword case -> upper
+    -- UPPERCASE syntax: window -> preferences -> editors ->sql editor -> formatting -> keyword case -> upper
 
 -- Syntax
 - Queries: `SELECT column_name FROM table_name;`

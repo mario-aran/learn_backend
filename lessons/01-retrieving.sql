@@ -1,10 +1,9 @@
 /* Retrieving */
 
 -- `SELECT FROM`
-SELECT 1, 2, 3; -- One or multiple values separated by commas
-SELECT column FROM table_name; -- Column
 SELECT * FROM table_name; -- * wildcard that means all columns
-SELECT 1, column, * FROM table_name; -- Combination of number, column and all columns
+SELECT column FROM table_name; -- Column
+SELECT *, column, 1 FROM table_name; -- Multiple values, separated by commas
 
 -- `SELECT DISTINCT`
 SELECT DISTINCT column1, column2 FROM table_name; -- Select distinct values

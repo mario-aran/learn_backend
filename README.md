@@ -23,11 +23,10 @@
 - Null Values: `IS NULL`, `IS NOT NULL`
 - Logical Operators: `AND`, `OR`, `NOT`
 
-## Sorting and Limiting
+## Sorting and Limiting - ok
 
 - `ORDER BY`
-- `LIMIT`
-- `OFFSET`
+- `LIMIT OFFSET`
 
 ## Aggregating
 
