@@ -1,7 +1,7 @@
 /* Filtering */
 
 -- `WHERE`
-SELECT * FROM table_name WHERE condition;
+SELECT * FROM table WHERE condition;
 
 -- Comparison Operators: `=`, `>`, `<`, `>=`, `<=`, `<>`
 WHERE column = 1;
@@ -21,6 +21,6 @@ WHERE column IS NULL;
 WHERE column IS NOT NULL;
 
 -- Logical Operators: `AND`, `OR`, `NOT`
-WHERE column1 = 1 AND column2 = 1;
-WHERE column1 = 1 OR column2 = 1;
+WHERE col1 = 1 AND col2 = 1;
+WHERE col1 = 1 OR col2 = 1;
 WHERE NOT column = 1;

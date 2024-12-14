@@ -1,5 +1,5 @@
 {
-  "name": "learn_sql",
+  "name": "sql_foundations",
   "scripts": {
     "dev": "ts-node-dev -r tsconfig-paths/register --respawn ./src/app/index.ts",
     "build": "tsc && tsc-alias",

@@ -4,20 +4,20 @@
 /*
 - Can't be used inside `WHERE`
 */
-SELECT COUNT(*) FROM table_name; -- Count total number of rows, including nulls
-SELECT COUNT(column) FROM table_name; -- Count non-null values
-SELECT SUM(column) FROM table_name; -- Sum of all non-null values
-SELECT AVG(column) FROM table_name; -- Average of non-null values
-SELECT MIN(column) FROM table_name; -- Minimum non-null value
-SELECT MAX(column) FROM table_name; -- Maximum non-null value
+SELECT COUNT(*) FROM table; -- Count total number of rows, including nulls
+SELECT COUNT(column) FROM table; -- Count non-null values
+SELECT SUM(column) FROM table; -- Sum of all non-null values
+SELECT AVG(column) FROM table; -- Average of non-null values
+SELECT MIN(column) FROM table; -- Minimum non-null value
+SELECT MAX(column) FROM table; -- Maximum non-null value
 
 -- Group By
-SELECT column FROM table_name GROUP BY column; -- Single column
-SELECT COUNT(column1), column2, column3 FROM table_name GROUP BY column2, column3; -- With aggregate function
+SELECT column FROM table GROUP BY column; -- Single column
+SELECT COUNT(col1), col2 FROM table GROUP BY col2; -- With aggregate function
 
 -- Having
 /*
 - To filter aggregate functions
 */
-SELECT SUM(column1), column2 FROM table_name GROUP BY column2 HAVING SUM(column1) > 1; -- Single condition
-SELECT AVG(column1), column2 FROM table_name GROUP BY column2 HAVING AVG(column1) < 2 OR AVG(column1) = 4; -- Multiple conditions
+SELECT AVG(col1), col2 FROM table GROUP BY col2 HAVING AVG(col1) > 1; -- Single condition
+SELECT AVG(col1), col2 FROM table GROUP BY col2 HAVING AVG(col1) < 2 OR AVG(col1) = 4; -- Multiple conditions

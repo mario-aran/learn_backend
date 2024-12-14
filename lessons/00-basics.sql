@@ -11,7 +11,7 @@
 -- Tools
 - RDBMS: -- (Relational Database Management System), PostgreSQL, MySQL, SQL Server, Oracle.
 - Clients: -- "DBeaver", "SQL Server Management Studio", "MySQL Workbench".
-- DBeaver: -- Installation and settings "https://dbeaver.io/download/"
+    -- Installation and settings "https://dbeaver.io/download/"
     -- Connection: new database connection -> all -> postgresql -> host, port, database, user, password
     -- UPPERCASE syntax: window -> preferences -> editors ->sql editor -> formatting -> keyword case -> upper
 

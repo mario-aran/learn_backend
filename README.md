@@ -1,4 +1,4 @@
-# Learn SQL
+# SQL Foundations
 
 ## Basics - ok
 
