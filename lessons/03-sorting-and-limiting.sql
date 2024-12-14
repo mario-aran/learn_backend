@@ -9,7 +9,7 @@ SELECT col1, SUM(col2) FROM table ORDER BY SUM(col2) -- By aggregation
 
 -- `ASC`, `DESC`
 ORDER BY column ASC -- Ascending
-ORDER BY column DESC -- Descneding
+ORDER BY column DESC -- Descending
 ORDER BY col1 DESC, col2 ASC -- Combined
 
 -- `LIMIT OFFSET`
