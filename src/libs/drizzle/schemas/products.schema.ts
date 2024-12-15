@@ -6,8 +6,8 @@ import {
   uuid,
   varchar,
 } from 'drizzle-orm/pg-core';
-import { productCategories } from './product-categories.schema';
-import { sales } from './sales.schema';
+import { productCategoriesSchema } from './product-categories.schema';
+import { salesSchema } from './sales.schema';
 
 export const products = pgTable('products', {
   createdAt: timestamp('created_at').notNull().defaultNow(),
@@ -20,13 +20,13 @@ export const products = pgTable('products', {
   price: integer('price').notNull(),
   productCategoryId: uuid('product_category_id')
     .notNull()
-    .references(() => productCategories.id),
+    .references(() => productCategoriesSchema.id),
 });
 
 export const productsRelations = relations(products, ({ one, many }) => ({
-  productCategory: one(productCategories, {
+  productCategory: one(productCategoriesSchema, {
     fields: [products.productCategoryId],
-    references: [productCategories.id],
+    references: [productCategoriesSchema.id],
   }),
-  sales: many(sales),
+  sales: many(salesSchema),
 }));

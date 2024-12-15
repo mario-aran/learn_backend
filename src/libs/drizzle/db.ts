@@ -1,7 +1,4 @@
 import { DATABASE_URL } from '@/config/env';
-import { drizzle } from 'drizzle-orm/postgres-js';
-import postgres from 'postgres';
-import * as schemas from './schemas';
+import { drizzle } from 'drizzle-orm/node-postgres';
 
-const connection = postgres(DATABASE_URL);
-export const db = drizzle(connection, { schema: schemas });
+export const db = drizzle(DATABASE_URL);
