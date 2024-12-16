@@ -2,7 +2,7 @@
 
 -- `SELECT FROM`
 SELECT * FROM table; -- * wildcard that means all columns
-SELECT column FROM table; -- Column
+SELECT column FROM tab; -- Column
 SELECT *, column, 1 FROM table; -- Multiple values, separated by commas
 
 -- `SELECT DISTINCT`

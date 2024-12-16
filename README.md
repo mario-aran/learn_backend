@@ -1,4 +1,4 @@
-# SQL Foundations
+# Learn SQL
 
 ## Basics - ok
 
@@ -26,6 +26,7 @@
 ## Sorting and Limiting - ok
 
 - `ORDER BY`
+- `ASC`, `DESC`
 - `LIMIT OFFSET`
 
 ## Aggregating - ok
@@ -40,10 +41,15 @@
 - Case with Select
 - Case with Other Commands
 
-## Combining
+## Joins
+
+## Set Operations
+
+- UNION
+- INTERSECT
+- EXCEPT
 
 - Joins: `INNER JOIN`, `LEFT JOIN`, `RIGHT JOIN`, `FULL JOIN`, Self join
-- Set operations: `UNION`, `INTERSECT`, `EXCEPT`
 
 ## Subqueries
 
@@ -52,3 +58,9 @@
 - `INSERT INTO`
 - `UPDATE SET`
 - `DELETE FROM`
+
+## Advanced Topics
+
+- Indexes
+- Constraints
+- Data Definition: CREATE TABLE, ALTER TABLE, DROP TABLE
