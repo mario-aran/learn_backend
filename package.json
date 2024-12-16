@@ -1,5 +1,5 @@
 {
-  "name": "learn_sql",
+  "name": "learn_backend",
   "scripts": {
     "build": "tsc && tsc-alias",
     "prettier": "prettier --write \"**/*.{ts,tsx}\"",
