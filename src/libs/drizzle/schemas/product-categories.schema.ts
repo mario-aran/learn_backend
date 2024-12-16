@@ -1,6 +1,6 @@
 import { relations } from 'drizzle-orm';
-import { pgTable, timestamp, uuid, varchar } from 'drizzle-orm/pg-core';
-import { products } from './products.schema';
+import { integer, pgTable, timestamp, varchar } from 'drizzle-orm/pg-core';
+import { productsSchema } from './products.schema';
 
 export const productCategoriesSchema = pgTable('product_categories', {
   createdAt: timestamp('created_at').notNull().defaultNow(),
@@ -8,13 +8,13 @@ export const productCategoriesSchema = pgTable('product_categories', {
     .notNull()
     .defaultNow()
     .$onUpdate(() => new Date()),
-  id: uuid('id').primaryKey().defaultRandom(),
+  id: integer().primaryKey().generatedAlwaysAsIdentity(),
   name: varchar('name').notNull(),
 });
 
 export const productCategoriesRelations = relations(
   productCategoriesSchema,
   ({ many }) => ({
-    products: many(products),
+    products: many(productsSchema),
   }),
 );

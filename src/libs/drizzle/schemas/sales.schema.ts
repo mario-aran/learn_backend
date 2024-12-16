@@ -1,7 +1,7 @@
 import { relations } from 'drizzle-orm';
-import { pgTable, timestamp, uuid } from 'drizzle-orm/pg-core';
+import { integer, pgTable, timestamp } from 'drizzle-orm/pg-core';
 import { clientsSchema } from './clients.schema';
-import { products } from './products.schema';
+import { productsSchema } from './products.schema';
 
 export const salesSchema = pgTable('sales', {
   createdAt: timestamp('created_at').notNull().defaultNow(),
@@ -9,13 +9,13 @@ export const salesSchema = pgTable('sales', {
     .notNull()
     .defaultNow()
     .$onUpdate(() => new Date()),
-  id: uuid('id').primaryKey().defaultRandom(),
-  clientId: uuid('client_id')
+  id: integer().primaryKey().generatedAlwaysAsIdentity(),
+  clientId: integer('client_id')
     .notNull()
     .references(() => clientsSchema.id),
-  productId: uuid('product_id')
+  productId: integer('product_id')
     .notNull()
-    .references(() => products.id),
+    .references(() => productsSchema.id),
 });
 
 export const salesRelations = relations(salesSchema, ({ one }) => ({
@@ -23,8 +23,8 @@ export const salesRelations = relations(salesSchema, ({ one }) => ({
     fields: [salesSchema.clientId],
     references: [clientsSchema.id],
   }),
-  product: one(products, {
+  product: one(productsSchema, {
     fields: [salesSchema.productId],
-    references: [products.id],
+    references: [productsSchema.id],
   }),
 }));
