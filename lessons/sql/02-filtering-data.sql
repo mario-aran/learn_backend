@@ -1,7 +1,9 @@
 /* Filtering Data */
 
 /* `WHERE` */
-SELECT * FROM table_name WHERE condition;
+SELECT *
+FROM table_name
+WHERE condition;
 
 /* Comparison Operators: `=`, `>`, `<`, `>=`, `<=`, `<>` */
 WHERE id = 1;
