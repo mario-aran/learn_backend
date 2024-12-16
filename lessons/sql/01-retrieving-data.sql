@@ -27,8 +27,8 @@ SELECT 1 % 1;
 SELECT 2 * (1 + 1); -- P. E. M. D. A. S.
 
 /* Aliases: `AS`
--- Use "" to avoid errors on reserved keywords
--- `AS` is optional
+- Use "" to avoid errors on reserved keywords
+- `AS` is optional
 */
 -- Column and table
 SELECT price AS "alias"
