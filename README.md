@@ -1,6 +1,6 @@
 # Learn SQL
 
-## Basics - ok
+## Basics
 
 - Concepts
 - Tools
@@ -8,14 +8,14 @@
 - Data Types
 - Comments
 
-## Retrieving - ok
+## Retrieving Data
 
 - `SELECT FROM`
 - `SELECT DISTINCT`
-- Arithmetic Operators: `+`, `-`, `*`, `/`, `%`, P.E.M.D.A.S.
+- Arithmetic Operators: `+`, `-`, `*`, `/`, `%`
 - Aliases: `AS`
 
-## Filtering - ok
+## Filtering Data
 
 - `WHERE`
 - Comparison Operators: `=`, `>`, `<`, `>=`, `<=`, `<>`
@@ -23,44 +23,56 @@
 - Null Values: `IS NULL`, `IS NOT NULL`
 - Logical Operators: `AND`, `OR`, `NOT`
 
-## Sorting and Limiting - ok
+## Sorting and Limiting Data
 
-- `ORDER BY`
-- `ASC`, `DESC`
+- `ORDER BY ASC/DESC`
 - `LIMIT OFFSET`
 
-## Aggregating - ok
+## Aggregating Data
 
 - Aggregate Functions: `COUNT`, `SUM`, `AVG`, `MIN`, `MAX`
 - `GROUP BY`
 - `HAVING`
 
-## Case - ok
+## Case Statements
 
-- Case Syntax: `CASE`
-- Case with Select
+- `CASE`
+- Case in `SELECT`
 - Case with Other Commands
 
 ## Joins
 
+- `(INNER) JOIN`
+- `LEFT (OUTER) JOIN`
+- `RIGHT (OUTER) JOIN`
+- `FULL (OUTER) JOIN`
+- Self Join
+- Multiple Joins
+
 ## Set Operations
 
-- UNION
-- INTERSECT
-- EXCEPT
-
-- Joins: `INNER JOIN`, `LEFT JOIN`, `RIGHT JOIN`, `FULL JOIN`, Self join
+- `UNION`, `UNION ALL`
+- `INTERSECT`
+- `EXCEPT`
 
 ## Subqueries
 
-## Modification
+- Subquery Syntax
+- Single-Row Subqueries
+- Multi-Row Subqueries
+- Correlated Subqueries
+- Subqueries in `SELECT`, `WHERE` and `FROM`
+
+## Data Modification
 
 - `INSERT INTO`
 - `UPDATE SET`
 - `DELETE FROM`
 
-## Advanced Topics
+## Data Modeling
 
+- `CREATE`
+- `ALTER`
+- `DROP`
 - Indexes
 - Constraints
-- Data Definition: CREATE TABLE, ALTER TABLE, DROP TABLE
