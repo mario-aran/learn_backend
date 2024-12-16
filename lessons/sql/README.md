@@ -51,7 +51,8 @@
 
 ## Set Operations
 
-- `UNION`, `UNION ALL`
+- `UNION ALL`
+- `UNION`
 - `INTERSECT`
 - `EXCEPT`
 
@@ -71,8 +72,8 @@
 
 ## Data Modeling
 
+- Constraints
+- Indexes
 - `CREATE`
 - `ALTER`
 - `DROP`
-- Indexes
-- Constraints
