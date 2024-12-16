@@ -8,5 +8,4 @@ export default defineConfig({
   schema: './src/libs/drizzle/schemas/*',
   out: './migrations',
   dbCredentials: { url: DATABASE_URL },
-  verbose: true, // Logs
 });
