@@ -78,4 +78,4 @@
 - `ALTER`
 - `DROP`
 
-![erd](/media/img-erd.png)
+![erd](/lessons/sql/media/img-erd.png)
