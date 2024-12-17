@@ -1,13 +1,13 @@
 import { relations } from 'drizzle-orm';
-import { integer, pgTable, timestamp, varchar } from 'drizzle-orm/pg-core';
+import { integer, pgTable, varchar } from 'drizzle-orm/pg-core';
+import { BASE_COLUMNS } from '../constants';
 import { productsSchema } from './products.schema';
 
-export const productCategoriesSchema = pgTable('product_categories', {
-  createdAt: timestamp('created_at').notNull().defaultNow(),
-  updatedAt: timestamp('updated_at')
-    .notNull()
-    .defaultNow()
-    .$onUpdate(() => new Date()),
+// Constants
+const TABLE_NAME = 'product_categories';
+
+export const productCategoriesSchema = pgTable(TABLE_NAME, {
+  ...BASE_COLUMNS,
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   name: varchar('name').notNull(),
 });

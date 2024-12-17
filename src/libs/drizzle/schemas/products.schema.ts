@@ -1,9 +1,12 @@
 import { relations } from 'drizzle-orm';
 import { integer, pgTable, timestamp, varchar } from 'drizzle-orm/pg-core';
+import { ordersSchema } from './orders.schema';
 import { productCategoriesSchema } from './product-categories.schema';
-import { salesSchema } from './sales.schema';
 
-export const productsSchema = pgTable('products', {
+// Constants
+const TABLE_NAME = 'products';
+
+export const productsSchema = pgTable(TABLE_NAME, {
   createdAt: timestamp('created_at').notNull().defaultNow(),
   updatedAt: timestamp('updated_at')
     .notNull()
@@ -22,5 +25,5 @@ export const productsRelations = relations(productsSchema, ({ one, many }) => ({
     fields: [productsSchema.productCategoryId],
     references: [productCategoriesSchema.id],
   }),
-  sales: many(salesSchema),
+  orders: many(ordersSchema),
 }));

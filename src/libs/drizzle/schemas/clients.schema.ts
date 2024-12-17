@@ -1,17 +1,17 @@
+import { BASE_COLUMNS } from '@/libs/drizzle/constants';
 import { relations } from 'drizzle-orm';
-import { integer, pgTable, timestamp, varchar } from 'drizzle-orm/pg-core';
-import { salesSchema } from './sales.schema';
+import { integer, pgTable, varchar } from 'drizzle-orm/pg-core';
+import { ordersSchema } from './orders.schema';
 
-export const clientsSchema = pgTable('clients', {
-  createdAt: timestamp('created_at').notNull().defaultNow(),
-  updatedAt: timestamp('updated_at')
-    .notNull()
-    .defaultNow()
-    .$onUpdate(() => new Date()),
+// Constants
+const TABLE_NAME = 'clients';
+
+export const clientsSchema = pgTable(TABLE_NAME, {
+  ...BASE_COLUMNS,
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   name: varchar('name').notNull(),
 });
 
 export const clientsRelations = relations(clientsSchema, ({ many }) => ({
-  sales: many(salesSchema),
+  sales: many(ordersSchema),
 }));
