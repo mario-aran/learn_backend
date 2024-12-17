@@ -1,4 +1,4 @@
-import { faker } from '@/libs/faker';
+import { fakerLocale } from '@/libs/faker/faker-locale';
 import { db } from './db';
 import { clientsSchema } from './schemas';
 
@@ -16,7 +16,7 @@ const seedClients = async () => {
   const clients = Array.from(
     { length: SEEDS_LENGHT },
     (): InsertClient => ({
-      name: faker.person.firstName(),
+      name: fakerLocale.person.firstName(),
     }),
   );
 
