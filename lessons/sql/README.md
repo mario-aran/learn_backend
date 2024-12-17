@@ -77,3 +77,5 @@
 - `CREATE`
 - `ALTER`
 - `DROP`
+
+![erd](/media/img-erd.png)
