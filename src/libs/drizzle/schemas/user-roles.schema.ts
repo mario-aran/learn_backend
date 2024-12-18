@@ -1,9 +1,8 @@
-import { BASE_COLUMNS } from '@/libs/drizzle/constants/base-columns';
-import { pgTable } from 'drizzle-orm/pg-core';
+import { BASE_DATE_COLUMNS } from '@/libs/drizzle/constants';
+import { pgTable, uuid, varchar } from 'drizzle-orm/pg-core';
 
-// Constants
-const TABLE_NAME = 'user_roles';
-
-export const userRolesSchema = pgTable(TABLE_NAME, {
-  ...BASE_COLUMNS,
+export const userRolesSchema = pgTable('user_roles', {
+  id: uuid().primaryKey().defaultRandom(),
+  ...BASE_DATE_COLUMNS,
+  name: varchar('name').notNull(),
 });
