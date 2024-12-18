@@ -1,7 +1,7 @@
 /* Basics */
 
 /* Concepts */
-- SQL: -- Structured Query Language, allows to interact with a database.
+- SQL: -- (Structured Query Language), allows to interact with a database.
 - DB: -- Data organized and structured in multiple tables.
 - Tables: -- Matrix of records, like excel sheets.
 - Columns: -- Fields of a table.
@@ -9,11 +9,14 @@
 - Rows: -- Records of a table.
 
 /* Tools */
-- RDBMS: -- Relational Database Management System, PostgreSQL, MySQL, SQL Server, Oracle.
-- Clients: -- "DBeaver", "SQL Server Management Studio", "MySQL Workbench".
-    -- Installation and settings "https://dbeaver.io/download/"
+- RDBMS: -- (Relational Database Management System), PostgreSQL, MySQL, SQL Server, Oracle.
+- Clients: -- DBeaver, SQL Server Management Studio, MySQL Workbench.
+- Playgrounds: -- SQL Playground
+- DBeaver Settings: "https://dbeaver.io/download/"
     -- Connection: new database connection -> all -> postgresql -> host, port, database, user, password
-    -- UPPERCASE syntax: window -> preferences -> editors ->sql editor -> formatting -> keyword case -> upper
+    -- Settings (UPPERCASE): "window" -> "preferences" -> "editors" -> "sql editor" -> "formatting" -> "keyword case: upper"
+- SQL Playground: "https://sqlplayground.app/"
+    -- Settings: "create sandbox" -> "dbms: postgresql & template: world" -> "create sandbox"
 
 /* Syntax */
 - Queries: `SELECT column_name FROM table_name;`
