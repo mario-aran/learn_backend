@@ -5,5 +5,5 @@ export const clientDiscountsSchema = pgTable('client_discounts', {
   ...BASE_DATE_COLUMNS,
   id: uuid().primaryKey().defaultRandom(),
   name: varchar('name').notNull(),
-  discount: decimal('discount').notNull(),
+  discount: decimal('discount', { precision: 4, scale: 2 }),
 });
