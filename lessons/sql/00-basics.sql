@@ -11,9 +11,9 @@
 /* Tools */
 - RDBMS: -- (Relational Database Management System), PostgreSQL, MySQL, SQL Server, Oracle.
 - Clients: -- DBeaver, SQL Server Management Studio, MySQL Workbench.
-- Playgrounds: -- SQL Playground
+- Playgrounds: -- SQL Playground.
 - DBeaver Settings: "https://dbeaver.io/download/"
-    -- Connection: new database connection -> all -> postgresql -> host, port, database, user, password
+    -- Connection: "new database connection" -> "all" -> "postgresql" -> "host, port, database, user, password"
     -- Settings (UPPERCASE): "window" -> "preferences" -> "editors" -> "sql editor" -> "formatting" -> "keyword case: upper"
 - SQL Playground: "https://sqlplayground.app/"
     -- Settings: "create sandbox" -> "dbms: postgresql & template: world" -> "create sandbox"
