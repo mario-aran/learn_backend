@@ -49,7 +49,7 @@
 - Self Join
 - Multiple Joins
 
-![img-joins](/lessons/sql/media/joins.png)
+![img-joins](/lessons/sql/media/img-joins.png)
 
 ## Set Operations
 
