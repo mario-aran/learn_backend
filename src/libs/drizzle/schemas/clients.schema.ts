@@ -4,9 +4,7 @@ import { clientDiscountsSchema } from './client-discounts.schema';
 import { usersSchema } from './users.schema';
 
 export const clientsSchema = pgTable('clients', {
-  ...BASE_DATE_COLUMNS,
   id: uuid().primaryKey().defaultRandom(),
-  name: varchar('name').notNull(),
   userId: uuid('user_id')
     .notNull()
     .unique()
@@ -14,6 +12,8 @@ export const clientsSchema = pgTable('clients', {
   clientDiscountId: uuid('client_discount_id')
     .notNull()
     .references(() => clientDiscountsSchema.id),
+  name: varchar('name').notNull(),
+  ...BASE_DATE_COLUMNS,
 });
 
 // export const clientsRelations = relations(clientsSchema, ({ many }) => ({

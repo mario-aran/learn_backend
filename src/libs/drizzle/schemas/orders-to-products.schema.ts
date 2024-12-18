@@ -1,10 +1,27 @@
-import { BASE_COLUMNS } from '@/libs/drizzle/constants/base-columns';
-import { integer, pgTable } from 'drizzle-orm/pg-core';
+import { BASE_DATE_COLUMNS } from '@/libs/drizzle/constants';
+import {
+  decimal,
+  integer,
+  pgTable,
+  primaryKey,
+  uuid,
+} from 'drizzle-orm/pg-core';
+import { ordersSchema } from './orders.schema';
+import { productsSchema } from './products.schema';
 
-// Constants
-const TABLE_NAME = 'orders_to_products';
-
-export const ordersToProductsSchema = pgTable(TABLE_NAME, {
-  ...BASE_COLUMNS,
-  id: integer().primaryKey().generatedAlwaysAsIdentity(),
-});
+export const ordersToProductsSchema = pgTable(
+  'orders_to_products',
+  {
+    orderId: uuid('order_id')
+      .notNull()
+      .references(() => ordersSchema.id),
+    productId: uuid('product_id')
+      .notNull()
+      .references(() => productsSchema.id),
+    unitPrice: decimal('unit_price', { precision: 10, scale: 2 }).notNull(),
+    discount: decimal('discount', { precision: 4, scale: 2 }),
+    quantity: integer('quantity').notNull(),
+    ...BASE_DATE_COLUMNS,
+  },
+  (t) => [primaryKey({ columns: [t.orderId, t.productId] })],
+);
