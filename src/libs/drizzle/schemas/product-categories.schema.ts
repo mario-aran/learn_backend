@@ -1,20 +1,15 @@
-import { relations } from 'drizzle-orm';
-import { integer, pgTable, varchar } from 'drizzle-orm/pg-core';
-import { BASE_COLUMNS } from '../constants';
-import { productsSchema } from './products.schema';
+import { BASE_DATE_COLUMNS } from '@/libs/drizzle/constants';
+import { pgTable, uuid, varchar } from 'drizzle-orm/pg-core';
 
-// Constants
-const TABLE_NAME = 'product_categories';
-
-export const productCategoriesSchema = pgTable(TABLE_NAME, {
-  ...BASE_COLUMNS,
-  id: integer().primaryKey().generatedAlwaysAsIdentity(),
-  name: varchar('name').notNull(),
+export const productCategoriesSchema = pgTable('product_categories', {
+  id: uuid().primaryKey().defaultRandom(),
+  ...BASE_DATE_COLUMNS,
+  name: varchar('name').notNull().unique(),
 });
 
-export const productCategoriesRelations = relations(
-  productCategoriesSchema,
-  ({ many }) => ({
-    products: many(productsSchema),
-  }),
-);
+// export const productCategoriesRelations = relations(
+//   productCategoriesSchema,
+//   ({ many }) => ({
+//     products: many(productsSchema),
+//   }),
+// );

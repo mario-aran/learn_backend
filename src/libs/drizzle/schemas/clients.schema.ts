@@ -12,8 +12,8 @@ export const clientsSchema = pgTable('clients', {
   clientDiscountId: uuid('client_discount_id')
     .notNull()
     .references(() => clientDiscountsSchema.id),
-  name: varchar('name').notNull(),
   ...BASE_DATE_COLUMNS,
+  name: varchar('name').notNull().unique(),
 });
 
 // export const clientsRelations = relations(clientsSchema, ({ many }) => ({

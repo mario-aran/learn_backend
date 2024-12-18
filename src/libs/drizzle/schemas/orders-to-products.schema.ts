@@ -18,10 +18,10 @@ export const ordersToProductsSchema = pgTable(
     productId: uuid('product_id')
       .notNull()
       .references(() => productsSchema.id),
+    ...BASE_DATE_COLUMNS,
     unitPrice: decimal('unit_price', { precision: 10, scale: 2 }).notNull(),
     discount: decimal('discount', { precision: 4, scale: 2 }),
     quantity: integer('quantity').notNull(),
-    ...BASE_DATE_COLUMNS,
   },
   (t) => [primaryKey({ columns: [t.orderId, t.productId] })],
 );
