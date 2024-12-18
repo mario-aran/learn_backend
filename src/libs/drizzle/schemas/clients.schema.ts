@@ -1,17 +1,23 @@
-import { BASE_COLUMNS } from '@/libs/drizzle/constants';
-import { relations } from 'drizzle-orm';
-import { integer, pgTable, varchar } from 'drizzle-orm/pg-core';
-import { ordersSchema } from './orders.schema';
+import { BASE_DATE_COLUMNS } from '@/libs/drizzle/constants';
+import { integer, pgTable, uuid, varchar } from 'drizzle-orm/pg-core';
+import { clientDiscountsSchema } from './client-discounts.schema';
+import { usersSchema } from './users.schema';
 
 // Constants
 const TABLE_NAME = 'clients';
 
 export const clientsSchema = pgTable(TABLE_NAME, {
-  ...BASE_COLUMNS,
-  id: integer().primaryKey().generatedAlwaysAsIdentity(),
+  ...BASE_DATE_COLUMNS,
+  id: uuid().primaryKey().defaultRandom(),
   name: varchar('name').notNull(),
+  userId: integer('client_id')
+    .notNull()
+    .references(() => usersSchema.id),
+  clientDiscountId: integer('product_id')
+    .notNull()
+    .references(() => clientDiscountsSchema.id),
 });
 
-export const clientsRelations = relations(clientsSchema, ({ many }) => ({
-  sales: many(ordersSchema),
-}));
+// export const clientsRelations = relations(clientsSchema, ({ many }) => ({
+//   sales: many(ordersSchema),
+// }));
