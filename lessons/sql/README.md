@@ -49,6 +49,8 @@
 - Self Join
 - Multiple Joins
 
+![img-joins](/lessons/sql/media/joins.png)
+
 ## Set Operations
 
 - `UNION ALL`
@@ -78,4 +80,4 @@
 - `ALTER`
 - `DROP`
 
-![erd](/lessons/sql/media/img-erd.png)
+![img-data-modeling](/lessons/sql/media/img-data-modeling.png)
