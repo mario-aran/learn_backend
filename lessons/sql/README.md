@@ -58,7 +58,7 @@
 - `INTERSECT`
 - `EXCEPT`
 
-## Subqueries
+## Subqueries - (PENDING!!!)
 
 - Subquery Syntax
 - Single-Row Subqueries
