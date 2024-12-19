@@ -1,4 +1,5 @@
 import { BASE_DATE_COLUMNS } from '@/libs/drizzle/constants';
+import { relations } from 'drizzle-orm';
 import {
   decimal,
   integer,
@@ -24,4 +25,18 @@ export const ordersToProductsSchema = pgTable(
     quantity: integer('quantity').notNull(),
   },
   (t) => [primaryKey({ columns: [t.orderId, t.productId] })],
+);
+
+export const ordersToProductsRelations = relations(
+  ordersToProductsSchema,
+  ({ one }) => ({
+    order: one(ordersSchema, {
+      fields: [ordersToProductsSchema.orderId],
+      references: [ordersSchema.id],
+    }),
+    product: one(productsSchema, {
+      fields: [ordersToProductsSchema.productId],
+      references: [productsSchema.id],
+    }),
+  }),
 );
