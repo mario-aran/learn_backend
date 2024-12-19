@@ -11,5 +11,7 @@ export const productCategoriesSchema = pgTable('product_categories', {
 
 export const productCategoriesRelations = relations(
   productCategoriesSchema,
-  ({ many }) => ({ products: many(productsSchema) }),
+  ({ many }) => ({
+    products: many(productsSchema),
+  }),
 );
