@@ -1,6 +1,8 @@
 import { BASE_DATE_COLUMNS } from '@/libs/drizzle/constants';
+import { relations } from 'drizzle-orm';
 import { pgTable, uuid } from 'drizzle-orm/pg-core';
 import { clientsSchema } from './clients.schema';
+import { ordersToProductsSchema } from './orders-to-products.schema';
 import { sellersSchema } from './sellers.schema';
 
 export const ordersSchema = pgTable('orders', {
@@ -14,13 +16,14 @@ export const ordersSchema = pgTable('orders', {
   ...BASE_DATE_COLUMNS,
 });
 
-// export const salesRelations = relations(ordersSchema, ({ one }) => ({
-//   client: one(clientsSchema, {
-//     fields: [ordersSchema.clientId],
-//     references: [clientsSchema.id],
-//   }),
-//   product: one(productsSchema, {
-//     fields: [ordersSchema.productId],
-//     references: [productsSchema.id],
-//   }),
-// }));
+export const ordersRelations = relations(ordersSchema, ({ many, one }) => ({
+  ordersToProducts: many(ordersToProductsSchema),
+  seller: one(sellersSchema, {
+    fields: [ordersSchema.sellerId],
+    references: [sellersSchema.id],
+  }),
+  client: one(clientsSchema, {
+    fields: [ordersSchema.clientId],
+    references: [clientsSchema.id],
+  }),
+}));
