@@ -1,5 +1,7 @@
 import { BASE_DATE_COLUMNS } from '@/libs/drizzle/constants';
+import { relations } from 'drizzle-orm';
 import { decimal, pgTable, uuid, varchar } from 'drizzle-orm/pg-core';
+import { ordersToProductsSchema } from './orders-to-products.schema';
 import { productCategoriesSchema } from './product-categories.schema';
 
 export const productsSchema = pgTable('products', {
@@ -12,10 +14,10 @@ export const productsSchema = pgTable('products', {
   unitPrice: decimal('unit_price', { precision: 10, scale: 2 }).notNull(),
 });
 
-// export const productsRelations = relations(productsSchema, ({ one, many }) => ({
-//   productCategory: one(productCategoriesSchema, {
-//     fields: [productsSchema.productCategoryId],
-//     references: [productCategoriesSchema.id],
-//   }),
-//   orders: many(ordersSchema),
-// }));
+export const productsRelations = relations(productsSchema, ({ one, many }) => ({
+  productCategory: one(productCategoriesSchema, {
+    fields: [productsSchema.productCategoryId],
+    references: [productCategoriesSchema.id],
+  }),
+  ordersToProducts: many(ordersToProductsSchema),
+}));
