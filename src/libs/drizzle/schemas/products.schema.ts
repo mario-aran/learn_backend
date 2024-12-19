@@ -8,7 +8,7 @@ export const productsSchema = pgTable('products', {
     .notNull()
     .references(() => productCategoriesSchema.id),
   ...BASE_DATE_COLUMNS,
-  name: varchar('name').notNull().unique(),
+  name: varchar('name', { length: 255 }).notNull().unique(),
   unitPrice: decimal('unit_price', { precision: 10, scale: 2 }).notNull(),
 });
 

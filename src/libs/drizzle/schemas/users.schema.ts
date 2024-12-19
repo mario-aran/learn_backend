@@ -1,9 +1,10 @@
-import { BASE_COLUMNS } from '@/libs/drizzle/constants/base-columns';
-import { pgTable } from 'drizzle-orm/pg-core';
+import { BASE_DATE_COLUMNS } from '@/libs/drizzle/constants';
+import { pgTable, uuid, varchar } from 'drizzle-orm/pg-core';
 
-// Constants
-const TABLE_NAME = 'users';
-
-export const usersSchema = pgTable(TABLE_NAME, {
-  ...BASE_COLUMNS,
+export const usersSchema = pgTable('users', {
+  id: uuid().primaryKey().defaultRandom(),
+  ...BASE_DATE_COLUMNS,
+  name: varchar('name', { length: 255 }).notNull(),
+  email: varchar('email', { length: 255 }).notNull().unique(),
+  password: varchar('password', { length: 255 }).notNull(),
 });

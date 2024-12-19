@@ -4,7 +4,7 @@ import { pgTable, uuid, varchar } from 'drizzle-orm/pg-core';
 export const productCategoriesSchema = pgTable('product_categories', {
   id: uuid().primaryKey().defaultRandom(),
   ...BASE_DATE_COLUMNS,
-  name: varchar('name').notNull().unique(),
+  name: varchar('name', { length: 255 }).notNull().unique(),
 });
 
 // export const productCategoriesRelations = relations(
