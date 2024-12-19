@@ -14,9 +14,9 @@ export const sellersSchema = pgTable('sellers', {
 });
 
 export const sellersRelations = relations(sellersSchema, ({ one, many }) => ({
+  orders: many(ordersSchema),
   user: one(usersSchema, {
     fields: [sellersSchema.userId],
     references: [usersSchema.id],
   }),
-  orders: many(ordersSchema),
 }));
