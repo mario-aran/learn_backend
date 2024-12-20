@@ -21,7 +21,7 @@ export const ordersToProductsSchema = pgTable(
       .references(() => productsSchema.id),
     ...BASE_DATE_COLUMNS,
     unitPrice: decimal('unit_price', { precision: 10, scale: 2 }).notNull(),
-    discount: decimal('discount', { precision: 4, scale: 2 }),
+    discount: decimal('discount', { precision: 4, scale: 2 }).notNull(),
     quantity: integer('quantity').notNull(),
   },
   (t) => [primaryKey({ columns: [t.orderId, t.productId] })],
