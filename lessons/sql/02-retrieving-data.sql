@@ -32,4 +32,4 @@ SELECT 2 * (1 + 1); -- P. E. M. D. A. S.
 */
 -- Column and table
 SELECT price AS "alias"
-FROM products as "p";
+FROM products AS "p";

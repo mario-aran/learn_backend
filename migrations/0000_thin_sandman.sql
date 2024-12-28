@@ -2,7 +2,8 @@ CREATE TABLE "client_discounts" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL,
-	"discount" numeric(4, 2)
+	"discount" numeric(4, 2) NOT NULL,
+	CONSTRAINT "client_discounts_discount_unique" UNIQUE("discount")
 );
 --> statement-breakpoint
 CREATE TABLE "clients" (
@@ -20,7 +21,7 @@ CREATE TABLE "orders_to_products" (
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL,
 	"unit_price" numeric(10, 2) NOT NULL,
-	"discount" numeric(4, 2),
+	"discount" numeric(4, 2) NOT NULL,
 	"quantity" integer NOT NULL,
 	CONSTRAINT "orders_to_products_order_id_product_id_pk" PRIMARY KEY("order_id","product_id")
 );
