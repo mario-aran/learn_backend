@@ -1,4 +1,12 @@
+import { insertSeeds } from '@/libs/drizzle/utils';
+import { seedsStep1 } from './seeds-step1';
+
+// Values
+const seeds = [seedsStep1];
+
 const main = async () => {
-  await Promise.all([]);
+  for (const seed of seeds) {
+    await insertSeeds(seed);
+  }
 };
 main();
