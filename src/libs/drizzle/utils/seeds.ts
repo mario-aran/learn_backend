@@ -11,8 +11,8 @@ export const createSeed = <T extends Schema>(
 });
 
 export const insertSeeds = async (seeds: Seed[]) => {
-  const promises = seeds.map(({ schema, values }) =>
-    db.insert(schema).values(values),
+  const promises = seeds.map(({ schema, records }) =>
+    db.insert(schema).values(records),
   );
 
   return Promise.all(promises);
