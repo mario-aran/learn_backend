@@ -10,18 +10,12 @@ import {
   usersSchema,
   usersToUserRolesSchema,
 } from '@/libs/drizzle/schemas';
-import { TableConfig } from 'drizzle-orm';
-import { PgTable } from 'drizzle-orm/pg-core';
-
-export type Schema = PgTable<TableConfig>;
-
-type RequiredKeys<T> = {
-  [K in keyof T as undefined extends T[K] ? never : K]: T[K];
-};
+import { RequiredKeys } from '@/types';
+import { Schema } from './schemas';
 
 export interface Seed<T extends Schema = Schema> {
   schema: T;
-  values: RequiredKeys<T['$inferInsert']>[];
+  records: RequiredKeys<T['$inferInsert']>[];
 }
 
 export type UserRoles = Seed<typeof userRolesSchema>;
