@@ -10,9 +10,13 @@ import {
   usersSchema,
   usersToUserRolesSchema,
 } from '@/libs/drizzle/schemas';
-import { RequiredKeys } from '@/types';
-import { Schema } from './schemas';
+import { RequiredKeys } from '@/types/required';
+import { PgTable, TableConfig } from 'drizzle-orm/pg-core';
 
+// Schemas
+export type Schema = PgTable<TableConfig>;
+
+// Seeds
 export interface Seed<T extends Schema = Schema> {
   schema: T;
   records: RequiredKeys<T['$inferInsert']>[];

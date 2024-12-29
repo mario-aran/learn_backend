@@ -33,7 +33,6 @@ const productCategories = createSeed(productCategoriesSchema, {
   name: mockProductCategoryName(),
 });
 
-// Combinde and export all seeds
 export const seedsStep1 = [
   userRoles,
   users,

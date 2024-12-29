@@ -1,4 +1,4 @@
-import { getRandomString } from '@/utils';
+import { getRandomString } from '@/utils/get-random';
 import { faker } from '@faker-js/faker';
 
 export const mockClientDiscount = () =>
