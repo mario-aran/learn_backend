@@ -2,8 +2,10 @@ import { sql } from 'drizzle-orm';
 import { db } from './db';
 import { Schema, Seed } from './types';
 
-// Utils
-export const getRandomIdFromSchema = async (schema: Schema) => {
+export const getRandomString = (strings: string[]) =>
+  strings[Math.floor(Math.random() * strings.length)];
+
+export const queryRandomId = async (schema: Schema) => {
   const records = await db
     .select()
     .from(schema)
@@ -15,11 +17,11 @@ export const getRandomIdFromSchema = async (schema: Schema) => {
 
 export const createSeed = <T extends Schema>(
   schema: T,
-  mockValue: T['$inferInsert'],
-  valuesLength = 10,
+  mockRecord: T['$inferInsert'],
+  recordsLength = 10,
 ) => ({
   schema,
-  values: Array.from({ length: valuesLength }, () => mockValue),
+  records: Array.from({ length: recordsLength }, () => mockRecord),
 });
 
 export const insertSeeds = async (seeds: Seed[]) => {
