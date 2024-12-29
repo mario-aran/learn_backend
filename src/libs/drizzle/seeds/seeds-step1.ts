@@ -12,7 +12,7 @@ import {
   mockUserName,
   mockUserPassword,
   mockUserRoleName,
-} from './data';
+} from './mocks';
 
 // Seed definitions
 const userRoles = createSeed(userRolesSchema, {
