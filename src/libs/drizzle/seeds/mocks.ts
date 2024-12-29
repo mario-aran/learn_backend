@@ -1,10 +1,6 @@
+import { getRandomString } from '@/libs/drizzle/utils';
 import { faker } from '@faker-js/faker';
 
-// Utils
-const getRandomString = (strings: string[]) =>
-  strings[Math.floor(Math.random() * strings.length)];
-
-// Mocks
 export const mockClientDiscount = () =>
   faker.number.float({ multipleOf: 0.05, min: 0, max: 0.8 }).toString();
 
