@@ -1,4 +1,4 @@
-import { getRandomString } from '@/libs/drizzle/utils';
+import { getRandomString } from '@/utils';
 import { faker } from '@faker-js/faker';
 
 export const mockClientDiscount = () =>
