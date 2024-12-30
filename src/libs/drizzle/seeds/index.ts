@@ -1,13 +1,14 @@
-import { seedsBatch1 } from './seeds-batch1';
-import { seedsBatch2 } from './seeds-batch2';
+import { insertSeeds } from '@/libs/drizzle/utils';
+import { seedBatch1 } from './seed-batch1';
+import { seedBatch2 } from './seed-batch2';
 
 // Values
-const seeds = [seedsBatch1, seedsBatch2];
+const seeds = [seedBatch1, seedBatch2];
 
 // Insert all seeds
 const main = async () => {
-  for (const seedsBatch of seeds) {
-    await Promise.all(seedsBatch);
+  for (const seedBatch of seeds) {
+    await insertSeeds(seedBatch);
   }
 };
 main();
