@@ -34,12 +34,6 @@
 - `GROUP BY`
 - `HAVING`
 
-## Case Statements
-
-- `CASE`
-- Case in `SELECT`
-- Case with Other Commands
-
 ## Joins
 
 - `(INNER) JOIN`
@@ -50,6 +44,12 @@
 - Multiple Joins
 
 ![img-joins](/lessons/sql/media/img-joins.png)
+
+## Case Statements
+
+- `CASE`
+- Case in `SELECT`
+- Case with Other Commands
 
 ## Set Operations
 
