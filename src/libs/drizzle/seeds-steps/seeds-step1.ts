@@ -4,15 +4,15 @@ import {
   userRolesSchema,
   usersSchema,
 } from '@/libs/drizzle/schemas';
-import { createSeed } from '@/libs/drizzle/utils';
 import {
+  createSeed,
   mockClientDiscount,
   mockProductCategoryName,
   mockUserEmail,
   mockUserName,
   mockUserPassword,
   mockUserRoleName,
-} from './mocks';
+} from '@/libs/drizzle/utils';
 
 // Seed definitions
 const userRoles = createSeed(userRolesSchema, {
@@ -33,9 +33,10 @@ const productCategories = createSeed(productCategoriesSchema, {
   name: mockProductCategoryName(),
 });
 
+// Combine and export all seeds
 export const seedsStep1 = [
+  productCategories,
   userRoles,
   users,
   clientDiscounts,
-  productCategories,
 ];
