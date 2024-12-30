@@ -51,14 +51,14 @@
 - Case in `SELECT`
 - Case with Other Commands
 
-## Set Operations
+## Set Operations (REDO!)
 
 - `UNION ALL`
 - `UNION`
 - `INTERSECT`
 - `EXCEPT`
 
-## Subqueries - (PENDING!!!)
+## Subqueries - (REDO!)
 
 - Subquery Syntax
 - Single-Row Subqueries
