@@ -1,5 +1,5 @@
 import { insertSeeds } from '@/libs/drizzle/utils';
-import { seedsStep1 } from './seeds-steps';
+import { seedsStep1 } from './seeds-step1';
 
 // Values
 const seeds = [seedsStep1];
