@@ -1,6 +1,7 @@
 import { SEEDS_LENGTH } from '@/libs/drizzle/constants';
 import { db } from '@/libs/drizzle/db';
 import { productsSchema } from '@/libs/drizzle/schemas';
+import { Product } from '@/libs/drizzle/types';
 import { faker } from '@faker-js/faker';
 
 // Requires product categories to be seeded
@@ -20,11 +21,13 @@ export const seedProducts = async () => {
   // Prepare mock values
   const mockValues = faker.helpers
     .uniqueArray(faker.commerce.productName, SEEDS_LENGTH)
-    .map((name) => ({
-      productCategoryId: getRandomProductCategoryId(),
-      name,
-      unitPrice: faker.commerce.price({ min: 100, max: 1000, dec: 2 }),
-    }));
+    .map(
+      (name): Product => ({
+        productCategoryId: getRandomProductCategoryId(),
+        name,
+        unitPrice: faker.commerce.price({ min: 100, max: 1000, dec: 2 }),
+      }),
+    );
 
   // Insert seeds
   const result = await db.insert(productsSchema).values(mockValues);
