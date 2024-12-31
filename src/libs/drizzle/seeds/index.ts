@@ -1,13 +1,7 @@
-import { insertSeeds } from '@/libs/drizzle/utils';
-import { seedBatch1 } from './seed-batch1';
-
-// Values
-const seeds = [seedBatch1];
+import { seedInitialData } from './seed-initial-data';
 
 // Insert all seeds
 const main = async () => {
-  for (const seedBatch of seeds) {
-    await insertSeeds(seedBatch);
-  }
+  await seedInitialData();
 };
 main();
