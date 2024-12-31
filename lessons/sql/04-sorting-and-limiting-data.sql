@@ -8,11 +8,6 @@ SELECT *
 FROM products
 ORDER BY name
 
--- By aggregation
-SELECT name, SUM(price)
-FROM products
-ORDER BY SUM(price), name
-
 -- Ascending, Descending
 ORDER BY id ASC
 ORDER BY id DESC

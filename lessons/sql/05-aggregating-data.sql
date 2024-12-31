@@ -21,6 +21,12 @@ SELECT COUNT(id), product_category_id
 FROM products
 GROUP BY product_category_id;
 
+-- With Order By
+SELECT SUM(price), name
+FROM products
+GROUP BY name
+ORDER BY SUM(price);
+
 /* `HAVING`
 - To filter aggregate functions
 */
