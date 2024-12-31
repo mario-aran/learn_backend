@@ -1,4 +1,8 @@
-import { CLIENT_DISCOUNTS } from '@/libs/drizzle/constants';
+import {
+  PRODUCT_CATEGORIES,
+  SEEDS_LENGTH,
+  USER_ROLES,
+} from '@/libs/drizzle/constants';
 import {
   clientDiscountsSchema,
   productCategoriesSchema,
@@ -13,15 +17,10 @@ import {
 } from '@/libs/drizzle/types';
 import { faker } from '@faker-js/faker/.';
 
-// Constants
-const PRODUCT_CATEGORY_NAMES = ['Basic', 'Medium', 'Premium'];
-const USER_ROLE_NAMES = ['Seller', 'Client'];
-const USER_EMAILS = faker.helpers.uniqueArray(faker.internet.email, 20);
-
 // Seed definitions
 const seedUserRoles = {
   schema: userRolesSchema,
-  records: USER_ROLE_NAMES.map(
+  records: Object.values(USER_ROLES).map(
     (name): UserRole => ({
       name,
     }),
@@ -30,7 +29,7 @@ const seedUserRoles = {
 
 const seedUsers = {
   schema: usersSchema,
-  records: USER_EMAILS.map(
+  records: faker.helpers.uniqueArray(faker.internet.email, SEEDS_LENGTH).map(
     (email): User => ({
       name: faker.person.fullName(),
       email,
@@ -41,16 +40,20 @@ const seedUsers = {
 
 const seedClientDiscounts = {
   schema: clientDiscountsSchema,
-  records: CLIENT_DISCOUNTS.map(
-    (discount): ClientDiscount => ({
-      discount,
-    }),
-  ),
+  records: Array.from({ length: 5 }, (_, index): ClientDiscount => {
+    const start = 0.1;
+    const step = 0.05;
+    const decimals = 2;
+
+    return {
+      discount: (start + step * index).toFixed(decimals),
+    };
+  }),
 };
 
 const seedProductCategories = {
   schema: productCategoriesSchema,
-  records: PRODUCT_CATEGORY_NAMES.map(
+  records: Object.values(PRODUCT_CATEGORIES).map(
     (name): ProductCategory => ({
       name,
     }),
