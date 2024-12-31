@@ -62,7 +62,6 @@ const seedPromises = [
   db.insert(productCategoriesSchema).values(mockedProductCategories),
 ];
 
-// Insert seeds
 export const seedInitialData = async () => {
   const result = await Promise.all(seedPromises);
   console.log(
