@@ -1,4 +1,4 @@
-import { BASE_DATE_COLUMNS } from '@/libs/drizzle/constants';
+import { baseDateColumns } from '@/libs/drizzle/columns';
 import { relations } from 'drizzle-orm';
 import {
   decimal,
@@ -19,7 +19,7 @@ export const ordersToProductsSchema = pgTable(
     productId: uuid('product_id')
       .notNull()
       .references(() => productsSchema.id),
-    ...BASE_DATE_COLUMNS,
+    ...baseDateColumns,
     unitPrice: decimal('unit_price', { precision: 10, scale: 2 }).notNull(),
     discount: decimal('discount', { precision: 4, scale: 2 }).notNull(),
     quantity: integer('quantity').notNull(),

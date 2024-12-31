@@ -1,4 +1,4 @@
-import { BASE_DATE_COLUMNS } from '@/libs/drizzle/constants';
+import { baseDateColumns } from '@/libs/drizzle/columns';
 import { relations } from 'drizzle-orm';
 import { pgTable, uuid } from 'drizzle-orm/pg-core';
 import { clientDiscountsSchema } from './client-discounts.schema';
@@ -14,7 +14,7 @@ export const clientsSchema = pgTable('clients', {
     .notNull()
     .unique()
     .references(() => usersSchema.id),
-  ...BASE_DATE_COLUMNS,
+  ...baseDateColumns,
 });
 
 export const clientsRelations = relations(clientsSchema, ({ one, many }) => ({

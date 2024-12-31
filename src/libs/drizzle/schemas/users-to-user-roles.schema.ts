@@ -1,4 +1,4 @@
-import { BASE_DATE_COLUMNS } from '@/libs/drizzle/constants';
+import { baseDateColumns } from '@/libs/drizzle/columns';
 import { relations } from 'drizzle-orm';
 import { pgTable, primaryKey, uuid } from 'drizzle-orm/pg-core';
 import { userRolesSchema } from './user-roles.schema';
@@ -13,7 +13,7 @@ export const usersToUserRolesSchema = pgTable(
     userRoleId: uuid('user_role_id')
       .notNull()
       .references(() => userRolesSchema.id),
-    ...BASE_DATE_COLUMNS,
+    ...baseDateColumns,
   },
   (t) => [primaryKey({ columns: [t.userId, t.userRoleId] })],
 );
