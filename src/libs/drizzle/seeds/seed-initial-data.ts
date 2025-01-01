@@ -18,7 +18,7 @@ import {
 } from '@/libs/drizzle/types';
 import { faker } from '@faker-js/faker/.';
 
-// Mocks
+// Prepare mocked data
 const mockedUserRoles = Object.values(USER_ROLES).map(
   (name): UserRole => ({
     name,

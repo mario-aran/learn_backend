@@ -4,13 +4,12 @@ import { productsSchema } from '@/libs/drizzle/schemas';
 import { Product } from '@/libs/drizzle/types';
 import { faker } from '@faker-js/faker';
 
-// Requires product categories to be seeded
 export const seedProducts = async () => {
   // Fetch all product category ids
   const productCategoryIds = await db.query.productCategoriesSchema.findMany({
     columns: { id: true },
   });
-  if (!productCategoryIds?.length)
+  if (!productCategoryIds.length)
     throw new Error('No product category ids found');
 
   // Util to get a random product category id
@@ -18,8 +17,8 @@ export const seedProducts = async () => {
     productCategoryIds[Math.floor(Math.random() * productCategoryIds.length)]
       .id;
 
-  // Prepare mock values
-  const mockValues = faker.helpers
+  // Prepare mocked data
+  const mockedProducts = faker.helpers
     .uniqueArray(faker.commerce.productName, SEEDS_LENGTH)
     .map(
       (name): Product => ({
@@ -30,7 +29,7 @@ export const seedProducts = async () => {
     );
 
   // Insert seeds
-  const result = await db.insert(productsSchema).values(mockValues);
-  console.log('Products seeded');
+  const result = await db.insert(productsSchema).values(mockedProducts);
+  console.log('Seeding completed for: products');
   return result;
 };
