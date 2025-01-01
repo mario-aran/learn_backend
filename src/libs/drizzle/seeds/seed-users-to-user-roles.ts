@@ -1,35 +1,35 @@
-import { SEEDS_LENGTH } from '@/libs/drizzle/constants';
 import { db } from '@/libs/drizzle/db';
 import { usersToUserRolesSchema } from '@/libs/drizzle/schemas';
-import { sql } from 'drizzle-orm';
+import { getRandomObjectId } from './utils/get-random';
 
-// Utils
-const getRandomIdFromArr = (arr: { id: string }[]) =>
-  arr[Math.floor(Math.random() * arr.length)].id;
+// Types
+type UserToUserRole = typeof usersToUserRolesSchema.$inferInsert;
 
 export const seedUsersToUserRoles = async () => {
-  // Fetch limited random userIds
+  // Query user ids
   const userIds = await db.query.usersSchema.findMany({
     columns: { id: true },
-    orderBy: sql`RANDOM()`,
-    limit: SEEDS_LENGTH,
   });
-  if (!userIds.length) throw new Error('No userIds found');
+  if (!userIds.length) throw new Error('No user ids found');
 
-  // Fetch all userRoleIds
+  // Query user role ids
   const userRoleIds = await db.query.userRolesSchema.findMany({
     columns: { id: true },
   });
-  if (!userRoleIds.length) throw new Error('No userRoleIds found');
+  if (!userRoleIds.length) throw new Error('No user role ids found');
 
-  // Prepare mock data
-  const mockData = userIds.map(({ id }) => ({
-    userId: id,
-    userRoleId: getRandomIdFromArr(userRoleIds),
-  }));
+  // Prepare mocked data
+  const mockedUsersToUserRoles = userIds.map(
+    ({ id }): UserToUserRole => ({
+      userId: id,
+      userRoleId: getRandomObjectId(userRoleIds),
+    }),
+  );
 
-  // Insert values into the database
-  const result = await db.insert(usersToUserRolesSchema).values(mockData);
+  // Insert seeds
+  const result = await db
+    .insert(usersToUserRolesSchema)
+    .values(mockedUsersToUserRoles);
   console.log('Seeding completed for: usersToUserRoles');
   return result;
 };
