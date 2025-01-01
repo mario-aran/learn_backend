@@ -9,5 +9,5 @@ export const findUserIdsByRoleName = async (roleName: string) => {
   });
 
   if (!userIds) throw new Error(`${roleName} user ids not found`);
-  return userIds;
+  return userIds.map(({ id }) => ({ userId: id }));
 };
