@@ -10,13 +10,13 @@ import {
   userRolesSchema,
   usersSchema,
 } from '@/libs/drizzle/schemas';
-import {
-  ClientDiscount,
-  ProductCategory,
-  User,
-  UserRole,
-} from '@/libs/drizzle/types';
 import { faker } from '@faker-js/faker/.';
+
+// Types
+type UserRole = typeof userRolesSchema.$inferInsert;
+type User = typeof usersSchema.$inferInsert;
+type ClientDiscount = typeof clientDiscountsSchema.$inferInsert;
+type ProductCategory = typeof productCategoriesSchema.$inferInsert;
 
 // Prepare mocked data
 const mockedUserRoles = Object.values(USER_ROLES).map(
