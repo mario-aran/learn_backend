@@ -3,26 +3,22 @@ import { db } from '@/libs/drizzle/db';
 import { productsSchema } from '@/libs/drizzle/schemas';
 import { Product } from '@/libs/drizzle/types';
 import { faker } from '@faker-js/faker';
+import { getRandomIdFromObjs } from './utils/get-random';
 
 export const seedProducts = async () => {
-  // Fetch product category ids
+  // Query product category ids
   const productCategoryIds = await db.query.productCategoriesSchema.findMany({
     columns: { id: true },
   });
   if (!productCategoryIds.length)
-    throw new Error('No product category ids found');
-
-  // Util to get a random product category id
-  const getRandomProductCategoryId = () =>
-    productCategoryIds[Math.floor(Math.random() * productCategoryIds.length)]
-      .id;
+    throw new Error('No product categories found');
 
   // Prepare mocked data
   const mockedProducts = faker.helpers
     .uniqueArray(faker.commerce.productName, SEEDS_LENGTH)
     .map(
       (name): Product => ({
-        productCategoryId: getRandomProductCategoryId(),
+        productCategoryId: getRandomIdFromObjs(productCategoryIds),
         name,
         unitPrice: faker.commerce.price({ min: 100, max: 1000, dec: 2 }),
       }),
