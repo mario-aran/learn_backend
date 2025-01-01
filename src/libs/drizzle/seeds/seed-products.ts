@@ -3,7 +3,7 @@ import { db } from '@/libs/drizzle/db';
 import { productsSchema } from '@/libs/drizzle/schemas';
 import { Product } from '@/libs/drizzle/types';
 import { faker } from '@faker-js/faker';
-import { getRandomIdFromObjs } from './utils/get-random';
+import { getRandomObjectId } from './utils/get-random';
 
 export const seedProducts = async () => {
   // Query product category ids
@@ -18,7 +18,7 @@ export const seedProducts = async () => {
     .uniqueArray(faker.commerce.productName, SEEDS_LENGTH)
     .map(
       (name): Product => ({
-        productCategoryId: getRandomIdFromObjs(productCategoryIds),
+        productCategoryId: getRandomObjectId(productCategoryIds),
         name,
         unitPrice: faker.commerce.price({ min: 100, max: 1000, dec: 2 }),
       }),
