@@ -1,8 +1,3 @@
-import {
-  PRODUCT_CATEGORIES,
-  SEEDS_LENGTH,
-  USER_ROLES,
-} from '@/libs/drizzle/constants';
 import { db } from '@/libs/drizzle/db';
 import {
   clientDiscountsSchema,
@@ -11,6 +6,12 @@ import {
   usersSchema,
 } from '@/libs/drizzle/schemas';
 import { faker } from '@faker-js/faker/.';
+import {
+  CLIENT_DISCOUNTS,
+  PRODUCT_CATEGORIES,
+  SEEDS_LENGTH,
+  USER_ROLES,
+} from './constants';
 
 // Types
 type UserRole = typeof userRolesSchema.$inferInsert;
@@ -18,7 +19,7 @@ type User = typeof usersSchema.$inferInsert;
 type ClientDiscount = typeof clientDiscountsSchema.$inferInsert;
 type ProductCategory = typeof productCategoriesSchema.$inferInsert;
 
-// Prepare mocked data
+// Mocked data
 const mockedUserRoles = Object.values(USER_ROLES).map(
   (name): UserRole => ({
     name,
@@ -35,17 +36,10 @@ const mockedUsers = faker.helpers
     }),
   );
 
-const mockedClientDiscounts = Array.from(
-  { length: 7 },
-  (_, index): ClientDiscount => {
-    const start = 0.1;
-    const step = 0.05;
-    const decimals = 2;
-
-    return {
-      discount: (start + step * index).toFixed(decimals),
-    };
-  },
+const mockedClientDiscounts = CLIENT_DISCOUNTS.map(
+  (discount): ClientDiscount => ({
+    discount,
+  }),
 );
 
 const mockedProductCategories = Object.values(PRODUCT_CATEGORIES).map(

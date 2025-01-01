@@ -1,26 +1,25 @@
-import { SEEDS_LENGTH } from '@/libs/drizzle/constants';
 import { db } from '@/libs/drizzle/db';
 import { productsSchema } from '@/libs/drizzle/schemas';
 import { faker } from '@faker-js/faker';
-import { getRandomObjectId } from './utils/get-random';
+import { SEEDS_LENGTH } from './constants';
 
 // Types
 type Product = typeof productsSchema.$inferInsert;
 
 export const seedProducts = async () => {
-  // Query product category ids
-  const productCategoryIds = await db.query.productCategoriesSchema.findMany({
+  // Queries
+  const productCategories = await db.query.productCategoriesSchema.findMany({
     columns: { id: true },
   });
-  if (!productCategoryIds.length)
-    throw new Error('No product category ids found');
+  if (productCategories.length === 0)
+    throw new Error('No product categories found');
 
-  // Prepare mocked data
+  // Mocked data
   const mockedProducts = faker.helpers
     .uniqueArray(faker.commerce.productName, SEEDS_LENGTH)
     .map(
       (name): Product => ({
-        productCategoryId: getRandomObjectId(productCategoryIds),
+        productCategoryId: faker.helpers.arrayElement(productCategories).id,
         name,
         unitPrice: faker.commerce.price({ min: 100, max: 1000, dec: 2 }),
       }),

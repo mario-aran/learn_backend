@@ -1,28 +1,31 @@
-import { USER_ROLES } from '@/libs/drizzle/constants';
 import { db } from '@/libs/drizzle/db';
-import { clientsSchema } from '@/libs/drizzle/schemas';
-import { getRandomObjectId } from './utils/get-random';
-import { findUserIdsByRoleName } from './utils/queries';
+import { clientsSchema, userRolesSchema } from '@/libs/drizzle/schemas';
+import { faker } from '@faker-js/faker/.';
+import { eq } from 'drizzle-orm';
+import { USER_ROLES } from './constants';
 
 // Types
 type Client = typeof clientsSchema.$inferInsert;
 
 export const seedClients = async () => {
-  // Query client user ids
-  const clientUserIds = await findUserIdsByRoleName(USER_ROLES.CLIENT);
+  // Queries
+  const clientUsers = await db.query.usersSchema.findMany({
+    columns: { id: true },
+    where: eq(userRolesSchema.name, USER_ROLES.CLIENT),
+  });
+  if (clientUsers.length === 0) throw new Error('No client users found');
 
-  // Query client discount ids
-  const clientDiscountIds = await db.query.clientDiscountsSchema.findMany({
+  const clientDiscounts = await db.query.clientDiscountsSchema.findMany({
     columns: { id: true },
   });
-  if (!clientDiscountIds.length)
-    throw new Error('No client discount ids found');
+  if (clientDiscounts.length === 0)
+    throw new Error('No client discounts found');
 
-  // Prepare mocked data
-  const mockedClients = clientUserIds.map(
-    ({ userId }): Client => ({
-      clientDiscountId: getRandomObjectId(clientDiscountIds),
-      userId,
+  // Mocked data
+  const mockedClients = clientUsers.map(
+    ({ id }): Client => ({
+      clientDiscountId: faker.helpers.arrayElement(clientDiscounts).id,
+      userId: id,
     }),
   );
 

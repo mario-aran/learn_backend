@@ -25,16 +25,18 @@ export const seedOrdersToProducts = async () => {
   if (products.length === 0) throw new Error('No products found');
 
   // Mocked data
-  const mockedOrdersToProducts = orders.map((order): OrderToProduct => {
-    const randomProduct = faker.helpers.arrayElement(products);
-    return {
-      orderId: order.id,
-      productId: randomProduct.id,
-      unitPrice: randomProduct.unitPrice,
-      discount: order.client.clientDiscount.discount,
-      quantity: faker.number.int({ min: 1, max: 10 }),
-    };
-  });
+  const mockedOrdersToProducts = orders.map(
+    ({ id, client }): OrderToProduct => {
+      const product = faker.helpers.arrayElement(products);
+      return {
+        orderId: id,
+        productId: product.id,
+        unitPrice: product.unitPrice,
+        discount: client.clientDiscount.discount,
+        quantity: faker.number.int({ min: 1, max: 10 }),
+      };
+    },
+  );
 
   // Insert seeds
   const result = await db

@@ -1,28 +1,27 @@
 import { db } from '@/libs/drizzle/db';
 import { usersToUserRolesSchema } from '@/libs/drizzle/schemas';
-import { getRandomObjectId } from './utils/get-random';
+import { faker } from '@faker-js/faker/.';
 
 // Types
 type UserToUserRole = typeof usersToUserRolesSchema.$inferInsert;
 
 export const seedUsersToUserRoles = async () => {
-  // Query user ids
-  const userIds = await db.query.usersSchema.findMany({
+  // Queries
+  const users = await db.query.usersSchema.findMany({
     columns: { id: true },
   });
-  if (!userIds.length) throw new Error('No user ids found');
+  if (users.length === 0) throw new Error('No users found');
 
-  // Query user role ids
-  const userRoleIds = await db.query.userRolesSchema.findMany({
+  const userRoles = await db.query.userRolesSchema.findMany({
     columns: { id: true },
   });
-  if (!userRoleIds.length) throw new Error('No user role ids found');
+  if (userRoles.length === 0) throw new Error('No user roles found');
 
-  // Prepare mocked data
-  const mockedUsersToUserRoles = userIds.map(
+  // Mocked data
+  const mockedUsersToUserRoles = users.map(
     ({ id }): UserToUserRole => ({
       userId: id,
-      userRoleId: getRandomObjectId(userRoleIds),
+      userRoleId: faker.helpers.arrayElement(userRoles).id,
     }),
   );
 

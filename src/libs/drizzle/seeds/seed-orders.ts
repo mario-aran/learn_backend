@@ -1,30 +1,29 @@
-import { SEEDS_LENGTH } from '@/libs/drizzle/constants';
 import { db } from '@/libs/drizzle/db';
 import { ordersSchema } from '@/libs/drizzle/schemas';
-import { getRandomObjectId } from './utils/get-random';
+import { faker } from '@faker-js/faker/.';
+import { SEEDS_LENGTH } from './constants';
 
 // Types
 type Order = typeof ordersSchema.$inferInsert;
 
 export const seedOrders = async () => {
-  // Query seller ids
-  const sellerIds = await db.query.sellersSchema.findMany({
+  // Queries
+  const sellers = await db.query.sellersSchema.findMany({
     columns: { id: true },
   });
-  if (!sellerIds.length) throw new Error('Seller ids not found');
+  if (sellers.length === 0) throw new Error('No sellers found');
 
-  // Query client ids
-  const clientIds = await db.query.clientsSchema.findMany({
+  const clients = await db.query.clientsSchema.findMany({
     columns: { id: true },
   });
-  if (!clientIds.length) throw new Error('Client ids not found');
+  if (clients.length === 0) throw new Error('No clients found');
 
-  // Prepare mocked data
+  // Mocked data
   const mockedOrders = Array.from(
     { length: SEEDS_LENGTH },
     (): Order => ({
-      sellerId: getRandomObjectId(sellerIds),
-      clientId: getRandomObjectId(clientIds),
+      sellerId: faker.helpers.arrayElement(sellers).id,
+      clientId: faker.helpers.arrayElement(clients).id,
     }),
   );
 
