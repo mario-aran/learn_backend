@@ -2,7 +2,7 @@ import { USER_ROLES } from '@/libs/drizzle/constants';
 import { db } from '@/libs/drizzle/db';
 import { sellersSchema } from '@/libs/drizzle/schemas';
 import { Seller } from '@/libs/drizzle/types';
-import { findUserIdsByRoleName } from '@/libs/drizzle/utils';
+import { findUserIdsByRoleName } from './utils/queries';
 
 export const seedSellers = async () => {
   // Query seller user ids
