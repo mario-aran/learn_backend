@@ -1,6 +1,4 @@
-// Values
-export const SEEDS_LENGTH = 20;
-
+// Constants
 export const USER_ROLES = {
   SELLER: 'seller',
   CLIENT: 'client',
@@ -11,3 +9,8 @@ export const PRODUCT_CATEGORIES = {
   MEDIUM: 'medium',
   PREMIUM: 'premium',
 } as const;
+
+// Exported types
+export type UserRole = (typeof USER_ROLES)[keyof typeof USER_ROLES];
+export type ProductCategory =
+  (typeof PRODUCT_CATEGORIES)[keyof typeof PRODUCT_CATEGORIES];
