@@ -8,5 +8,6 @@ const main = async () => {
   await seedProducts();
   // await seedUsersToUserRoles();
   await seedSellers();
+  // await seedClients();
 };
 main();
