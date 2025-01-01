@@ -1,9 +1,11 @@
 import { USER_ROLES } from '@/libs/drizzle/constants';
 import { db } from '@/libs/drizzle/db';
 import { clientsSchema } from '@/libs/drizzle/schemas';
-import { Client } from '@/libs/drizzle/types';
 import { getRandomObjectId } from './utils/get-random';
 import { findUserIdsByRoleName } from './utils/queries';
+
+// Types
+type Client = typeof clientsSchema.$inferInsert;
 
 export const seedClients = async () => {
   // Query client user ids
