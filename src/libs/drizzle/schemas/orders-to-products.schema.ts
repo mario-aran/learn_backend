@@ -1,4 +1,3 @@
-import { baseDateColumns } from '@/libs/drizzle/columns';
 import { relations } from 'drizzle-orm';
 import {
   decimal,
@@ -7,6 +6,7 @@ import {
   primaryKey,
   uuid,
 } from 'drizzle-orm/pg-core';
+import { baseDateColumns } from './columns/base-date-columns';
 import { ordersSchema } from './orders.schema';
 import { productsSchema } from './products.schema';
 

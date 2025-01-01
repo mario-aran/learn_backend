@@ -1,6 +1,6 @@
-import { baseDateColumns } from '@/libs/drizzle/columns';
 import { relations } from 'drizzle-orm';
 import { pgTable, primaryKey, uuid } from 'drizzle-orm/pg-core';
+import { baseDateColumns } from './columns/base-date-columns';
 import { userRolesSchema } from './user-roles.schema';
 import { usersSchema } from './users.schema';
 
