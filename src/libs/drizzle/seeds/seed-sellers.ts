@@ -1,8 +1,10 @@
 import { USER_ROLES } from '@/libs/drizzle/constants';
 import { db } from '@/libs/drizzle/db';
 import { sellersSchema } from '@/libs/drizzle/schemas';
-import { Seller } from '@/libs/drizzle/types';
 import { findUserIdsByRoleName } from './utils/queries';
+
+// Types
+type Seller = typeof sellersSchema.$inferInsert;
 
 export const seedSellers = async () => {
   // Query seller user ids
