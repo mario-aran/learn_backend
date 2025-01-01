@@ -64,9 +64,9 @@ const seedPromises = [
 
 export const seedInitialData = async () => {
   // Insert seed promises
-  const result = await Promise.all(seedPromises);
+  const results = await Promise.all(seedPromises);
   console.log(
     'Seeding completed for: userRoles, users, clientDiscounts, productCategories',
   );
-  return result;
+  return results;
 };
