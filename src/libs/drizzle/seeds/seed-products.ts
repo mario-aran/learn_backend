@@ -11,7 +11,7 @@ export const seedProducts = async () => {
     columns: { id: true },
   });
   if (!productCategoryIds.length)
-    throw new Error('No product categories found');
+    throw new Error('No product category ids found');
 
   // Prepare mocked data
   const mockedProducts = faker.helpers
