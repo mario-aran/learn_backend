@@ -8,6 +8,6 @@ export const findUserRoleIdByName = async (name: string) => {
     where: eq(userRolesSchema.name, name),
   });
 
-  if (!userRoleId) throw new Error('User role not found');
+  if (!userRoleId) throw new Error(`${name} user role not found`);
   return userRoleId.id;
 };

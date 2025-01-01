@@ -6,25 +6,25 @@ import { findUserRoleIdByName } from '@/libs/drizzle/utils';
 import { eq } from 'drizzle-orm';
 
 export const seedSellers = async () => {
-  // Fetch sellerUserRoleId
+  // Fetch seller user role id
   const sellerUserRoleId = await findUserRoleIdByName(USER_ROLES.SELLER);
 
-  // Fetch all userIds that have "seller" as userRole
+  // Fetch seller user ids
   const sellerUserIds = await db.query.usersToUserRolesSchema.findMany({
     columns: { userId: true },
     where: eq(usersToUserRolesSchema.userRoleId, sellerUserRoleId),
   });
-  if (!sellerUserIds.length) throw new Error('No sellerUserIds found');
+  if (!sellerUserIds.length) throw new Error('No seller user ids found');
 
-  // Prepare values
-  const values = sellerUserIds.map(
+  // Prepare mocked data
+  const mockedSellers = sellerUserIds.map(
     ({ userId }): Seller => ({
       userId,
     }),
   );
 
-  // Insert values into the database
-  const result = await db.insert(sellersSchema).values(values);
-  console.log('sellersSchema seeded');
+  // Insert seeds
+  const result = await db.insert(sellersSchema).values(mockedSellers);
+  console.log('Seeding completed for: sellers');
   return result;
 };
