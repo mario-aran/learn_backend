@@ -1,6 +1,6 @@
 import { relations } from 'drizzle-orm';
 import { pgTable, uuid, varchar } from 'drizzle-orm/pg-core';
-import { baseDateColumns } from './columns/base-date-columns';
+import { baseDateColumns } from './columns';
 import { productsSchema } from './products.schema';
 
 export const productCategoriesSchema = pgTable('product_categories', {

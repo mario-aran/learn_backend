@@ -1,7 +1,7 @@
 import { relations } from 'drizzle-orm';
 import { pgTable, uuid } from 'drizzle-orm/pg-core';
 import { clientDiscountsSchema } from './client-discounts.schema';
-import { baseDateColumns } from './columns/base-date-columns';
+import { baseDateColumns } from './columns';
 import { ordersSchema } from './orders.schema';
 import { usersSchema } from './users.schema';
 

@@ -6,7 +6,7 @@ import {
   primaryKey,
   uuid,
 } from 'drizzle-orm/pg-core';
-import { baseDateColumns } from './columns/base-date-columns';
+import { baseDateColumns } from './columns';
 import { ordersSchema } from './orders.schema';
 import { productsSchema } from './products.schema';
 
