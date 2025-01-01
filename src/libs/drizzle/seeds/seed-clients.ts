@@ -21,8 +21,8 @@ export const seedClients = async () => {
   // Prepare mocked data
   const mockedClients = clientUserIds.map(
     ({ id }): Client => ({
-      userId: id,
       clientDiscountId: getRandomObjectId(clientDiscountIds),
+      userId: id,
     }),
   );
 
