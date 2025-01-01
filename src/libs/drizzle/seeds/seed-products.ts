@@ -1,9 +1,11 @@
 import { SEEDS_LENGTH } from '@/libs/drizzle/constants';
 import { db } from '@/libs/drizzle/db';
 import { productsSchema } from '@/libs/drizzle/schemas';
-import { Product } from '@/libs/drizzle/types';
 import { faker } from '@faker-js/faker';
 import { getRandomObjectId } from './utils/get-random';
+
+// Types
+type Product = typeof productsSchema.$inferInsert;
 
 export const seedProducts = async () => {
   // Query product category ids
