@@ -18,7 +18,7 @@ import {
 } from '@/libs/drizzle/types';
 import { faker } from '@faker-js/faker/.';
 
-// Prepare mock data
+// Mocks
 const mockedUserRoles = Object.values(USER_ROLES).map(
   (name): UserRole => ({
     name,
@@ -63,6 +63,7 @@ const seedPromises = [
 ];
 
 export const seedInitialData = async () => {
+  // Insert seed promises
   const result = await Promise.all(seedPromises);
   console.log(
     'Seeding completed for: userRoles, users, clientDiscounts, productCategories',
