@@ -2,12 +2,12 @@ import { db } from '@/libs/drizzle/db';
 import { userRolesSchema } from '@/libs/drizzle/schemas';
 import { eq } from 'drizzle-orm';
 
-export const findUserRoleIdByName = async (name: string) => {
-  const userRoleId = await db.query.userRolesSchema.findFirst({
+export const findUserIdsByRoleName = async (roleName: string) => {
+  const userIds = await db.query.usersSchema.findMany({
     columns: { id: true },
-    where: eq(userRolesSchema.name, name),
+    where: eq(userRolesSchema.name, roleName),
   });
 
-  if (!userRoleId) throw new Error(`${name} user role not found`);
-  return userRoleId.id;
+  if (!userIds) throw new Error(`${roleName} user ids not found`);
+  return userIds;
 };
