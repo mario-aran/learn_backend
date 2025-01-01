@@ -12,8 +12,8 @@ export const seedSellers = async () => {
 
   // Prepare mocked data
   const mockedSellers = sellerUserIds.map(
-    ({ id }): Seller => ({
-      userId: id,
+    ({ userId }): Seller => ({
+      userId,
     }),
   );
 
