@@ -5,7 +5,7 @@ import { Product } from '@/libs/drizzle/types';
 import { faker } from '@faker-js/faker';
 
 export const seedProducts = async () => {
-  // Fetch all product category ids
+  // Fetch product category ids
   const productCategoryIds = await db.query.productCategoriesSchema.findMany({
     columns: { id: true },
   });
