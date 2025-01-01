@@ -7,7 +7,7 @@ import { seedSellers } from './seed-sellers';
 import { seedUsersToUserRoles } from './seed-users-to-user-roles';
 
 // Insert all seeds
-const main = async () => {
+const seedDatabase = async () => {
   await seedInitialData();
 
   // Requires initial data to be seeded
@@ -24,4 +24,4 @@ const main = async () => {
   // Requires products and orders to be seeded
   await seedOrdersToProducts();
 };
-main();
+seedDatabase();
