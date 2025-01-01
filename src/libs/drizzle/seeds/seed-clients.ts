@@ -1,23 +1,31 @@
 import { USER_ROLES } from '@/libs/drizzle/constants';
 import { db } from '@/libs/drizzle/db';
-import { clientsSchema, userRolesSchema } from '@/libs/drizzle/schemas';
+import { clientsSchema } from '@/libs/drizzle/schemas';
 import { Client } from '@/libs/drizzle/types';
-import { eq } from 'drizzle-orm';
+import { getRandomObjectId } from './utils/get-random';
+import { findUserIdsByRoleName } from './utils/queries';
 
 export const seedClients = async () => {
-  // Fetch all possible clients to insert
-  const values: Client[] = await db.query.clientsSchema.findMany({
-    columns: { clientDiscountId: true, userId: true },
-    with: {
-      clientDiscount: true,
-      user: { with: { usersToUserRoles: { with: { userRole: true } } } },
-    },
-    where: eq(userRolesSchema.name, USER_ROLES.CLIENT),
-  });
-  if (!values.length) throw new Error('No clients found');
+  // Query client user ids
+  const clientUserIds = await findUserIdsByRoleName(USER_ROLES.CLIENT);
 
-  // Insert values into the database
-  const result = await db.insert(clientsSchema).values(values);
-  console.log('clientSchema seeded');
+  // Query client discount ids
+  const clientDiscountIds = await db.query.clientDiscountsSchema.findMany({
+    columns: { id: true },
+  });
+  if (!clientDiscountIds.length)
+    throw new Error('No client discount ids found');
+
+  // Prepare mocked data
+  const mockedClients = clientUserIds.map(
+    ({ id }): Client => ({
+      userId: id,
+      clientDiscountId: getRandomObjectId(clientDiscountIds),
+    }),
+  );
+
+  // Insert seeds
+  const result = await db.insert(clientsSchema).values(mockedClients);
+  console.log('Seeding completed for: clients');
   return result;
 };
