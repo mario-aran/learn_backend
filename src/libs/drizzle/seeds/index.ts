@@ -6,6 +6,10 @@ import { seedProducts } from './seed-products';
 import { seedSellers } from './seed-sellers';
 import { seedUsersToUserRoles } from './seed-users-to-user-roles';
 
+// const resetDatabase = async () => {
+//   return;
+// };
+
 // Insert all seeds
 const seedDatabase = async () => {
   await seedInitialData();
@@ -24,4 +28,6 @@ const seedDatabase = async () => {
   // Requires products and orders to be seeded
   await seedOrdersToProducts();
 };
+
+// resetDatabase();
 seedDatabase();
