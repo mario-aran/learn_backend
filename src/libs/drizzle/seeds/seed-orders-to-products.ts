@@ -1,6 +1,6 @@
 import { db } from '@/libs/drizzle/db';
 import { ordersToProductsSchema } from '@/libs/drizzle/schemas';
-import { faker } from '@faker-js/faker/.';
+import { faker } from '@faker-js/faker';
 
 // Types
 type OrderToProduct = typeof ordersToProductsSchema.$inferInsert;

@@ -5,7 +5,7 @@ import {
   userRolesSchema,
   usersSchema,
 } from '@/libs/drizzle/schemas';
-import { faker } from '@faker-js/faker/.';
+import { faker } from '@faker-js/faker';
 import {
   CLIENT_DISCOUNTS,
   PRODUCT_CATEGORIES,

@@ -1,6 +1,6 @@
 import { db } from '@/libs/drizzle/db';
 import { usersToUserRolesSchema } from '@/libs/drizzle/schemas';
-import { faker } from '@faker-js/faker/.';
+import { faker } from '@faker-js/faker';
 
 // Types
 type UserToUserRole = typeof usersToUserRolesSchema.$inferInsert;

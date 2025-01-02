@@ -1,6 +1,6 @@
 import { db } from '@/libs/drizzle/db';
 import { ordersSchema } from '@/libs/drizzle/schemas';
-import { faker } from '@faker-js/faker/.';
+import { faker } from '@faker-js/faker';
 import { SEEDS_LENGTH } from './constants';
 
 // Types

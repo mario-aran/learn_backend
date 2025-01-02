@@ -1,6 +1,6 @@
 import { db } from '@/libs/drizzle/db';
 import { clientsSchema, userRolesSchema } from '@/libs/drizzle/schemas';
-import { faker } from '@faker-js/faker/.';
+import { faker } from '@faker-js/faker';
 import { eq } from 'drizzle-orm';
 import { USER_ROLES } from './constants';
 
