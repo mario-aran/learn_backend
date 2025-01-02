@@ -30,7 +30,6 @@
     "globals": "^15.14.0",
     "prettier": "^3.4.2",
     "tsc-alias": "^1.8.10",
-    "tsconfig-paths": "^4.2.0",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.19.0"
