@@ -12,9 +12,7 @@ export const seedOrdersToProducts = async () => {
     with: {
       client: {
         columns: {},
-        with: {
-          clientDiscount: { columns: { discount: true } },
-        },
+        with: { clientDiscount: { columns: { discount: true } } },
       },
     },
   });
