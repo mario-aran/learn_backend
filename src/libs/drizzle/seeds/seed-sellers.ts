@@ -1,18 +1,14 @@
 import { db } from '@/libs/drizzle/db';
-import { sellersSchema, userRolesSchema } from '@/libs/drizzle/schemas';
-import { eq } from 'drizzle-orm';
+import { sellersSchema } from '@/libs/drizzle/schemas';
 import { USER_ROLES } from './constants';
+import { findUsersByRoleName } from './utils';
 
 // Types
 type Seller = typeof sellersSchema.$inferInsert;
 
 export const seedSellers = async () => {
   // Queries
-  const sellerUsers = await db.query.usersSchema.findMany({
-    columns: { id: true },
-    where: eq(userRolesSchema.name, USER_ROLES.SELLER),
-  });
-  if (sellerUsers.length === 0) throw new Error('No seller users found');
+  const sellerUsers = await findUsersByRoleName(USER_ROLES.SELLER);
 
   // Mocked data
   const mockedSellers = sellerUsers.map(

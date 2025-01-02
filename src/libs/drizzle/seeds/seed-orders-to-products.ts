@@ -11,6 +11,7 @@ export const seedOrdersToProducts = async () => {
     columns: { id: true },
     with: {
       client: {
+        columns: {},
         with: {
           clientDiscount: { columns: { discount: true } },
         },
