@@ -6,7 +6,7 @@ import tseslint from 'typescript-eslint';
 
 // "tseslint.config" allows types for the config file
 export default tseslint.config(
-  // Ignore
+  // Ignores
   { ignores: ['dist', 'drizzle.config.ts'] },
 
   // Plugins
@@ -18,7 +18,7 @@ export default tseslint.config(
   ...tseslint.configs.stylistic, // "typescript-eslint"
   eslintConfigPrettier, // "eslint-config-prettier": needs to be at the end
 
-  // Base config
+  // Config and rules
   {
     files: ['**/*.{ts,tsx}'],
     languageOptions: { globals: globals.node },
