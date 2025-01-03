@@ -1,17 +1,19 @@
-import { seedClients } from './seed-clients';
-import { seedInitialData } from './seed-initial-data';
-import { seedOrders } from './seed-orders';
-import { seedOrdersToProducts } from './seed-orders-to-products';
-import { seedProducts } from './seed-products';
-import { seedSellers } from './seed-sellers';
-import { seedUsersToUserRoles } from './seed-users-to-user-roles';
-
-// const resetDatabase = async () => {
-//   return;
-// };
+import { NODE_ENV } from '@/config/env';
+import { truncateTables } from './truncate-tables';
+import { seedClients } from './utils/seed-clients';
+import { seedInitialData } from './utils/seed-initial-data';
+import { seedOrders } from './utils/seed-orders';
+import { seedOrdersToProducts } from './utils/seed-orders-to-products';
+import { seedProducts } from './utils/seed-products';
+import { seedSellers } from './utils/seed-sellers';
+import { seedUsersToUserRoles } from './utils/seed-users-to-user-roles';
 
 // Insert all seeds
 const seedDatabase = async () => {
+  // Reset tables
+  await truncateTables();
+
+  // Seed data
   await seedInitialData();
 
   // Requires initial data to be seeded
@@ -29,5 +31,5 @@ const seedDatabase = async () => {
   await seedOrdersToProducts();
 };
 
-// resetDatabase();
-seedDatabase();
+// Run script only in development environment
+if (NODE_ENV !== 'production') seedDatabase();
