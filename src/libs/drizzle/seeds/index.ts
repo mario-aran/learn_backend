@@ -13,8 +13,7 @@ const seedDatabase = async () => {
   try {
     await db.transaction(async (tx) => {
       // Reset tables
-      const truncateMessage = await truncateTables(tx);
-      console.log(truncateMessage);
+      await truncateTables(tx);
 
       // Seed: no requirements
       await seedBaseTables(tx);
@@ -44,5 +43,5 @@ const seedDatabase = async () => {
 
 // Run script only in development
 if (NODE_ENV === 'production')
-  throw new Error('Seeding not allowed in production');
+  throw new Error('Seeding error: Seeding not allowed in production');
 seedDatabase();
