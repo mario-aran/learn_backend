@@ -25,12 +25,11 @@
 - UPPERCASE: -- In SQL commands
 - snake_case: -- In name of tables/columns 
 - Skeleton:
-    -- Select
-    -- From
-    -- Join
-    -- Where
-    -- Group by
-    -- Order by
+    -- Selects
+    -- Froms, Joins
+    -- Wheres
+    -- Group Bys
+    -- Order Bys
     ;
 
 /* Data Types */
