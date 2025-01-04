@@ -1,5 +1,4 @@
 import { db } from '@/libs/drizzle/db';
-import { TX } from '@/libs/drizzle/types';
 
 // Types
 interface SelectTablesResults {
@@ -13,38 +12,28 @@ const SELECT_TABLES_QUERY = `
   WHERE table_schema = 'public';
 `;
 
-// Utils
-const txCallback = async (tx: TX) => {
-  // Get tables
-  const { rows } = (await tx.execute(
-    SELECT_TABLES_QUERY,
-  )) as SelectTablesResults;
-  if (rows.length === 0) {
-    console.log('No tables to truncate');
-    return;
-  }
+export const truncateTables = async () => {
+  // Fetch tables
+  const { rows }: SelectTablesResults = await db.execute(SELECT_TABLES_QUERY);
+  if (rows.length === 0) return console.log('No tables to truncate');
 
-  // Truncate tables
+  // Prepare truncate tables query
   const joinedTableNames = rows.map(({ table_name }) => table_name).join(', ');
   const truncateTablesQuery = `
-        TRUNCATE TABLE ${joinedTableNames} 
-        RESTART IDENTITY 
-        CASCADE;
-      `;
-  await tx.execute(truncateTablesQuery);
+    TRUNCATE TABLE ${joinedTableNames} 
+    RESTART IDENTITY 
+    CASCADE;
+  `;
 
-  console.log(`All tables truncated successfully: ${joinedTableNames}`);
-};
-
-export const truncateTables = async () => {
   try {
     // Run transaction
-    await db.transaction(txCallback);
+    await db.transaction(async (tx) => tx.execute(truncateTablesQuery));
+
+    console.log(`All tables truncated successfully: ${joinedTableNames}`);
   } catch (err) {
     // Error type assertion
     const errorMessage = err instanceof Error ? err.message : 'Unknown error';
-    const errorStack =
-      err instanceof Error ? err.stack : 'No stack trace available';
-    throw new Error(`Truncate tables error: ${errorMessage}\n${errorStack}`);
+
+    throw new Error(`Truncate tables error: ${errorMessage}`);
   }
 };
