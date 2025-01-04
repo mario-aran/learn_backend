@@ -1,0 +1,74 @@
+import {
+  CLIENT_DISCOUNTS,
+  PRODUCT_CATEGORIES,
+  SEEDS_LENGTH,
+  USER_ROLES,
+} from '@/libs/drizzle/constants';
+import {
+  clientDiscountsSchema,
+  productCategoriesSchema,
+  TABLE_CLIENT_DISCOUNTS,
+  TABLE_PRODUCT_CATEGORIES,
+  TABLE_USER_ROLES,
+  TABLE_USERS,
+  userRolesSchema,
+  usersSchema,
+} from '@/libs/drizzle/schemas';
+import { TX } from '@/libs/drizzle/types';
+import { faker } from '@faker-js/faker';
+
+// Types
+type UserRole = typeof userRolesSchema.$inferInsert;
+type User = typeof usersSchema.$inferInsert;
+type ClientDiscount = typeof clientDiscountsSchema.$inferInsert;
+type ProductCategory = typeof productCategoriesSchema.$inferInsert;
+
+// Mocks
+const mockedUserRoles = Object.values(USER_ROLES).map(
+  (name): UserRole => ({
+    name,
+  }),
+);
+
+const mockedUsers = faker.helpers
+  .uniqueArray(faker.internet.email, SEEDS_LENGTH)
+  .map(
+    (email): User => ({
+      name: faker.person.fullName(),
+      email,
+      password: faker.internet.password(),
+    }),
+  );
+
+const mockedClientDiscounts = CLIENT_DISCOUNTS.map(
+  (discount): ClientDiscount => ({
+    discount,
+  }),
+);
+
+const mockedProductCategories = Object.values(PRODUCT_CATEGORIES).map(
+  (name): ProductCategory => ({
+    name,
+  }),
+);
+
+// Prepare data mappings
+const seedDataMappings = [
+  { schema: userRolesSchema, values: mockedUserRoles },
+  { schema: usersSchema, values: mockedUsers },
+  { schema: clientDiscountsSchema, values: mockedClientDiscounts },
+  { schema: productCategoriesSchema, values: mockedProductCategories },
+];
+
+export const seedBaseTables = async (tx: TX) => {
+  // Prepare promises
+  const seedPromises = seedDataMappings.map(({ schema, values }) =>
+    tx.insert(schema).values(values),
+  );
+
+  // Run seeds transaction
+  await Promise.all(seedPromises);
+  console.log(
+    `Seeding completed for: ${TABLE_USER_ROLES}, ${TABLE_USERS}, ${TABLE_CLIENT_DISCOUNTS}, ${TABLE_PRODUCT_CATEGORIES}`,
+  );
+};
