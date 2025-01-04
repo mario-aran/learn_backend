@@ -9,7 +9,7 @@ const SELECT_TABLES_QUERY = `
 `;
 
 export const truncateTables = async (tx: TX) => {
-  // Fetch tables
+  // Query tables
   const { rows } = await db.execute<{ table_name: string }>(
     SELECT_TABLES_QUERY,
   );
@@ -23,7 +23,7 @@ export const truncateTables = async (tx: TX) => {
     CASCADE;
   `;
 
-  // Run transaction
+  // Run truncate transaction
   await tx.execute(truncateTablesQuery);
 
   console.log(`Tables truncated successfully: ${joinedTableNames}`);
