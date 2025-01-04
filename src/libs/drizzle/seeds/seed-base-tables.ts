@@ -23,7 +23,7 @@ type User = typeof usersSchema.$inferInsert;
 type ClientDiscount = typeof clientDiscountsSchema.$inferInsert;
 type ProductCategory = typeof productCategoriesSchema.$inferInsert;
 
-// Mocks
+// Prepare mocks
 const mockedUserRoles = Object.values(USER_ROLES).map(
   (name): UserRole => ({
     name,
@@ -66,7 +66,7 @@ export const seedBaseTables = async (tx: TX) => {
     tx.insert(schema).values(values),
   );
 
-  // Run seeds transaction
+  // Run insert transactions
   await Promise.all(seedPromises);
 
   console.log(
