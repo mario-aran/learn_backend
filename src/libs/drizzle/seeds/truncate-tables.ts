@@ -1,5 +1,4 @@
 import { db } from '@/libs/drizzle/db';
-import { TX } from '@/libs/drizzle/types';
 
 // Constants
 const SELECT_TABLES_QUERY = `
@@ -8,7 +7,7 @@ const SELECT_TABLES_QUERY = `
   WHERE table_schema = 'public';
 `;
 
-export const truncateTables = async (tx: TX) => {
+export const truncateTables = async () => {
   // Query tables
   const { rows } = await db.execute<{ table_name: string }>(
     SELECT_TABLES_QUERY,
@@ -23,8 +22,8 @@ export const truncateTables = async (tx: TX) => {
     CASCADE;
   `;
 
-  // Run truncate transaction
-  await tx.execute(truncateTablesQuery);
+  // Truncate tables
+  await db.execute(truncateTablesQuery);
 
   console.log(`Tables truncated successfully: ${joinedTableNames}`);
 };

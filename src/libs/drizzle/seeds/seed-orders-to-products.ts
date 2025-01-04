@@ -3,13 +3,12 @@ import {
   ordersToProductsSchema,
   TABLE_ORDERS_TO_PRODUCTS,
 } from '@/libs/drizzle/schemas';
-import { TX } from '@/libs/drizzle/types';
 import { faker } from '@faker-js/faker';
 
 // Types
 type OrderToProduct = typeof ordersToProductsSchema.$inferInsert;
 
-export const seedOrdersToProducts = async (tx: TX) => {
+export const seedOrdersToProducts = async () => {
   // Queries
   const orders = await db.query.ordersSchema.findMany({
     columns: { id: true },
@@ -41,8 +40,8 @@ export const seedOrdersToProducts = async (tx: TX) => {
     },
   );
 
-  // Run insert transaction
-  await tx.insert(ordersToProductsSchema).values(mockedOrdersToProducts);
+  // Insert seeds
+  await db.insert(ordersToProductsSchema).values(mockedOrdersToProducts);
 
   console.log(`Seeding completed for: ${TABLE_ORDERS_TO_PRODUCTS}`);
 };

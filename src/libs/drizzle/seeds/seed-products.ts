@@ -1,13 +1,12 @@
 import { SEEDS_LENGTH } from '@/libs/drizzle/constants';
 import { db } from '@/libs/drizzle/db';
 import { productsSchema, TABLE_PRODUCTS } from '@/libs/drizzle/schemas';
-import { TX } from '@/libs/drizzle/types';
 import { faker } from '@faker-js/faker';
 
 // Types
 type Product = typeof productsSchema.$inferInsert;
 
-export const seedProducts = async (tx: TX) => {
+export const seedProducts = async () => {
   // Queries
   const productCategories = await db.query.productCategoriesSchema.findMany({
     columns: { id: true },
@@ -26,8 +25,8 @@ export const seedProducts = async (tx: TX) => {
       }),
     );
 
-  // Run insert transaction
-  await tx.insert(productsSchema).values(mockedProducts);
+  // Insert seeds
+  await db.insert(productsSchema).values(mockedProducts);
 
   console.log(`Seeding completed for: ${TABLE_PRODUCTS}`);
 };

@@ -3,13 +3,12 @@ import {
   TABLE_USERS_TO_USER_ROLES,
   usersToUserRolesSchema,
 } from '@/libs/drizzle/schemas';
-import { TX } from '@/libs/drizzle/types';
 import { faker } from '@faker-js/faker';
 
 // Types
 type UserToUserRole = typeof usersToUserRolesSchema.$inferInsert;
 
-export const seedUsersToUserRoles = async (tx: TX) => {
+export const seedUsersToUserRoles = async () => {
   // Queries
   const users = await db.query.usersSchema.findMany({
     columns: { id: true },
@@ -29,8 +28,8 @@ export const seedUsersToUserRoles = async (tx: TX) => {
     }),
   );
 
-  // Run insert transaction
-  await tx.insert(usersToUserRolesSchema).values(mockedUsersToUserRoles);
+  // Insert seeds
+  await db.insert(usersToUserRolesSchema).values(mockedUsersToUserRoles);
 
   console.log(`Seeding completed for: ${TABLE_USERS_TO_USER_ROLES}`);
 };

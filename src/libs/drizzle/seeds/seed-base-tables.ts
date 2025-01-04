@@ -4,6 +4,7 @@ import {
   SEEDS_LENGTH,
   USER_ROLES,
 } from '@/libs/drizzle/constants';
+import { db } from '@/libs/drizzle/db';
 import {
   clientDiscountsSchema,
   productCategoriesSchema,
@@ -14,7 +15,6 @@ import {
   userRolesSchema,
   usersSchema,
 } from '@/libs/drizzle/schemas';
-import { TX } from '@/libs/drizzle/types';
 import { faker } from '@faker-js/faker';
 
 // Types
@@ -60,13 +60,13 @@ const seedDataMappings = [
   { schema: productCategoriesSchema, values: mockedProductCategories },
 ];
 
-export const seedBaseTables = async (tx: TX) => {
+export const seedBaseTables = async () => {
   // Prepare promises
   const seedPromises = seedDataMappings.map(({ schema, values }) =>
-    tx.insert(schema).values(values),
+    db.insert(schema).values(values),
   );
 
-  // Run insert transactions
+  // Insert seed promises
   await Promise.all(seedPromises);
 
   console.log(

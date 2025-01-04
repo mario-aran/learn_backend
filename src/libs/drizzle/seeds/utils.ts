@@ -6,6 +6,7 @@ import {
 import { eq } from 'drizzle-orm';
 
 export const findUsersByRoleName = async (roleName: string) => {
+  // Queries
   const userRole = await db.query.userRolesSchema.findFirst({
     columns: { id: true },
     where: eq(userRolesSchema.name, roleName),
@@ -22,5 +23,6 @@ export const findUsersByRoleName = async (roleName: string) => {
     },
   });
   if (roleUsers.length === 0) throw new Error(`No ${roleName} users found`);
+
   return roleUsers;
 };

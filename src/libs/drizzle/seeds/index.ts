@@ -1,5 +1,4 @@
 import { NODE_ENV } from '@/config/env';
-import { db } from '@/libs/drizzle/db';
 import { seedBaseTables } from './seed-base-tables';
 import { seedClients } from './seed-clients';
 import { seedOrders } from './seed-orders';
@@ -11,27 +10,25 @@ import { truncateTables } from './truncate-tables';
 
 const seedDatabase = async () => {
   try {
-    await db.transaction(async (tx) => {
-      // Reset tables
-      await truncateTables(tx);
+    // Reset tables
+    await truncateTables();
 
-      // Seed: no requirements
-      await seedBaseTables(tx);
+    // Seed: no requirements
+    await seedBaseTables();
 
-      // Seed: requires base tables to be seeded
-      await seedProducts(tx);
-      await seedUsersToUserRoles(tx);
+    // Seed: requires base tables to be seeded
+    await seedProducts();
+    await seedUsersToUserRoles();
 
-      // Seed: requires usersToUserRoles to be seeded
-      await seedSellers(tx);
-      await seedClients(tx);
+    // Seed: requires usersToUserRoles to be seeded
+    await seedSellers();
+    await seedClients();
 
-      // Seed: requires sellers and clients to be seeded
-      await seedOrders(tx);
+    // Seed: requires sellers and clients to be seeded
+    await seedOrders();
 
-      // Seed: requires products and orders to be seeded
-      await seedOrdersToProducts(tx);
-    });
+    // Seed: requires products and orders to be seeded
+    await seedOrdersToProducts();
 
     console.log('Database seeded successfully');
   } catch (err) {
