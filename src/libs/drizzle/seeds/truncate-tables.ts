@@ -25,5 +25,6 @@ export const truncateTables = async (tx: TX) => {
 
   // Run transaction
   await tx.execute(truncateTablesQuery);
+
   console.log(`Tables truncated successfully: ${joinedTableNames}`);
 };

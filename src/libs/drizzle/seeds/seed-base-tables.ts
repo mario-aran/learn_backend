@@ -68,6 +68,7 @@ export const seedBaseTables = async (tx: TX) => {
 
   // Run seeds transaction
   await Promise.all(seedPromises);
+
   console.log(
     `Seeding completed for: ${TABLE_USER_ROLES}, ${TABLE_USERS}, ${TABLE_CLIENT_DISCOUNTS}, ${TABLE_PRODUCT_CATEGORIES}`,
   );
