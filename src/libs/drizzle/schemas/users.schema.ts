@@ -5,7 +5,10 @@ import { baseDateColumns } from './columns';
 import { sellersSchema } from './sellers.schema';
 import { usersToUserRolesSchema } from './users-to-user-roles.schema';
 
-export const usersSchema = pgTable('users', {
+// Cosntants
+export const TABLE_USERS = 'users';
+
+export const usersSchema = pgTable(TABLE_USERS, {
   id: uuid().primaryKey().defaultRandom(),
   ...baseDateColumns,
   name: varchar('name', { length: 255 }).notNull(),

@@ -4,8 +4,11 @@ import { baseDateColumns } from './columns';
 import { userRolesSchema } from './user-roles.schema';
 import { usersSchema } from './users.schema';
 
+// Constants
+export const TABLE_USERS_TO_USER_ROLES = 'users_to_user_roles';
+
 export const usersToUserRolesSchema = pgTable(
-  'users_to_user_roles',
+  TABLE_USERS_TO_USER_ROLES,
   {
     userId: uuid('user_id')
       .notNull()

@@ -5,7 +5,10 @@ import { baseDateColumns } from './columns';
 import { ordersToProductsSchema } from './orders-to-products.schema';
 import { sellersSchema } from './sellers.schema';
 
-export const ordersSchema = pgTable('orders', {
+// Constats
+export const TABLE_ORDERS = 'orders';
+
+export const ordersSchema = pgTable(TABLE_ORDERS, {
   id: uuid().primaryKey().defaultRandom(),
   sellerId: uuid('seller_id')
     .notNull()

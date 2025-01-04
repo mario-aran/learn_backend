@@ -3,7 +3,10 @@ import { decimal, pgTable, uuid } from 'drizzle-orm/pg-core';
 import { clientsSchema } from './clients.schema';
 import { baseDateColumns } from './columns';
 
-export const clientDiscountsSchema = pgTable('client_discounts', {
+// Constants
+export const TABLE_CLIENT_DISCOUNTS = 'client_discounts';
+
+export const clientDiscountsSchema = pgTable(TABLE_CLIENT_DISCOUNTS, {
   id: uuid().primaryKey().defaultRandom(),
   ...baseDateColumns,
   discount: decimal('discount', { precision: 4, scale: 2 }).notNull().unique(),

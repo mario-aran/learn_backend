@@ -10,8 +10,11 @@ import { baseDateColumns } from './columns';
 import { ordersSchema } from './orders.schema';
 import { productsSchema } from './products.schema';
 
+// Constants
+export const TABLE_ORDERS_TO_PRODUCTS = 'orders_to_products';
+
 export const ordersToProductsSchema = pgTable(
-  'orders_to_products',
+  TABLE_ORDERS_TO_PRODUCTS,
   {
     orderId: uuid('order_id')
       .notNull()
