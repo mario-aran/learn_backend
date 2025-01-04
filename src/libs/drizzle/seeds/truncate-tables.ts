@@ -8,12 +8,12 @@ const SELECT_TABLES_QUERY = `
   WHERE table_schema = 'public';
 `;
 
-export const truncateTables = async (tx: TX) => {
+export const truncateTables = async (tx: TX): Promise<string> => {
   // Fetch tables
   const { rows } = await db.execute<{ table_name: string }>(
     SELECT_TABLES_QUERY,
   );
-  if (rows.length === 0) return console.log('No tables to truncate');
+  if (rows.length === 0) return 'No tables to truncate';
 
   // Prepare truncate query
   const joinedTableNames = rows.map(({ table_name }) => table_name).join(', ');
@@ -23,13 +23,7 @@ export const truncateTables = async (tx: TX) => {
     CASCADE;
   `;
 
-  try {
-    // Run transaction
-    await tx.execute(truncateTablesQuery);
-    console.log(`All tables truncated successfully: ${joinedTableNames}`);
-  } catch (err) {
-    // Error type assertion
-    const errorMessage = err instanceof Error ? err.message : 'Unknown error';
-    throw new Error(`Truncate tables error: ${errorMessage}`);
-  }
+  // Run transaction
+  await tx.execute(truncateTablesQuery);
+  return `Tables truncated successfully: ${joinedTableNames}`;
 };

@@ -13,7 +13,8 @@ const seedDatabase = async () => {
   try {
     await db.transaction(async (tx) => {
       // Reset tables
-      await truncateTables(tx);
+      const truncateMessage = await truncateTables(tx);
+      console.log(truncateMessage);
 
       // Seed: no requirements
       await seedBaseTables(tx);
