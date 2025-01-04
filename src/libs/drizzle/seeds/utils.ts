@@ -1,4 +1,3 @@
-import { UserRole } from '@/libs/drizzle/constants';
 import { db } from '@/libs/drizzle/db';
 import {
   userRolesSchema,
@@ -6,7 +5,7 @@ import {
 } from '@/libs/drizzle/schemas';
 import { eq } from 'drizzle-orm';
 
-export const findUsersByRoleName = async (roleName: UserRole) => {
+export const findUsersByRoleName = async (roleName: string) => {
   const userRole = await db.query.userRolesSchema.findFirst({
     columns: { id: true },
     where: eq(userRolesSchema.name, roleName),
