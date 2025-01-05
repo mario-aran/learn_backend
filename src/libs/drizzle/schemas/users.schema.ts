@@ -1,7 +1,7 @@
 import { relations } from 'drizzle-orm';
-import { pgTable, uuid, varchar } from 'drizzle-orm/pg-core';
+import { pgTable, varchar } from 'drizzle-orm/pg-core';
 import { clientsSchema } from './clients.schema';
-import { baseDateColumns } from './columns';
+import { createdAt, id, updatedAt } from './columns';
 import { sellersSchema } from './sellers.schema';
 import { usersToUserRolesSchema } from './users-to-user-roles.schema';
 
@@ -9,8 +9,9 @@ import { usersToUserRolesSchema } from './users-to-user-roles.schema';
 export const TABLE_USERS = 'users';
 
 export const usersSchema = pgTable(TABLE_USERS, {
-  id: uuid().primaryKey().defaultRandom(),
-  ...baseDateColumns,
+  id,
+  createdAt,
+  updatedAt,
   name: varchar('name', { length: 255 }).notNull(),
   email: varchar('email', { length: 255 }).notNull().unique(),
   password: varchar('password', { length: 255 }).notNull(),

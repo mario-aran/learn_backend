@@ -1,9 +1,9 @@
-import { timestamp } from 'drizzle-orm/pg-core';
+import { integer, timestamp } from 'drizzle-orm/pg-core';
 
-export const baseDateColumns = {
-  createdAt: timestamp('created_at').notNull().defaultNow(),
-  updatedAt: timestamp('updated_at')
-    .notNull()
-    .defaultNow()
-    .$onUpdate(() => new Date()),
-};
+export const id = integer().primaryKey().generatedAlwaysAsIdentity();
+export const createdAt = timestamp('created_at').notNull().defaultNow();
+
+export const updatedAt = timestamp('updated_at')
+  .notNull()
+  .defaultNow()
+  .$onUpdate(() => new Date());

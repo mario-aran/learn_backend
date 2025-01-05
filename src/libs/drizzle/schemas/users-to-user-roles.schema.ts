@@ -1,6 +1,6 @@
 import { relations } from 'drizzle-orm';
-import { pgTable, primaryKey, uuid } from 'drizzle-orm/pg-core';
-import { baseDateColumns } from './columns';
+import { integer, pgTable, primaryKey } from 'drizzle-orm/pg-core';
+import { createdAt, updatedAt } from './columns';
 import { userRolesSchema } from './user-roles.schema';
 import { usersSchema } from './users.schema';
 
@@ -10,13 +10,14 @@ export const TABLE_USERS_TO_USER_ROLES = 'users_to_user_roles';
 export const usersToUserRolesSchema = pgTable(
   TABLE_USERS_TO_USER_ROLES,
   {
-    userId: uuid('user_id')
+    userId: integer('user_id')
       .notNull()
       .references(() => usersSchema.id),
-    userRoleId: uuid('user_role_id')
+    userRoleId: integer('user_role_id')
       .notNull()
       .references(() => userRolesSchema.id),
-    ...baseDateColumns,
+    createdAt,
+    updatedAt,
   },
   (t) => [primaryKey({ columns: [t.userId, t.userRoleId] })],
 );

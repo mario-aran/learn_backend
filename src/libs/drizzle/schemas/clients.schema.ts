@@ -1,7 +1,7 @@
 import { relations } from 'drizzle-orm';
-import { pgTable, uuid } from 'drizzle-orm/pg-core';
+import { integer, pgTable } from 'drizzle-orm/pg-core';
 import { clientDiscountsSchema } from './client-discounts.schema';
-import { baseDateColumns } from './columns';
+import { createdAt, id, updatedAt } from './columns';
 import { ordersSchema } from './orders.schema';
 import { usersSchema } from './users.schema';
 
@@ -9,15 +9,16 @@ import { usersSchema } from './users.schema';
 export const TABLE_CLIENTS = 'clients';
 
 export const clientsSchema = pgTable(TABLE_CLIENTS, {
-  id: uuid().primaryKey().defaultRandom(),
-  clientDiscountId: uuid('client_discount_id')
+  id,
+  clientDiscountId: integer('client_discount_id')
     .notNull()
     .references(() => clientDiscountsSchema.id),
-  userId: uuid('user_id')
+  userId: integer('user_id')
     .notNull()
     .unique()
     .references(() => usersSchema.id),
-  ...baseDateColumns,
+  createdAt,
+  updatedAt,
 });
 
 export const clientsRelations = relations(clientsSchema, ({ one, many }) => ({

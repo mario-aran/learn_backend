@@ -1,6 +1,6 @@
 import { relations } from 'drizzle-orm';
-import { decimal, pgTable, uuid, varchar } from 'drizzle-orm/pg-core';
-import { baseDateColumns } from './columns';
+import { decimal, integer, pgTable, varchar } from 'drizzle-orm/pg-core';
+import { createdAt, id, updatedAt } from './columns';
 import { ordersToProductsSchema } from './orders-to-products.schema';
 import { productCategoriesSchema } from './product-categories.schema';
 
@@ -8,11 +8,12 @@ import { productCategoriesSchema } from './product-categories.schema';
 export const TABLE_PRODUCTS = 'products';
 
 export const productsSchema = pgTable(TABLE_PRODUCTS, {
-  id: uuid().primaryKey().defaultRandom(),
-  productCategoryId: uuid('product_category_id')
+  id,
+  productCategoryId: integer('product_category_id')
     .notNull()
     .references(() => productCategoriesSchema.id),
-  ...baseDateColumns,
+  createdAt,
+  updatedAt,
   name: varchar('name', { length: 255 }).notNull().unique(),
   unitPrice: decimal('unit_price', { precision: 10, scale: 2 }).notNull(),
 });
