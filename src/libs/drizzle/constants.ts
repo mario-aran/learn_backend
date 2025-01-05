@@ -8,8 +8,8 @@ export type ClientDiscount = (typeof CLIENT_DISCOUNTS)[number];
 export const SEEDS_LENGTH = 20;
 
 export const USER_ROLES = {
-  SELLER: 'seller',
   CLIENT: 'client',
+  SELLER: 'seller',
 } as const;
 
 export const PRODUCT_CATEGORIES = {

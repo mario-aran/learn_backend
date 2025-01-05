@@ -1,4 +1,4 @@
-import { SEEDS_LENGTH } from '@/libs/drizzle/constants';
+import { PRODUCT_CATEGORIES, SEEDS_LENGTH } from '@/libs/drizzle/constants';
 import { db } from '@/libs/drizzle/db';
 import { productsSchema, TABLE_PRODUCTS } from '@/libs/drizzle/schemas';
 import { faker } from '@faker-js/faker';
@@ -6,10 +6,14 @@ import { faker } from '@faker-js/faker';
 // Types
 type Product = typeof productsSchema.$inferInsert;
 
+// Values
+const productCategoriesLimit = Object.values(PRODUCT_CATEGORIES).length - 1; // Exclude the last one
+
 export const seedProducts = async () => {
   // Queries
   const productCategories = await db.query.productCategoriesSchema.findMany({
     columns: { id: true },
+    limit: productCategoriesLimit,
   });
   if (productCategories.length === 0)
     throw new Error('No product categories found');
