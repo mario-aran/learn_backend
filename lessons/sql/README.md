@@ -43,7 +43,7 @@
 - Self Join
 - Multiple Joins
 
-![img-joins](/lessons/sql/media/img-joins.png)
+![img-joins](/lessons/sql/resources/img-joins.png)
 
 ## Case Statements
 
@@ -51,14 +51,14 @@
 - Case in `SELECT`
 - Case with Other Commands
 
-## Set Operations (REDO!)
+## Set Operations
 
 - `UNION ALL`
 - `UNION`
 - `INTERSECT`
 - `EXCEPT`
 
-## Subqueries - (REDO!)
+## Subqueries
 
 - Subquery Syntax
 - Single-Row Subqueries
@@ -80,4 +80,4 @@
 - `ALTER`
 - `DROP`
 
-![img-data-modeling](/lessons/sql/media/img-data-modeling.png)
+![img-data-modeling](/lessons/sql/resources/img-data-modeling.png)
