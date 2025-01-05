@@ -17,12 +17,12 @@ export const findUsersByRoleName = async (roleName: string) => {
     columns: { id: true },
     with: {
       usersToUserRoles: {
-        columns: {},
+        columns: { userId: true },
         where: eq(usersToUserRolesSchema.userRoleId, userRole.id),
       },
     },
   });
   if (roleUsers.length === 0) throw new Error(`No ${roleName} users found`);
 
-  return roleUsers;
+  return roleUsers.map(({ id }) => ({ id }));
 };
