@@ -32,14 +32,15 @@
 
 - Aggregate Functions: `COUNT`, `SUM`, `AVG`, `MIN`, `MAX`
 - `GROUP BY`
+- With `ORDER BY`
 - `HAVING`
 
 ## Joins
 
-- `(INNER) JOIN`
 - `LEFT (OUTER) JOIN`
 - `RIGHT (OUTER) JOIN`
 - `FULL (OUTER) JOIN`
+- `(INNER) JOIN`
 - Self Join
 - Multiple Joins
 
