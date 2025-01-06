@@ -4,9 +4,9 @@
     "build": "tsc && tsc-alias",
     "prettier": "prettier --write \"**/*.{ts,tsx}\"",
     "eslint": "eslint . --fix",
-    "drizzle:generate": "drizzle-kit generate",
-    "drizzle:migrate": "drizzle-kit migrate",
-    "drizzle:seed": "tsx ./src/libs/drizzle/seeds/index.ts",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:seed": "tsx ./src/libs/drizzle/seeds/index.ts",
     "clean:all": "find . \\( -name 'node_modules' -o -name 'dist' -o -name '*lock*' -o -name '*tsbuildinfo*' \\) -exec rm -rf {} +",
     "files:to-lf": "find . \\( -name 'node_modules' -o -name 'dist' \\) -prune -o -type f -exec dos2unix {} +"
   },
