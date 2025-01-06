@@ -5,10 +5,10 @@ import { faker } from '@faker-js/faker';
 import { findUsersByRoleName } from './utils';
 
 // Types
-type Client = typeof clientsSchema.$inferInsert;
+type ClientRow = typeof clientsSchema.$inferInsert;
 
 // Values
-const clientDiscountsLimit = CLIENT_DISCOUNTS.length - 1; // Exclude the last one
+const clientDiscountsLimit = CLIENT_DISCOUNTS.length - 1; // Exclude last one for testing
 
 export const seedClients = async () => {
   // Queries
@@ -23,7 +23,7 @@ export const seedClients = async () => {
 
   // Prepare mocks
   const mockedClients = clientUsers.map(
-    ({ id }): Client => ({
+    ({ id }): ClientRow => ({
       clientDiscountId: faker.helpers.arrayElement(clientDiscounts).id,
       userId: id,
     }),

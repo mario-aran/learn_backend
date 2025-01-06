@@ -7,7 +7,7 @@ import { faker } from '@faker-js/faker';
 type Product = typeof productsSchema.$inferInsert;
 
 // Values
-const productCategoriesLimit = Object.values(PRODUCT_CATEGORIES).length - 1; // Exclude the last one
+const productCategoriesLimit = Object.values(PRODUCT_CATEGORIES).length - 1; // Exclude last one for testing
 
 export const seedProducts = async () => {
   // Queries
