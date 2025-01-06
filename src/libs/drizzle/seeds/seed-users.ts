@@ -1,10 +1,6 @@
 import { SEEDS_LENGTH } from '@/libs/drizzle/constants';
 import { db } from '@/libs/drizzle/db';
-import {
-  TABLE_USERS,
-  userRolesSchema,
-  usersSchema,
-} from '@/libs/drizzle/schemas';
+import { TABLE_USERS, usersSchema } from '@/libs/drizzle/schemas';
 import { faker } from '@faker-js/faker';
 
 // Types
@@ -30,7 +26,7 @@ export const seedUsers = async () => {
     );
 
   // Insert seeds
-  await db.insert(userRolesSchema).values(mockedUsers);
+  await db.insert(usersSchema).values(mockedUsers);
 
   console.log(`Seeding completed for: ${TABLE_USERS}`);
 };
