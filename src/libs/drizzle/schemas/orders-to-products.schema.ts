@@ -1,5 +1,11 @@
 import { relations } from 'drizzle-orm';
-import { decimal, integer, pgTable, primaryKey } from 'drizzle-orm/pg-core';
+import {
+  decimal,
+  integer,
+  pgTable,
+  primaryKey,
+  uuid,
+} from 'drizzle-orm/pg-core';
 import { createdAt, updatedAt } from './columns';
 import { ordersSchema } from './orders.schema';
 import { productsSchema } from './products.schema';
@@ -10,10 +16,10 @@ export const TABLE_ORDERS_TO_PRODUCTS = 'orders_to_products';
 export const ordersToProductsSchema = pgTable(
   TABLE_ORDERS_TO_PRODUCTS,
   {
-    orderId: integer('order_id')
+    orderId: uuid('order_id')
       .notNull()
       .references(() => ordersSchema.id),
-    productId: integer('product_id')
+    productId: uuid('product_id')
       .notNull()
       .references(() => productsSchema.id),
     createdAt,

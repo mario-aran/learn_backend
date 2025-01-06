@@ -1,5 +1,5 @@
 import { relations } from 'drizzle-orm';
-import { integer, pgTable, varchar } from 'drizzle-orm/pg-core';
+import { pgTable, uuid, varchar } from 'drizzle-orm/pg-core';
 import { clientsSchema } from './clients.schema';
 import { createdAt, id, updatedAt } from './columns';
 import { sellersSchema } from './sellers.schema';
@@ -10,7 +10,7 @@ export const TABLE_USERS = 'users';
 
 export const usersSchema = pgTable(TABLE_USERS, {
   id,
-  userRoleId: integer('user_role_id')
+  userRoleId: uuid('user_role_id')
     .notNull()
     .references(() => userRolesSchema.id),
   createdAt,

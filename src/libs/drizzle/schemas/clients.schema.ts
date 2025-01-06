@@ -1,5 +1,5 @@
 import { relations } from 'drizzle-orm';
-import { integer, pgTable } from 'drizzle-orm/pg-core';
+import { pgTable, uuid } from 'drizzle-orm/pg-core';
 import { clientDiscountsSchema } from './client-discounts.schema';
 import { createdAt, id, updatedAt } from './columns';
 import { ordersSchema } from './orders.schema';
@@ -10,10 +10,10 @@ export const TABLE_CLIENTS = 'clients';
 
 export const clientsSchema = pgTable(TABLE_CLIENTS, {
   id,
-  clientDiscountId: integer('client_discount_id')
+  clientDiscountId: uuid('client_discount_id')
     .notNull()
     .references(() => clientDiscountsSchema.id),
-  userId: integer('user_id')
+  userId: uuid('user_id')
     .notNull()
     .unique()
     .references(() => usersSchema.id),
