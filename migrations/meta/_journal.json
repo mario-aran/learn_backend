@@ -8,6 +8,13 @@
       "when": 1736111354105,
       "tag": "0000_shallow_goliath",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1736190390407,
+      "tag": "0001_overconfident_meltdown",
+      "breakpoints": true
     }
   ]
 }
