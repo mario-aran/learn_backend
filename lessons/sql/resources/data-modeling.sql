@@ -1,797 +1,200 @@
 CREATE TABLE client_discounts (
-    id integer NOT NULL,
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
     created_at timestamp without time zone DEFAULT now() NOT NULL,
     updated_at timestamp without time zone DEFAULT now() NOT NULL,
-    discount numeric(4,2) NOT NULL
+    discount numeric(4,2) NOT NULL,
+    PRIMARY KEY (id)
 );
-
-
---
--- TOC entry 218 (class 1259 OID 16395)
--- Name: client_discounts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-ALTER TABLE client_discounts ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME client_discounts_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
-
---
--- TOC entry 221 (class 1259 OID 16406)
--- Name: clients; Type: TABLE; Schema: public; Owner: -
---
 
 CREATE TABLE clients (
-    id integer NOT NULL,
-    client_discount_id integer NOT NULL,
-    user_id integer NOT NULL,
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    client_discount_id uuid NOT NULL,
+    user_id uuid NOT NULL,
     created_at timestamp without time zone DEFAULT now() NOT NULL,
-    updated_at timestamp without time zone DEFAULT now() NOT NULL
+    updated_at timestamp without time zone DEFAULT now() NOT NULL,
+    PRIMARY KEY (id)
 );
-
-
---
--- TOC entry 220 (class 1259 OID 16405)
--- Name: clients_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-ALTER TABLE clients ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME clients_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
-
---
--- TOC entry 224 (class 1259 OID 16423)
--- Name: orders; Type: TABLE; Schema: public; Owner: -
---
 
 CREATE TABLE orders (
-    id integer NOT NULL,
-    seller_id integer NOT NULL,
-    client_id integer NOT NULL,
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    seller_id uuid NOT NULL,
+    client_id uuid NOT NULL,
     created_at timestamp without time zone DEFAULT now() NOT NULL,
-    updated_at timestamp without time zone DEFAULT now() NOT NULL
+    updated_at timestamp without time zone DEFAULT now() NOT NULL,
+    PRIMARY KEY (id)
 );
-
-
---
--- TOC entry 223 (class 1259 OID 16422)
--- Name: orders_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-ALTER TABLE orders ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME orders_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
-
---
--- TOC entry 222 (class 1259 OID 16415)
--- Name: orders_to_products; Type: TABLE; Schema: public; Owner: -
---
 
 CREATE TABLE orders_to_products (
-    order_id integer NOT NULL,
-    product_id integer NOT NULL,
+    order_id uuid NOT NULL,
+    product_id uuid NOT NULL,
     created_at timestamp without time zone DEFAULT now() NOT NULL,
     updated_at timestamp without time zone DEFAULT now() NOT NULL,
     unit_price numeric(10,2) NOT NULL,
     discount numeric(4,2) NOT NULL,
-    quantity integer NOT NULL
+    quantity integer NOT NULL,
+    PRIMARY KEY (order_id, product_id)
 );
-
-
---
--- TOC entry 226 (class 1259 OID 16431)
--- Name: product_categories; Type: TABLE; Schema: public; Owner: -
---
 
 CREATE TABLE product_categories (
-    id integer NOT NULL,
-    created_at timestamp without time zone DEFAULT now() NOT NULL,
-    updated_at timestamp without time zone DEFAULT now() NOT NULL,
-    name character varying(255) NOT NULL
-);
-
-
---
--- TOC entry 225 (class 1259 OID 16430)
--- Name: product_categories_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-ALTER TABLE product_categories ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME product_categories_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
-
---
--- TOC entry 228 (class 1259 OID 16441)
--- Name: products; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE products (
-    id integer NOT NULL,
-    product_category_id integer NOT NULL,
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
     created_at timestamp without time zone DEFAULT now() NOT NULL,
     updated_at timestamp without time zone DEFAULT now() NOT NULL,
     name character varying(255) NOT NULL,
-    unit_price numeric(10,2) NOT NULL
+    PRIMARY KEY (id)
 );
 
-
---
--- TOC entry 227 (class 1259 OID 16440)
--- Name: products_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-ALTER TABLE products ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME products_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
-
---
--- TOC entry 230 (class 1259 OID 16451)
--- Name: sellers; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE sellers (
-    id integer NOT NULL,
-    user_id integer NOT NULL,
-    created_at timestamp without time zone DEFAULT now() NOT NULL,
-    updated_at timestamp without time zone DEFAULT now() NOT NULL
-);
-
-
---
--- TOC entry 229 (class 1259 OID 16450)
--- Name: sellers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-ALTER TABLE sellers ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME sellers_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
-
---
--- TOC entry 232 (class 1259 OID 16461)
--- Name: user_roles; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE user_roles (
-    id integer NOT NULL,
+CREATE TABLE products (
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    product_category_id uuid NOT NULL,
     created_at timestamp without time zone DEFAULT now() NOT NULL,
     updated_at timestamp without time zone DEFAULT now() NOT NULL,
-    name character varying(255) NOT NULL
+    name character varying(255) NOT NULL,
+    unit_price numeric(10,2) NOT NULL,
+    PRIMARY KEY (id)
 );
 
-
---
--- TOC entry 231 (class 1259 OID 16460)
--- Name: user_roles_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-ALTER TABLE user_roles ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME user_roles_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
+CREATE TABLE sellers (
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    user_id uuid NOT NULL,
+    created_at timestamp without time zone DEFAULT now() NOT NULL,
+    updated_at timestamp without time zone DEFAULT now() NOT NULL,
+    PRIMARY KEY (id)
 );
 
-
---
--- TOC entry 235 (class 1259 OID 16478)
--- Name: users; Type: TABLE; Schema: public; Owner: -
---
+CREATE TABLE user_roles (
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    created_at timestamp without time zone DEFAULT now() NOT NULL,
+    updated_at timestamp without time zone DEFAULT now() NOT NULL,
+    name character varying(255) NOT NULL,
+    PRIMARY KEY (id)
+);
 
 CREATE TABLE users (
-    id integer NOT NULL,
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    user_role_id uuid NOT NULL,
     created_at timestamp without time zone DEFAULT now() NOT NULL,
     updated_at timestamp without time zone DEFAULT now() NOT NULL,
     name character varying(255) NOT NULL,
     email character varying(255) NOT NULL,
-    password character varying(255) NOT NULL
+    password character varying(255) NOT NULL,
+    PRIMARY KEY (id)
 );
 
-
---
--- TOC entry 234 (class 1259 OID 16477)
--- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-ALTER TABLE users ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME users_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
-
---
--- TOC entry 233 (class 1259 OID 16470)
--- Name: users_to_user_roles; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE users_to_user_roles (
-    user_id integer NOT NULL,
-    user_role_id integer NOT NULL,
-    created_at timestamp without time zone DEFAULT now() NOT NULL,
-    updated_at timestamp without time zone DEFAULT now() NOT NULL
-);
-
-
---
--- TOC entry 3502 (class 0 OID 16396)
--- Dependencies: 219
--- Data for Name: client_discounts; Type: TABLE DATA; Schema: public; Owner: -
---
-
-INSERT INTO client_discounts OVERRIDING SYSTEM VALUE VALUES (1, '2025-01-05 22:28:19.781768', '2025-01-05 22:28:19.781768', 0.10);
-INSERT INTO client_discounts OVERRIDING SYSTEM VALUE VALUES (2, '2025-01-05 22:28:19.781768', '2025-01-05 22:28:19.781768', 0.15);
-INSERT INTO client_discounts OVERRIDING SYSTEM VALUE VALUES (3, '2025-01-05 22:28:19.781768', '2025-01-05 22:28:19.781768', 0.20);
-INSERT INTO client_discounts OVERRIDING SYSTEM VALUE VALUES (4, '2025-01-05 22:28:19.781768', '2025-01-05 22:28:19.781768', 0.25);
-INSERT INTO client_discounts OVERRIDING SYSTEM VALUE VALUES (5, '2025-01-05 22:28:19.781768', '2025-01-05 22:28:19.781768', 0.30);
-
-
---
--- TOC entry 3504 (class 0 OID 16406)
--- Dependencies: 221
--- Data for Name: clients; Type: TABLE DATA; Schema: public; Owner: -
---
-
-INSERT INTO clients OVERRIDING SYSTEM VALUE VALUES (1, 1, 1, '2025-01-05 22:28:20.30099', '2025-01-05 22:28:20.30099');
-INSERT INTO clients OVERRIDING SYSTEM VALUE VALUES (2, 1, 2, '2025-01-05 22:28:20.30099', '2025-01-05 22:28:20.30099');
-INSERT INTO clients OVERRIDING SYSTEM VALUE VALUES (3, 2, 3, '2025-01-05 22:28:20.30099', '2025-01-05 22:28:20.30099');
-INSERT INTO clients OVERRIDING SYSTEM VALUE VALUES (4, 2, 4, '2025-01-05 22:28:20.30099', '2025-01-05 22:28:20.30099');
-INSERT INTO clients OVERRIDING SYSTEM VALUE VALUES (5, 1, 5, '2025-01-05 22:28:20.30099', '2025-01-05 22:28:20.30099');
-INSERT INTO clients OVERRIDING SYSTEM VALUE VALUES (6, 2, 6, '2025-01-05 22:28:20.30099', '2025-01-05 22:28:20.30099');
-INSERT INTO clients OVERRIDING SYSTEM VALUE VALUES (7, 1, 7, '2025-01-05 22:28:20.30099', '2025-01-05 22:28:20.30099');
-INSERT INTO clients OVERRIDING SYSTEM VALUE VALUES (8, 3, 8, '2025-01-05 22:28:20.30099', '2025-01-05 22:28:20.30099');
-INSERT INTO clients OVERRIDING SYSTEM VALUE VALUES (9, 1, 9, '2025-01-05 22:28:20.30099', '2025-01-05 22:28:20.30099');
-INSERT INTO clients OVERRIDING SYSTEM VALUE VALUES (10, 1, 10, '2025-01-05 22:28:20.30099', '2025-01-05 22:28:20.30099');
-INSERT INTO clients OVERRIDING SYSTEM VALUE VALUES (11, 2, 11, '2025-01-05 22:28:20.30099', '2025-01-05 22:28:20.30099');
-INSERT INTO clients OVERRIDING SYSTEM VALUE VALUES (12, 1, 12, '2025-01-05 22:28:20.30099', '2025-01-05 22:28:20.30099');
-INSERT INTO clients OVERRIDING SYSTEM VALUE VALUES (13, 4, 13, '2025-01-05 22:28:20.30099', '2025-01-05 22:28:20.30099');
-INSERT INTO clients OVERRIDING SYSTEM VALUE VALUES (14, 1, 14, '2025-01-05 22:28:20.30099', '2025-01-05 22:28:20.30099');
-INSERT INTO clients OVERRIDING SYSTEM VALUE VALUES (15, 3, 15, '2025-01-05 22:28:20.30099', '2025-01-05 22:28:20.30099');
-INSERT INTO clients OVERRIDING SYSTEM VALUE VALUES (16, 2, 16, '2025-01-05 22:28:20.30099', '2025-01-05 22:28:20.30099');
-INSERT INTO clients OVERRIDING SYSTEM VALUE VALUES (17, 2, 17, '2025-01-05 22:28:20.30099', '2025-01-05 22:28:20.30099');
-INSERT INTO clients OVERRIDING SYSTEM VALUE VALUES (18, 2, 18, '2025-01-05 22:28:20.30099', '2025-01-05 22:28:20.30099');
-INSERT INTO clients OVERRIDING SYSTEM VALUE VALUES (19, 4, 19, '2025-01-05 22:28:20.30099', '2025-01-05 22:28:20.30099');
-INSERT INTO clients OVERRIDING SYSTEM VALUE VALUES (20, 3, 20, '2025-01-05 22:28:20.30099', '2025-01-05 22:28:20.30099');
-
-
---
--- TOC entry 3507 (class 0 OID 16423)
--- Dependencies: 224
--- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: -
---
-
-INSERT INTO orders OVERRIDING SYSTEM VALUE VALUES (1, 1, 10, '2025-01-05 22:28:20.361358', '2025-01-05 22:28:20.361358');
-INSERT INTO orders OVERRIDING SYSTEM VALUE VALUES (2, 7, 10, '2025-01-05 22:28:20.361358', '2025-01-05 22:28:20.361358');
-INSERT INTO orders OVERRIDING SYSTEM VALUE VALUES (3, 19, 10, '2025-01-05 22:28:20.361358', '2025-01-05 22:28:20.361358');
-INSERT INTO orders OVERRIDING SYSTEM VALUE VALUES (4, 4, 6, '2025-01-05 22:28:20.361358', '2025-01-05 22:28:20.361358');
-INSERT INTO orders OVERRIDING SYSTEM VALUE VALUES (5, 1, 11, '2025-01-05 22:28:20.361358', '2025-01-05 22:28:20.361358');
-INSERT INTO orders OVERRIDING SYSTEM VALUE VALUES (6, 7, 4, '2025-01-05 22:28:20.361358', '2025-01-05 22:28:20.361358');
-INSERT INTO orders OVERRIDING SYSTEM VALUE VALUES (7, 9, 12, '2025-01-05 22:28:20.361358', '2025-01-05 22:28:20.361358');
-INSERT INTO orders OVERRIDING SYSTEM VALUE VALUES (8, 20, 14, '2025-01-05 22:28:20.361358', '2025-01-05 22:28:20.361358');
-INSERT INTO orders OVERRIDING SYSTEM VALUE VALUES (9, 19, 12, '2025-01-05 22:28:20.361358', '2025-01-05 22:28:20.361358');
-INSERT INTO orders OVERRIDING SYSTEM VALUE VALUES (10, 16, 18, '2025-01-05 22:28:20.361358', '2025-01-05 22:28:20.361358');
-INSERT INTO orders OVERRIDING SYSTEM VALUE VALUES (11, 10, 4, '2025-01-05 22:28:20.361358', '2025-01-05 22:28:20.361358');
-INSERT INTO orders OVERRIDING SYSTEM VALUE VALUES (12, 9, 15, '2025-01-05 22:28:20.361358', '2025-01-05 22:28:20.361358');
-INSERT INTO orders OVERRIDING SYSTEM VALUE VALUES (13, 19, 13, '2025-01-05 22:28:20.361358', '2025-01-05 22:28:20.361358');
-INSERT INTO orders OVERRIDING SYSTEM VALUE VALUES (14, 1, 20, '2025-01-05 22:28:20.361358', '2025-01-05 22:28:20.361358');
-INSERT INTO orders OVERRIDING SYSTEM VALUE VALUES (15, 15, 13, '2025-01-05 22:28:20.361358', '2025-01-05 22:28:20.361358');
-INSERT INTO orders OVERRIDING SYSTEM VALUE VALUES (16, 13, 9, '2025-01-05 22:28:20.361358', '2025-01-05 22:28:20.361358');
-INSERT INTO orders OVERRIDING SYSTEM VALUE VALUES (17, 14, 14, '2025-01-05 22:28:20.361358', '2025-01-05 22:28:20.361358');
-INSERT INTO orders OVERRIDING SYSTEM VALUE VALUES (18, 6, 11, '2025-01-05 22:28:20.361358', '2025-01-05 22:28:20.361358');
-INSERT INTO orders OVERRIDING SYSTEM VALUE VALUES (19, 11, 13, '2025-01-05 22:28:20.361358', '2025-01-05 22:28:20.361358');
-INSERT INTO orders OVERRIDING SYSTEM VALUE VALUES (20, 13, 17, '2025-01-05 22:28:20.361358', '2025-01-05 22:28:20.361358');
-
-
---
--- TOC entry 3505 (class 0 OID 16415)
--- Dependencies: 222
--- Data for Name: orders_to_products; Type: TABLE DATA; Schema: public; Owner: -
---
-
-INSERT INTO orders_to_products VALUES (1, 10, '2025-01-05 22:28:20.466709', '2025-01-05 22:28:20.466709', 739.85, 0.10, 8);
-INSERT INTO orders_to_products VALUES (2, 8, '2025-01-05 22:28:20.466709', '2025-01-05 22:28:20.466709', 394.75, 0.10, 8);
-INSERT INTO orders_to_products VALUES (3, 13, '2025-01-05 22:28:20.466709', '2025-01-05 22:28:20.466709', 101.60, 0.10, 10);
-INSERT INTO orders_to_products VALUES (4, 10, '2025-01-05 22:28:20.466709', '2025-01-05 22:28:20.466709', 739.85, 0.15, 4);
-INSERT INTO orders_to_products VALUES (5, 16, '2025-01-05 22:28:20.466709', '2025-01-05 22:28:20.466709', 756.29, 0.15, 6);
-INSERT INTO orders_to_products VALUES (6, 3, '2025-01-05 22:28:20.466709', '2025-01-05 22:28:20.466709', 279.89, 0.15, 9);
-INSERT INTO orders_to_products VALUES (7, 8, '2025-01-05 22:28:20.466709', '2025-01-05 22:28:20.466709', 394.75, 0.10, 6);
-INSERT INTO orders_to_products VALUES (8, 19, '2025-01-05 22:28:20.466709', '2025-01-05 22:28:20.466709', 967.19, 0.10, 10);
-INSERT INTO orders_to_products VALUES (9, 10, '2025-01-05 22:28:20.466709', '2025-01-05 22:28:20.466709', 739.85, 0.10, 1);
-INSERT INTO orders_to_products VALUES (10, 13, '2025-01-05 22:28:20.466709', '2025-01-05 22:28:20.466709', 101.60, 0.15, 1);
-INSERT INTO orders_to_products VALUES (11, 1, '2025-01-05 22:28:20.466709', '2025-01-05 22:28:20.466709', 307.25, 0.15, 8);
-INSERT INTO orders_to_products VALUES (12, 8, '2025-01-05 22:28:20.466709', '2025-01-05 22:28:20.466709', 394.75, 0.20, 4);
-INSERT INTO orders_to_products VALUES (13, 11, '2025-01-05 22:28:20.466709', '2025-01-05 22:28:20.466709', 453.25, 0.25, 1);
-INSERT INTO orders_to_products VALUES (14, 10, '2025-01-05 22:28:20.466709', '2025-01-05 22:28:20.466709', 739.85, 0.20, 3);
-INSERT INTO orders_to_products VALUES (15, 7, '2025-01-05 22:28:20.466709', '2025-01-05 22:28:20.466709', 992.89, 0.25, 7);
-INSERT INTO orders_to_products VALUES (16, 7, '2025-01-05 22:28:20.466709', '2025-01-05 22:28:20.466709', 992.89, 0.10, 1);
-INSERT INTO orders_to_products VALUES (17, 10, '2025-01-05 22:28:20.466709', '2025-01-05 22:28:20.466709', 739.85, 0.10, 8);
-INSERT INTO orders_to_products VALUES (18, 13, '2025-01-05 22:28:20.466709', '2025-01-05 22:28:20.466709', 101.60, 0.15, 5);
-INSERT INTO orders_to_products VALUES (19, 18, '2025-01-05 22:28:20.466709', '2025-01-05 22:28:20.466709', 901.89, 0.25, 4);
-INSERT INTO orders_to_products VALUES (20, 12, '2025-01-05 22:28:20.466709', '2025-01-05 22:28:20.466709', 867.29, 0.15, 8);
-
-
---
--- TOC entry 3509 (class 0 OID 16431)
--- Dependencies: 226
--- Data for Name: product_categories; Type: TABLE DATA; Schema: public; Owner: -
---
-
-INSERT INTO product_categories OVERRIDING SYSTEM VALUE VALUES (1, '2025-01-05 22:28:19.783074', '2025-01-05 22:28:19.783074', 'basic');
-INSERT INTO product_categories OVERRIDING SYSTEM VALUE VALUES (2, '2025-01-05 22:28:19.783074', '2025-01-05 22:28:19.783074', 'medium');
-INSERT INTO product_categories OVERRIDING SYSTEM VALUE VALUES (3, '2025-01-05 22:28:19.783074', '2025-01-05 22:28:19.783074', 'premium');
-
-
---
--- TOC entry 3511 (class 0 OID 16441)
--- Dependencies: 228
--- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: -
---
-
-INSERT INTO products OVERRIDING SYSTEM VALUE VALUES (1, 1, '2025-01-05 22:28:19.89376', '2025-01-05 22:28:19.89376', 'Incredible Wooden Chicken', 307.25);
-INSERT INTO products OVERRIDING SYSTEM VALUE VALUES (2, 1, '2025-01-05 22:28:19.89376', '2025-01-05 22:28:19.89376', 'Gorgeous Soft Soap', 626.99);
-INSERT INTO products OVERRIDING SYSTEM VALUE VALUES (3, 2, '2025-01-05 22:28:19.89376', '2025-01-05 22:28:19.89376', 'Oriental Fresh Gloves', 279.89);
-INSERT INTO products OVERRIDING SYSTEM VALUE VALUES (4, 1, '2025-01-05 22:28:19.89376', '2025-01-05 22:28:19.89376', 'Intelligent Bronze Chair', 446.05);
-INSERT INTO products OVERRIDING SYSTEM VALUE VALUES (5, 2, '2025-01-05 22:28:19.89376', '2025-01-05 22:28:19.89376', 'Refined Plastic Sausages', 645.89);
-INSERT INTO products OVERRIDING SYSTEM VALUE VALUES (6, 1, '2025-01-05 22:28:19.89376', '2025-01-05 22:28:19.89376', 'Luxurious Plastic Table', 686.29);
-INSERT INTO products OVERRIDING SYSTEM VALUE VALUES (7, 2, '2025-01-05 22:28:19.89376', '2025-01-05 22:28:19.89376', 'Modern Plastic Computer', 992.89);
-INSERT INTO products OVERRIDING SYSTEM VALUE VALUES (8, 1, '2025-01-05 22:28:19.89376', '2025-01-05 22:28:19.89376', 'Incredible Cotton Fish', 394.75);
-INSERT INTO products OVERRIDING SYSTEM VALUE VALUES (9, 2, '2025-01-05 22:28:19.89376', '2025-01-05 22:28:19.89376', 'Fantastic Rubber Mouse', 213.63);
-INSERT INTO products OVERRIDING SYSTEM VALUE VALUES (10, 1, '2025-01-05 22:28:19.89376', '2025-01-05 22:28:19.89376', 'Handmade Fresh Mouse', 739.85);
-INSERT INTO products OVERRIDING SYSTEM VALUE VALUES (11, 2, '2025-01-05 22:28:19.89376', '2025-01-05 22:28:19.89376', 'Gorgeous Frozen Hat', 453.25);
-INSERT INTO products OVERRIDING SYSTEM VALUE VALUES (12, 2, '2025-01-05 22:28:19.89376', '2025-01-05 22:28:19.89376', 'Rustic Frozen Bike', 867.29);
-INSERT INTO products OVERRIDING SYSTEM VALUE VALUES (13, 1, '2025-01-05 22:28:19.89376', '2025-01-05 22:28:19.89376', 'Intelligent Fresh Chicken', 101.60);
-INSERT INTO products OVERRIDING SYSTEM VALUE VALUES (14, 2, '2025-01-05 22:28:19.89376', '2025-01-05 22:28:19.89376', 'Gorgeous Soft Car', 190.15);
-INSERT INTO products OVERRIDING SYSTEM VALUE VALUES (15, 1, '2025-01-05 22:28:19.89376', '2025-01-05 22:28:19.89376', 'Rustic Rubber Chicken', 422.19);
-INSERT INTO products OVERRIDING SYSTEM VALUE VALUES (16, 1, '2025-01-05 22:28:19.89376', '2025-01-05 22:28:19.89376', 'Small Steel Gloves', 756.29);
-INSERT INTO products OVERRIDING SYSTEM VALUE VALUES (17, 2, '2025-01-05 22:28:19.89376', '2025-01-05 22:28:19.89376', 'Bespoke Bronze Chicken', 472.69);
-INSERT INTO products OVERRIDING SYSTEM VALUE VALUES (18, 1, '2025-01-05 22:28:19.89376', '2025-01-05 22:28:19.89376', 'Incredible Frozen Bacon', 901.89);
-INSERT INTO products OVERRIDING SYSTEM VALUE VALUES (19, 1, '2025-01-05 22:28:19.89376', '2025-01-05 22:28:19.89376', 'Elegant Metal Chips', 967.19);
-INSERT INTO products OVERRIDING SYSTEM VALUE VALUES (20, 1, '2025-01-05 22:28:19.89376', '2025-01-05 22:28:19.89376', 'Rustic Wooden Chicken', 428.60);
-
-
---
--- TOC entry 3513 (class 0 OID 16451)
--- Dependencies: 230
--- Data for Name: sellers; Type: TABLE DATA; Schema: public; Owner: -
---
-
-INSERT INTO sellers OVERRIDING SYSTEM VALUE VALUES (1, 1, '2025-01-05 22:28:20.101105', '2025-01-05 22:28:20.101105');
-INSERT INTO sellers OVERRIDING SYSTEM VALUE VALUES (2, 2, '2025-01-05 22:28:20.101105', '2025-01-05 22:28:20.101105');
-INSERT INTO sellers OVERRIDING SYSTEM VALUE VALUES (3, 3, '2025-01-05 22:28:20.101105', '2025-01-05 22:28:20.101105');
-INSERT INTO sellers OVERRIDING SYSTEM VALUE VALUES (4, 4, '2025-01-05 22:28:20.101105', '2025-01-05 22:28:20.101105');
-INSERT INTO sellers OVERRIDING SYSTEM VALUE VALUES (5, 5, '2025-01-05 22:28:20.101105', '2025-01-05 22:28:20.101105');
-INSERT INTO sellers OVERRIDING SYSTEM VALUE VALUES (6, 6, '2025-01-05 22:28:20.101105', '2025-01-05 22:28:20.101105');
-INSERT INTO sellers OVERRIDING SYSTEM VALUE VALUES (7, 7, '2025-01-05 22:28:20.101105', '2025-01-05 22:28:20.101105');
-INSERT INTO sellers OVERRIDING SYSTEM VALUE VALUES (8, 8, '2025-01-05 22:28:20.101105', '2025-01-05 22:28:20.101105');
-INSERT INTO sellers OVERRIDING SYSTEM VALUE VALUES (9, 9, '2025-01-05 22:28:20.101105', '2025-01-05 22:28:20.101105');
-INSERT INTO sellers OVERRIDING SYSTEM VALUE VALUES (10, 10, '2025-01-05 22:28:20.101105', '2025-01-05 22:28:20.101105');
-INSERT INTO sellers OVERRIDING SYSTEM VALUE VALUES (11, 11, '2025-01-05 22:28:20.101105', '2025-01-05 22:28:20.101105');
-INSERT INTO sellers OVERRIDING SYSTEM VALUE VALUES (12, 12, '2025-01-05 22:28:20.101105', '2025-01-05 22:28:20.101105');
-INSERT INTO sellers OVERRIDING SYSTEM VALUE VALUES (13, 13, '2025-01-05 22:28:20.101105', '2025-01-05 22:28:20.101105');
-INSERT INTO sellers OVERRIDING SYSTEM VALUE VALUES (14, 14, '2025-01-05 22:28:20.101105', '2025-01-05 22:28:20.101105');
-INSERT INTO sellers OVERRIDING SYSTEM VALUE VALUES (15, 15, '2025-01-05 22:28:20.101105', '2025-01-05 22:28:20.101105');
-INSERT INTO sellers OVERRIDING SYSTEM VALUE VALUES (16, 16, '2025-01-05 22:28:20.101105', '2025-01-05 22:28:20.101105');
-INSERT INTO sellers OVERRIDING SYSTEM VALUE VALUES (17, 17, '2025-01-05 22:28:20.101105', '2025-01-05 22:28:20.101105');
-INSERT INTO sellers OVERRIDING SYSTEM VALUE VALUES (18, 18, '2025-01-05 22:28:20.101105', '2025-01-05 22:28:20.101105');
-INSERT INTO sellers OVERRIDING SYSTEM VALUE VALUES (19, 19, '2025-01-05 22:28:20.101105', '2025-01-05 22:28:20.101105');
-INSERT INTO sellers OVERRIDING SYSTEM VALUE VALUES (20, 20, '2025-01-05 22:28:20.101105', '2025-01-05 22:28:20.101105');
-
-
---
--- TOC entry 3515 (class 0 OID 16461)
--- Dependencies: 232
--- Data for Name: user_roles; Type: TABLE DATA; Schema: public; Owner: -
---
-
-INSERT INTO user_roles OVERRIDING SYSTEM VALUE VALUES (1, '2025-01-05 22:28:19.756334', '2025-01-05 22:28:19.756334', 'client');
-INSERT INTO user_roles OVERRIDING SYSTEM VALUE VALUES (2, '2025-01-05 22:28:19.756334', '2025-01-05 22:28:19.756334', 'seller');
-
-
---
--- TOC entry 3518 (class 0 OID 16478)
--- Dependencies: 235
--- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
---
-
-INSERT INTO users OVERRIDING SYSTEM VALUE VALUES (1, '2025-01-05 22:28:19.779285', '2025-01-05 22:28:19.779285', 'Doug Hilll', 'Jarvis_Streich@hotmail.com', 'P_DF8YvbEkoa7Zr');
-INSERT INTO users OVERRIDING SYSTEM VALUE VALUES (2, '2025-01-05 22:28:19.779285', '2025-01-05 22:28:19.779285', 'Camille Muller III', 'Marcelo60@yahoo.com', 'CxgWC6dU64rteRD');
-INSERT INTO users OVERRIDING SYSTEM VALUE VALUES (3, '2025-01-05 22:28:19.779285', '2025-01-05 22:28:19.779285', 'Nadine Dickinson', 'Jacey0@yahoo.com', '3kaV4OvmQZnAEBn');
-INSERT INTO users OVERRIDING SYSTEM VALUE VALUES (4, '2025-01-05 22:28:19.779285', '2025-01-05 22:28:19.779285', 'Eduardo Farrell', 'Buck10@yahoo.com', '1BLqR2dpjBWeDp8');
-INSERT INTO users OVERRIDING SYSTEM VALUE VALUES (5, '2025-01-05 22:28:19.779285', '2025-01-05 22:28:19.779285', 'Cassandra Frami', 'Isac.Hansen@hotmail.com', 'UGcJHLMDeuSSLzJ');
-INSERT INTO users OVERRIDING SYSTEM VALUE VALUES (6, '2025-01-05 22:28:19.779285', '2025-01-05 22:28:19.779285', 'Beth Cruickshank', 'Reina.Buckridge@gmail.com', 'R9DKpnuUsgAV14K');
-INSERT INTO users OVERRIDING SYSTEM VALUE VALUES (7, '2025-01-05 22:28:19.779285', '2025-01-05 22:28:19.779285', 'Eduardo Kreiger', 'Marion.Franecki97@gmail.com', 'p58oevwR_ygMRhl');
-INSERT INTO users OVERRIDING SYSTEM VALUE VALUES (8, '2025-01-05 22:28:19.779285', '2025-01-05 22:28:19.779285', 'Gwendolyn Nolan', 'Rylan.Kreiger91@hotmail.com', 'q3RUeSJvk1b2_j4');
-INSERT INTO users OVERRIDING SYSTEM VALUE VALUES (9, '2025-01-05 22:28:19.779285', '2025-01-05 22:28:19.779285', 'Brooke Williamson', 'Harold_Upton@yahoo.com', 'OwgYx5Z4ODgYB7g');
-INSERT INTO users OVERRIDING SYSTEM VALUE VALUES (10, '2025-01-05 22:28:19.779285', '2025-01-05 22:28:19.779285', 'Paulette Reichel', 'Laurel_Gleason25@gmail.com', 'ytYFfyacSqNHp6e');
-INSERT INTO users OVERRIDING SYSTEM VALUE VALUES (11, '2025-01-05 22:28:19.779285', '2025-01-05 22:28:19.779285', 'Wilbert Dietrich', 'Devan_Ledner45@hotmail.com', 'S5nuizaTYB3ZRzq');
-INSERT INTO users OVERRIDING SYSTEM VALUE VALUES (12, '2025-01-05 22:28:19.779285', '2025-01-05 22:28:19.779285', 'Allison Bartell', 'Hermina.Kub@hotmail.com', 'GNuHnQYFVGH0i4C');
-INSERT INTO users OVERRIDING SYSTEM VALUE VALUES (13, '2025-01-05 22:28:19.779285', '2025-01-05 22:28:19.779285', 'Carolyn Nitzsche-Schulist Sr.', 'Raphael62@yahoo.com', 'wUVCQ2RgTyVm9B6');
-INSERT INTO users OVERRIDING SYSTEM VALUE VALUES (14, '2025-01-05 22:28:19.779285', '2025-01-05 22:28:19.779285', 'Dr. Johnny Wisoky', 'Nasir10@gmail.com', 'bYuYehW4u67hm1H');
-INSERT INTO users OVERRIDING SYSTEM VALUE VALUES (15, '2025-01-05 22:28:19.779285', '2025-01-05 22:28:19.779285', 'Pablo Mills', 'Marie_Bednar@yahoo.com', 'NnNkeold3zyXRJG');
-INSERT INTO users OVERRIDING SYSTEM VALUE VALUES (16, '2025-01-05 22:28:19.779285', '2025-01-05 22:28:19.779285', 'Kara Zboncak DVM', 'Kristin39@gmail.com', '9ZQ2MujEwRPp2bc');
-INSERT INTO users OVERRIDING SYSTEM VALUE VALUES (17, '2025-01-05 22:28:19.779285', '2025-01-05 22:28:19.779285', 'Nichole Zulauf-Crona', 'Caesar44@gmail.com', '2KsiTaJvW8QvTCq');
-INSERT INTO users OVERRIDING SYSTEM VALUE VALUES (18, '2025-01-05 22:28:19.779285', '2025-01-05 22:28:19.779285', 'Jaime Dicki', 'Tianna2@yahoo.com', 'KFHE8J2bw272zOO');
-INSERT INTO users OVERRIDING SYSTEM VALUE VALUES (19, '2025-01-05 22:28:19.779285', '2025-01-05 22:28:19.779285', 'Marcus Jaskolski', 'Alexis_Cremin97@gmail.com', 'EcejS6qeBGaeDqN');
-INSERT INTO users OVERRIDING SYSTEM VALUE VALUES (20, '2025-01-05 22:28:19.779285', '2025-01-05 22:28:19.779285', 'Leslie Brekke', 'Imelda_Grant@gmail.com', 'rcqNampHejXbTFm');
-
-
---
--- TOC entry 3516 (class 0 OID 16470)
--- Dependencies: 233
--- Data for Name: users_to_user_roles; Type: TABLE DATA; Schema: public; Owner: -
---
-
-INSERT INTO users_to_user_roles VALUES (1, 2, '2025-01-05 22:28:19.954991', '2025-01-05 22:28:19.954991');
-INSERT INTO users_to_user_roles VALUES (2, 1, '2025-01-05 22:28:19.954991', '2025-01-05 22:28:19.954991');
-INSERT INTO users_to_user_roles VALUES (3, 2, '2025-01-05 22:28:19.954991', '2025-01-05 22:28:19.954991');
-INSERT INTO users_to_user_roles VALUES (4, 2, '2025-01-05 22:28:19.954991', '2025-01-05 22:28:19.954991');
-INSERT INTO users_to_user_roles VALUES (5, 1, '2025-01-05 22:28:19.954991', '2025-01-05 22:28:19.954991');
-INSERT INTO users_to_user_roles VALUES (6, 1, '2025-01-05 22:28:19.954991', '2025-01-05 22:28:19.954991');
-INSERT INTO users_to_user_roles VALUES (7, 2, '2025-01-05 22:28:19.954991', '2025-01-05 22:28:19.954991');
-INSERT INTO users_to_user_roles VALUES (8, 2, '2025-01-05 22:28:19.954991', '2025-01-05 22:28:19.954991');
-INSERT INTO users_to_user_roles VALUES (9, 2, '2025-01-05 22:28:19.954991', '2025-01-05 22:28:19.954991');
-INSERT INTO users_to_user_roles VALUES (10, 2, '2025-01-05 22:28:19.954991', '2025-01-05 22:28:19.954991');
-INSERT INTO users_to_user_roles VALUES (11, 2, '2025-01-05 22:28:19.954991', '2025-01-05 22:28:19.954991');
-INSERT INTO users_to_user_roles VALUES (12, 1, '2025-01-05 22:28:19.954991', '2025-01-05 22:28:19.954991');
-INSERT INTO users_to_user_roles VALUES (13, 1, '2025-01-05 22:28:19.954991', '2025-01-05 22:28:19.954991');
-INSERT INTO users_to_user_roles VALUES (14, 1, '2025-01-05 22:28:19.954991', '2025-01-05 22:28:19.954991');
-INSERT INTO users_to_user_roles VALUES (15, 2, '2025-01-05 22:28:19.954991', '2025-01-05 22:28:19.954991');
-INSERT INTO users_to_user_roles VALUES (16, 1, '2025-01-05 22:28:19.954991', '2025-01-05 22:28:19.954991');
-INSERT INTO users_to_user_roles VALUES (17, 1, '2025-01-05 22:28:19.954991', '2025-01-05 22:28:19.954991');
-INSERT INTO users_to_user_roles VALUES (18, 1, '2025-01-05 22:28:19.954991', '2025-01-05 22:28:19.954991');
-INSERT INTO users_to_user_roles VALUES (19, 1, '2025-01-05 22:28:19.954991', '2025-01-05 22:28:19.954991');
-INSERT INTO users_to_user_roles VALUES (20, 1, '2025-01-05 22:28:19.954991', '2025-01-05 22:28:19.954991');
-
-
---
--- TOC entry 3525 (class 0 OID 0)
--- Dependencies: 218
--- Name: client_discounts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('client_discounts_id_seq', 5, true);
-
-
---
--- TOC entry 3526 (class 0 OID 0)
--- Dependencies: 220
--- Name: clients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('clients_id_seq', 20, true);
-
-
---
--- TOC entry 3527 (class 0 OID 0)
--- Dependencies: 223
--- Name: orders_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('orders_id_seq', 20, true);
-
-
---
--- TOC entry 3528 (class 0 OID 0)
--- Dependencies: 225
--- Name: product_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('product_categories_id_seq', 3, true);
-
-
---
--- TOC entry 3529 (class 0 OID 0)
--- Dependencies: 227
--- Name: products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('products_id_seq', 20, true);
-
-
---
--- TOC entry 3530 (class 0 OID 0)
--- Dependencies: 229
--- Name: sellers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('sellers_id_seq', 20, true);
-
-
---
--- TOC entry 3531 (class 0 OID 0)
--- Dependencies: 231
--- Name: user_roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('user_roles_id_seq', 2, true);
-
-
---
--- TOC entry 3532 (class 0 OID 0)
--- Dependencies: 234
--- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('users_id_seq', 20, true);
-
-
---
--- TOC entry 3315 (class 2606 OID 16404)
--- Name: client_discounts client_discounts_discount_unique; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY client_discounts
-    ADD CONSTRAINT client_discounts_discount_unique UNIQUE (discount);
-
-
---
--- TOC entry 3317 (class 2606 OID 16402)
--- Name: client_discounts client_discounts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY client_discounts
-    ADD CONSTRAINT client_discounts_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 3319 (class 2606 OID 16412)
--- Name: clients clients_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY clients
-    ADD CONSTRAINT clients_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 3321 (class 2606 OID 16414)
--- Name: clients clients_user_id_unique; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY clients
-    ADD CONSTRAINT clients_user_id_unique UNIQUE (user_id);
-
-
---
--- TOC entry 3325 (class 2606 OID 16429)
--- Name: orders orders_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY orders
-    ADD CONSTRAINT orders_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 3323 (class 2606 OID 16421)
--- Name: orders_to_products orders_to_products_order_id_product_id_pk; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY orders_to_products
-    ADD CONSTRAINT orders_to_products_order_id_product_id_pk PRIMARY KEY (order_id, product_id);
-
-
---
--- TOC entry 3327 (class 2606 OID 16439)
--- Name: product_categories product_categories_name_unique; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY product_categories
-    ADD CONSTRAINT product_categories_name_unique UNIQUE (name);
-
-
---
--- TOC entry 3329 (class 2606 OID 16437)
--- Name: product_categories product_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY product_categories
-    ADD CONSTRAINT product_categories_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 3331 (class 2606 OID 16449)
--- Name: products products_name_unique; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY products
-    ADD CONSTRAINT products_name_unique UNIQUE (name);
-
-
---
--- TOC entry 3333 (class 2606 OID 16447)
--- Name: products products_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY products
-    ADD CONSTRAINT products_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 3335 (class 2606 OID 16457)
--- Name: sellers sellers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sellers
-    ADD CONSTRAINT sellers_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 3337 (class 2606 OID 16459)
--- Name: sellers sellers_user_id_unique; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sellers
-    ADD CONSTRAINT sellers_user_id_unique UNIQUE (user_id);
-
-
---
--- TOC entry 3339 (class 2606 OID 16469)
--- Name: user_roles user_roles_name_unique; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY user_roles
-    ADD CONSTRAINT user_roles_name_unique UNIQUE (name);
-
-
---
--- TOC entry 3341 (class 2606 OID 16467)
--- Name: user_roles user_roles_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY user_roles
-    ADD CONSTRAINT user_roles_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 3345 (class 2606 OID 16488)
--- Name: users users_email_unique; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY users
-    ADD CONSTRAINT users_email_unique UNIQUE (email);
-
-
---
--- TOC entry 3347 (class 2606 OID 16486)
--- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY users
-    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 3343 (class 2606 OID 16476)
--- Name: users_to_user_roles users_to_user_roles_user_id_user_role_id_pk; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY users_to_user_roles
-    ADD CONSTRAINT users_to_user_roles_user_id_user_role_id_pk PRIMARY KEY (user_id, user_role_id);
-
-
---
--- TOC entry 3348 (class 2606 OID 16489)
--- Name: clients clients_client_discount_id_client_discounts_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY clients
-    ADD CONSTRAINT clients_client_discount_id_client_discounts_id_fk FOREIGN KEY (client_discount_id) REFERENCES client_discounts(id);
-
-
---
--- TOC entry 3349 (class 2606 OID 16494)
--- Name: clients clients_user_id_users_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY clients
-    ADD CONSTRAINT clients_user_id_users_id_fk FOREIGN KEY (user_id) REFERENCES users(id);
-
-
---
--- TOC entry 3352 (class 2606 OID 16514)
--- Name: orders orders_client_id_clients_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY orders
-    ADD CONSTRAINT orders_client_id_clients_id_fk FOREIGN KEY (client_id) REFERENCES clients(id);
-
-
---
--- TOC entry 3353 (class 2606 OID 16509)
--- Name: orders orders_seller_id_sellers_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY orders
-    ADD CONSTRAINT orders_seller_id_sellers_id_fk FOREIGN KEY (seller_id) REFERENCES sellers(id);
-
-
---
--- TOC entry 3350 (class 2606 OID 16499)
--- Name: orders_to_products orders_to_products_order_id_orders_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY orders_to_products
-    ADD CONSTRAINT orders_to_products_order_id_orders_id_fk FOREIGN KEY (order_id) REFERENCES orders(id);
-
-
---
--- TOC entry 3351 (class 2606 OID 16504)
--- Name: orders_to_products orders_to_products_product_id_products_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY orders_to_products
-    ADD CONSTRAINT orders_to_products_product_id_products_id_fk FOREIGN KEY (product_id) REFERENCES products(id);
-
-
---
--- TOC entry 3354 (class 2606 OID 16519)
--- Name: products products_product_category_id_product_categories_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY products
-    ADD CONSTRAINT products_product_category_id_product_categories_id_fk FOREIGN KEY (product_category_id) REFERENCES product_categories(id);
-
-
---
--- TOC entry 3355 (class 2606 OID 16524)
--- Name: sellers sellers_user_id_users_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sellers
-    ADD CONSTRAINT sellers_user_id_users_id_fk FOREIGN KEY (user_id) REFERENCES users(id);
-
-
---
--- TOC entry 3356 (class 2606 OID 16529)
--- Name: users_to_user_roles users_to_user_roles_user_id_users_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY users_to_user_roles
-    ADD CONSTRAINT users_to_user_roles_user_id_users_id_fk FOREIGN KEY (user_id) REFERENCES users(id);
-
-
---
--- TOC entry 3357 (class 2606 OID 16534)
--- Name: users_to_user_roles users_to_user_roles_user_role_id_user_roles_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY users_to_user_roles
-    ADD CONSTRAINT users_to_user_roles_user_role_id_user_roles_id_fk FOREIGN KEY (user_role_id) REFERENCES user_roles(id);
+INSERT INTO client_discounts VALUES ('988742fe-9185-4765-9f20-b697cf1b079b', '2025-01-06 21:42:51.665802', '2025-01-06 21:42:51.665802', 0.10);
+INSERT INTO client_discounts VALUES ('b97c9399-dc6f-4464-84d2-39a09ef6c73f', '2025-01-06 21:42:51.665802', '2025-01-06 21:42:51.665802', 0.15);
+INSERT INTO client_discounts VALUES ('f1cf5ec2-d9a2-43ee-b7fe-0599c19cfa23', '2025-01-06 21:42:51.665802', '2025-01-06 21:42:51.665802', 0.20);
+INSERT INTO client_discounts VALUES ('af065442-72b1-4e6c-a5ef-32ccffd2b9e8', '2025-01-06 21:42:51.665802', '2025-01-06 21:42:51.665802', 0.25);
+INSERT INTO client_discounts VALUES ('dc366093-4319-4431-b2b6-fe4b30a4dbd6', '2025-01-06 21:42:51.665802', '2025-01-06 21:42:51.665802', 0.30);
+
+INSERT INTO clients VALUES ('125ac432-3d03-4d31-9d8c-4a6cd65253e4', 'b97c9399-dc6f-4464-84d2-39a09ef6c73f', '30caa1b1-674a-4c8a-afb4-b05a7e47b95e', '2025-01-06 21:42:52.377748', '2025-01-06 21:42:52.377748');
+INSERT INTO clients VALUES ('f31dda52-70e6-4c3b-80d8-50cb23ddebf1', 'b97c9399-dc6f-4464-84d2-39a09ef6c73f', '60ea2a12-2bf6-4997-8c85-412536e63807', '2025-01-06 21:42:52.377748', '2025-01-06 21:42:52.377748');
+INSERT INTO clients VALUES ('939adf0c-9b5a-4b27-a1bf-cac8a85506fc', '988742fe-9185-4765-9f20-b697cf1b079b', 'e0602972-ada1-498b-995f-01d765d03663', '2025-01-06 21:42:52.377748', '2025-01-06 21:42:52.377748');
+INSERT INTO clients VALUES ('5bdee22c-f4a5-41b5-845c-81cb1aa98015', 'f1cf5ec2-d9a2-43ee-b7fe-0599c19cfa23', '208c3c57-d9da-4d1e-9bbc-fc8bfb8388a5', '2025-01-06 21:42:52.377748', '2025-01-06 21:42:52.377748');
+INSERT INTO clients VALUES ('996eb780-582a-4601-b715-1f772b55f8d9', '988742fe-9185-4765-9f20-b697cf1b079b', '6402d5d9-f763-4ea1-b7f9-209e0a0ad9cd', '2025-01-06 21:42:52.377748', '2025-01-06 21:42:52.377748');
+INSERT INTO clients VALUES ('91a8782f-f3dc-48ce-9b93-739dca4686d2', 'b97c9399-dc6f-4464-84d2-39a09ef6c73f', 'c8052ab0-1656-4244-92ea-1f06234e49b0', '2025-01-06 21:42:52.377748', '2025-01-06 21:42:52.377748');
+INSERT INTO clients VALUES ('7f174036-221b-4095-a1c6-0cff0cdcb8ac', 'af065442-72b1-4e6c-a5ef-32ccffd2b9e8', '6b2ebbcb-701c-4664-b039-b2ccec11a237', '2025-01-06 21:42:52.377748', '2025-01-06 21:42:52.377748');
+
+INSERT INTO orders VALUES ('d7cd88bf-e725-4320-807c-d48cc7452525', 'bd955ce4-0038-4ee6-b378-acd8454f2189', '939adf0c-9b5a-4b27-a1bf-cac8a85506fc', '2025-01-06 21:42:52.484218', '2025-01-06 21:42:52.484218');
+INSERT INTO orders VALUES ('a47b4e0a-b943-41e4-83b6-4f0cb73955fc', 'f565a082-b2af-4291-b82d-eb0ffd637d00', '939adf0c-9b5a-4b27-a1bf-cac8a85506fc', '2025-01-06 21:42:52.484218', '2025-01-06 21:42:52.484218');
+INSERT INTO orders VALUES ('2defdf52-ae63-457a-81f2-93a2f0408924', 'd74f22ad-a206-4ace-af66-57d4f5ff5afb', '996eb780-582a-4601-b715-1f772b55f8d9', '2025-01-06 21:42:52.484218', '2025-01-06 21:42:52.484218');
+INSERT INTO orders VALUES ('8d8ff4f2-b19f-4b45-83ca-5c4a46ac60c5', '8139ae1b-a752-4ff8-9bfd-11c58f2ecd8a', '5bdee22c-f4a5-41b5-845c-81cb1aa98015', '2025-01-06 21:42:52.484218', '2025-01-06 21:42:52.484218');
+INSERT INTO orders VALUES ('d177a4e5-e134-460f-a15d-a12fd26be855', 'bd955ce4-0038-4ee6-b378-acd8454f2189', '7f174036-221b-4095-a1c6-0cff0cdcb8ac', '2025-01-06 21:42:52.484218', '2025-01-06 21:42:52.484218');
+INSERT INTO orders VALUES ('7df25c25-5634-4a38-b70f-d6d138499fad', 'f565a082-b2af-4291-b82d-eb0ffd637d00', '939adf0c-9b5a-4b27-a1bf-cac8a85506fc', '2025-01-06 21:42:52.484218', '2025-01-06 21:42:52.484218');
+INSERT INTO orders VALUES ('4a00e896-b681-4540-84b0-f1528d41d78b', '6d5753a4-0728-4853-aabd-af094df19f46', '5bdee22c-f4a5-41b5-845c-81cb1aa98015', '2025-01-06 21:42:52.484218', '2025-01-06 21:42:52.484218');
+INSERT INTO orders VALUES ('65ce5a53-06f4-4f70-aad9-685019c6c0c4', '8139ae1b-a752-4ff8-9bfd-11c58f2ecd8a', '125ac432-3d03-4d31-9d8c-4a6cd65253e4', '2025-01-06 21:42:52.484218', '2025-01-06 21:42:52.484218');
+INSERT INTO orders VALUES ('763698c8-bd87-40c8-ba62-b83a396e3e0b', 'f565a082-b2af-4291-b82d-eb0ffd637d00', '996eb780-582a-4601-b715-1f772b55f8d9', '2025-01-06 21:42:52.484218', '2025-01-06 21:42:52.484218');
+INSERT INTO orders VALUES ('d575d6b6-f066-4eb2-8185-f5b6b6d604b5', '32c48f32-8732-455b-a037-5db59209c2a7', '996eb780-582a-4601-b715-1f772b55f8d9', '2025-01-06 21:42:52.484218', '2025-01-06 21:42:52.484218');
+INSERT INTO orders VALUES ('58f611bc-c65b-4ebb-93c1-31f4cf53296a', 'bd955ce4-0038-4ee6-b378-acd8454f2189', '939adf0c-9b5a-4b27-a1bf-cac8a85506fc', '2025-01-06 21:42:52.484218', '2025-01-06 21:42:52.484218');
+INSERT INTO orders VALUES ('476b6267-8b9b-46cb-9e39-1907373b8033', 'f565a082-b2af-4291-b82d-eb0ffd637d00', '125ac432-3d03-4d31-9d8c-4a6cd65253e4', '2025-01-06 21:42:52.484218', '2025-01-06 21:42:52.484218');
+INSERT INTO orders VALUES ('3ea3d812-7142-43b6-bf8c-3bfd5a397943', 'b2b8ed66-d6ff-4076-8bd9-d870e6d3cdbf', '939adf0c-9b5a-4b27-a1bf-cac8a85506fc', '2025-01-06 21:42:52.484218', '2025-01-06 21:42:52.484218');
+INSERT INTO orders VALUES ('60d1e399-c9af-4e60-9d1e-5310ea19b1fc', 'f565a082-b2af-4291-b82d-eb0ffd637d00', '5bdee22c-f4a5-41b5-845c-81cb1aa98015', '2025-01-06 21:42:52.484218', '2025-01-06 21:42:52.484218');
+INSERT INTO orders VALUES ('d9d52b04-9197-4be2-a534-c4116972dfa0', 'f565a082-b2af-4291-b82d-eb0ffd637d00', '996eb780-582a-4601-b715-1f772b55f8d9', '2025-01-06 21:42:52.484218', '2025-01-06 21:42:52.484218');
+INSERT INTO orders VALUES ('24e1e511-1f27-4bf7-b3eb-e88bf4c44138', 'c3aebbda-589f-4d08-b02e-14aba8ba4960', '7f174036-221b-4095-a1c6-0cff0cdcb8ac', '2025-01-06 21:42:52.484218', '2025-01-06 21:42:52.484218');
+INSERT INTO orders VALUES ('6acf14c8-60d7-46a8-a172-414c068d2359', 'b7f312a2-bc51-4487-bd33-bd66245f4976', '939adf0c-9b5a-4b27-a1bf-cac8a85506fc', '2025-01-06 21:42:52.484218', '2025-01-06 21:42:52.484218');
+INSERT INTO orders VALUES ('db86c4e5-7c7c-4413-9b7d-866551addeae', 'b2b8ed66-d6ff-4076-8bd9-d870e6d3cdbf', '939adf0c-9b5a-4b27-a1bf-cac8a85506fc', '2025-01-06 21:42:52.484218', '2025-01-06 21:42:52.484218');
+INSERT INTO orders VALUES ('de6233a8-12cf-4759-a3dc-16839c7f6240', 'b2b8ed66-d6ff-4076-8bd9-d870e6d3cdbf', '939adf0c-9b5a-4b27-a1bf-cac8a85506fc', '2025-01-06 21:42:52.484218', '2025-01-06 21:42:52.484218');
+INSERT INTO orders VALUES ('d5b66ec6-2ae4-4344-978e-1faa50f1c8a9', 'a22ec3f1-3bda-4c32-a861-0bef6159c0de', '996eb780-582a-4601-b715-1f772b55f8d9', '2025-01-06 21:42:52.484218', '2025-01-06 21:42:52.484218');
+
+INSERT INTO orders_to_products VALUES ('d7cd88bf-e725-4320-807c-d48cc7452525', 'ef8b9e55-3d0f-46e6-87b5-84ac3d59fa4b', '2025-01-06 21:42:52.65644', '2025-01-06 21:42:52.65644', 100.69, 0.10, 1);
+INSERT INTO orders_to_products VALUES ('a47b4e0a-b943-41e4-83b6-4f0cb73955fc', 'ef8b9e55-3d0f-46e6-87b5-84ac3d59fa4b', '2025-01-06 21:42:52.65644', '2025-01-06 21:42:52.65644', 100.69, 0.10, 10);
+INSERT INTO orders_to_products VALUES ('2defdf52-ae63-457a-81f2-93a2f0408924', '5a54c878-cec6-4507-a1b8-8cc2df648b92', '2025-01-06 21:42:52.65644', '2025-01-06 21:42:52.65644', 789.60, 0.10, 1);
+INSERT INTO orders_to_products VALUES ('8d8ff4f2-b19f-4b45-83ca-5c4a46ac60c5', 'a2fd5a79-784d-4a1e-a30f-de90b873d5db', '2025-01-06 21:42:52.65644', '2025-01-06 21:42:52.65644', 949.29, 0.20, 8);
+INSERT INTO orders_to_products VALUES ('d177a4e5-e134-460f-a15d-a12fd26be855', 'c011546c-a36b-4cd5-a798-52db2209edaa', '2025-01-06 21:42:52.65644', '2025-01-06 21:42:52.65644', 590.65, 0.25, 3);
+INSERT INTO orders_to_products VALUES ('7df25c25-5634-4a38-b70f-d6d138499fad', '9f95dbd4-7baf-4d36-837c-b30971341020', '2025-01-06 21:42:52.65644', '2025-01-06 21:42:52.65644', 796.49, 0.10, 7);
+INSERT INTO orders_to_products VALUES ('4a00e896-b681-4540-84b0-f1528d41d78b', 'fc0a6e1e-5536-4eef-b3ef-06998e2dee31', '2025-01-06 21:42:52.65644', '2025-01-06 21:42:52.65644', 901.95, 0.20, 1);
+INSERT INTO orders_to_products VALUES ('65ce5a53-06f4-4f70-aad9-685019c6c0c4', '35a4aeee-0bdc-469c-a162-b1311981e271', '2025-01-06 21:42:52.65644', '2025-01-06 21:42:52.65644', 806.80, 0.15, 4);
+INSERT INTO orders_to_products VALUES ('763698c8-bd87-40c8-ba62-b83a396e3e0b', 'a2fd5a79-784d-4a1e-a30f-de90b873d5db', '2025-01-06 21:42:52.65644', '2025-01-06 21:42:52.65644', 949.29, 0.10, 1);
+INSERT INTO orders_to_products VALUES ('d575d6b6-f066-4eb2-8185-f5b6b6d604b5', '1539d849-63e6-466f-9c94-522fa9a1a7cf', '2025-01-06 21:42:52.65644', '2025-01-06 21:42:52.65644', 595.25, 0.10, 6);
+INSERT INTO orders_to_products VALUES ('58f611bc-c65b-4ebb-93c1-31f4cf53296a', '8358714d-1686-4354-b5dd-64f925981063', '2025-01-06 21:42:52.65644', '2025-01-06 21:42:52.65644', 406.05, 0.10, 7);
+INSERT INTO orders_to_products VALUES ('476b6267-8b9b-46cb-9e39-1907373b8033', '5c46bd7f-0c6e-42a7-8a78-7560648ce04e', '2025-01-06 21:42:52.65644', '2025-01-06 21:42:52.65644', 797.09, 0.15, 2);
+INSERT INTO orders_to_products VALUES ('3ea3d812-7142-43b6-bf8c-3bfd5a397943', 'c011546c-a36b-4cd5-a798-52db2209edaa', '2025-01-06 21:42:52.65644', '2025-01-06 21:42:52.65644', 590.65, 0.10, 10);
+INSERT INTO orders_to_products VALUES ('60d1e399-c9af-4e60-9d1e-5310ea19b1fc', '5a54c878-cec6-4507-a1b8-8cc2df648b92', '2025-01-06 21:42:52.65644', '2025-01-06 21:42:52.65644', 789.60, 0.20, 2);
+INSERT INTO orders_to_products VALUES ('d9d52b04-9197-4be2-a534-c4116972dfa0', '35a4aeee-0bdc-469c-a162-b1311981e271', '2025-01-06 21:42:52.65644', '2025-01-06 21:42:52.65644', 806.80, 0.10, 7);
+INSERT INTO orders_to_products VALUES ('24e1e511-1f27-4bf7-b3eb-e88bf4c44138', '6ad166f7-ea23-405e-8f42-72d55436fbaf', '2025-01-06 21:42:52.65644', '2025-01-06 21:42:52.65644', 521.05, 0.25, 4);
+INSERT INTO orders_to_products VALUES ('6acf14c8-60d7-46a8-a172-414c068d2359', '98611d2a-7c03-417f-a16f-c62140cdf087', '2025-01-06 21:42:52.65644', '2025-01-06 21:42:52.65644', 122.39, 0.10, 2);
+INSERT INTO orders_to_products VALUES ('db86c4e5-7c7c-4413-9b7d-866551addeae', 'c306a286-4c79-4764-9b38-61c5f4d87a39', '2025-01-06 21:42:52.65644', '2025-01-06 21:42:52.65644', 968.99, 0.10, 2);
+INSERT INTO orders_to_products VALUES ('de6233a8-12cf-4759-a3dc-16839c7f6240', 'c306a286-4c79-4764-9b38-61c5f4d87a39', '2025-01-06 21:42:52.65644', '2025-01-06 21:42:52.65644', 968.99, 0.10, 10);
+INSERT INTO orders_to_products VALUES ('d5b66ec6-2ae4-4344-978e-1faa50f1c8a9', '337eac6e-331e-4d9e-9670-6e2e005170ec', '2025-01-06 21:42:52.65644', '2025-01-06 21:42:52.65644', 791.59, 0.10, 4);
+
+INSERT INTO product_categories VALUES ('686c1d4b-928d-49cf-8523-b890ef6ac10f', '2025-01-06 21:42:51.67036', '2025-01-06 21:42:51.67036', 'basic');
+INSERT INTO product_categories VALUES ('f5a3a951-61a8-48ca-9891-a4870d9be315', '2025-01-06 21:42:51.67036', '2025-01-06 21:42:51.67036', 'medium');
+INSERT INTO product_categories VALUES ('df777162-637e-4438-80f7-4017d67a13ce', '2025-01-06 21:42:51.67036', '2025-01-06 21:42:51.67036', 'premium');
+
+INSERT INTO products VALUES ('ecd86f44-0dd5-4aca-af55-5a77cea4af16', '686c1d4b-928d-49cf-8523-b890ef6ac10f', '2025-01-06 21:42:51.813', '2025-01-06 21:42:51.813', 'Handmade Rubber Shoes', 367.41);
+INSERT INTO products VALUES ('8358714d-1686-4354-b5dd-64f925981063', 'f5a3a951-61a8-48ca-9891-a4870d9be315', '2025-01-06 21:42:51.813', '2025-01-06 21:42:51.813', 'Tasty Rubber Bike', 406.05);
+INSERT INTO products VALUES ('dc3cd86f-cc62-4861-b891-108809c2d59d', '686c1d4b-928d-49cf-8523-b890ef6ac10f', '2025-01-06 21:42:51.813', '2025-01-06 21:42:51.813', 'Ergonomic Steel Ball', 276.75);
+INSERT INTO products VALUES ('9f95dbd4-7baf-4d36-837c-b30971341020', 'f5a3a951-61a8-48ca-9891-a4870d9be315', '2025-01-06 21:42:51.813', '2025-01-06 21:42:51.813', 'Recycled Wooden Pizza', 796.49);
+INSERT INTO products VALUES ('5a54c878-cec6-4507-a1b8-8cc2df648b92', 'f5a3a951-61a8-48ca-9891-a4870d9be315', '2025-01-06 21:42:51.813', '2025-01-06 21:42:51.813', 'Modern Cotton Car', 789.60);
+INSERT INTO products VALUES ('c011546c-a36b-4cd5-a798-52db2209edaa', 'f5a3a951-61a8-48ca-9891-a4870d9be315', '2025-01-06 21:42:51.813', '2025-01-06 21:42:51.813', 'Oriental Cotton Fish', 590.65);
+INSERT INTO products VALUES ('6ad166f7-ea23-405e-8f42-72d55436fbaf', '686c1d4b-928d-49cf-8523-b890ef6ac10f', '2025-01-06 21:42:51.813', '2025-01-06 21:42:51.813', 'Ergonomic Rubber Pants', 521.05);
+INSERT INTO products VALUES ('98611d2a-7c03-417f-a16f-c62140cdf087', '686c1d4b-928d-49cf-8523-b890ef6ac10f', '2025-01-06 21:42:51.813', '2025-01-06 21:42:51.813', 'Practical Soft Computer', 122.39);
+INSERT INTO products VALUES ('337eac6e-331e-4d9e-9670-6e2e005170ec', '686c1d4b-928d-49cf-8523-b890ef6ac10f', '2025-01-06 21:42:51.813', '2025-01-06 21:42:51.813', 'Recycled Concrete Gloves', 791.59);
+INSERT INTO products VALUES ('ef8b9e55-3d0f-46e6-87b5-84ac3d59fa4b', 'f5a3a951-61a8-48ca-9891-a4870d9be315', '2025-01-06 21:42:51.813', '2025-01-06 21:42:51.813', 'Handmade Frozen Pants', 100.69);
+INSERT INTO products VALUES ('5c46bd7f-0c6e-42a7-8a78-7560648ce04e', 'f5a3a951-61a8-48ca-9891-a4870d9be315', '2025-01-06 21:42:51.813', '2025-01-06 21:42:51.813', 'Intelligent Fresh Sausages', 797.09);
+INSERT INTO products VALUES ('1539d849-63e6-466f-9c94-522fa9a1a7cf', '686c1d4b-928d-49cf-8523-b890ef6ac10f', '2025-01-06 21:42:51.813', '2025-01-06 21:42:51.813', 'Gorgeous Granite Mouse', 595.25);
+INSERT INTO products VALUES ('2b8f41f6-5393-44d6-ad63-0bd79bdef7da', '686c1d4b-928d-49cf-8523-b890ef6ac10f', '2025-01-06 21:42:51.813', '2025-01-06 21:42:51.813', 'Generic Metal Chicken', 555.45);
+INSERT INTO products VALUES ('a2fd5a79-784d-4a1e-a30f-de90b873d5db', '686c1d4b-928d-49cf-8523-b890ef6ac10f', '2025-01-06 21:42:51.813', '2025-01-06 21:42:51.813', 'Gorgeous Steel Shoes', 949.29);
+INSERT INTO products VALUES ('c306a286-4c79-4764-9b38-61c5f4d87a39', '686c1d4b-928d-49cf-8523-b890ef6ac10f', '2025-01-06 21:42:51.813', '2025-01-06 21:42:51.813', 'Gorgeous Concrete Chips', 968.99);
+INSERT INTO products VALUES ('35a4aeee-0bdc-469c-a162-b1311981e271', 'f5a3a951-61a8-48ca-9891-a4870d9be315', '2025-01-06 21:42:51.813', '2025-01-06 21:42:51.813', 'Fantastic Rubber Chips', 806.80);
+INSERT INTO products VALUES ('fc0a6e1e-5536-4eef-b3ef-06998e2dee31', 'f5a3a951-61a8-48ca-9891-a4870d9be315', '2025-01-06 21:42:51.813', '2025-01-06 21:42:51.813', 'Small Cotton Bike', 901.95);
+INSERT INTO products VALUES ('f4239fa6-e74a-470d-acf2-9fa5d258c466', '686c1d4b-928d-49cf-8523-b890ef6ac10f', '2025-01-06 21:42:51.813', '2025-01-06 21:42:51.813', 'Gorgeous Wooden Fish', 123.99);
+INSERT INTO products VALUES ('7bdf8faf-ed85-4aaa-b901-4f55f0b4f413', 'f5a3a951-61a8-48ca-9891-a4870d9be315', '2025-01-06 21:42:51.813', '2025-01-06 21:42:51.813', 'Ergonomic Metal Salad', 387.05);
+INSERT INTO products VALUES ('2c5dbc91-c190-4cf1-93cd-1ff20c1524b9', '686c1d4b-928d-49cf-8523-b890ef6ac10f', '2025-01-06 21:42:51.813', '2025-01-06 21:42:51.813', 'Awesome Wooden Bike', 676.29);
+
+INSERT INTO sellers VALUES ('c1655269-859b-4824-abbc-d4c99e800713', '6d637fa5-e9a4-4c10-a9c6-6bdb804f7afe', '2025-01-06 21:42:52.133132', '2025-01-06 21:42:52.133132');
+INSERT INTO sellers VALUES ('a22ec3f1-3bda-4c32-a861-0bef6159c0de', 'ffe61621-7f4a-4209-8f77-6204a599ada9', '2025-01-06 21:42:52.133132', '2025-01-06 21:42:52.133132');
+INSERT INTO sellers VALUES ('13fb4135-70d8-460e-a464-32ad1a22cefd', 'b89ba446-46eb-403e-a2e0-77a2db42205a', '2025-01-06 21:42:52.133132', '2025-01-06 21:42:52.133132');
+INSERT INTO sellers VALUES ('b7f312a2-bc51-4487-bd33-bd66245f4976', 'e9613864-5a55-4e0f-be93-5718f99b5b97', '2025-01-06 21:42:52.133132', '2025-01-06 21:42:52.133132');
+INSERT INTO sellers VALUES ('bd955ce4-0038-4ee6-b378-acd8454f2189', '307f8fdc-2e01-4e4a-afb3-39fba9c0934f', '2025-01-06 21:42:52.133132', '2025-01-06 21:42:52.133132');
+INSERT INTO sellers VALUES ('8139ae1b-a752-4ff8-9bfd-11c58f2ecd8a', '9f6eb270-dc8e-44be-ac5d-3221bb76d0fd', '2025-01-06 21:42:52.133132', '2025-01-06 21:42:52.133132');
+INSERT INTO sellers VALUES ('b2b8ed66-d6ff-4076-8bd9-d870e6d3cdbf', '2766101c-3b58-4563-961f-a7952214941e', '2025-01-06 21:42:52.133132', '2025-01-06 21:42:52.133132');
+INSERT INTO sellers VALUES ('d74f22ad-a206-4ace-af66-57d4f5ff5afb', '893cee7a-290b-40aa-b410-69bd862ec1e6', '2025-01-06 21:42:52.133132', '2025-01-06 21:42:52.133132');
+INSERT INTO sellers VALUES ('132ea6fd-9779-4d3b-bbb7-2688c50b0df0', 'c7f63636-16eb-4112-91c8-ee94d596b0ed', '2025-01-06 21:42:52.133132', '2025-01-06 21:42:52.133132');
+INSERT INTO sellers VALUES ('f565a082-b2af-4291-b82d-eb0ffd637d00', '55f50aac-6aad-48ed-b80c-c7ae4ac0cbeb', '2025-01-06 21:42:52.133132', '2025-01-06 21:42:52.133132');
+INSERT INTO sellers VALUES ('6d5753a4-0728-4853-aabd-af094df19f46', '3cb34323-29c6-4d32-a776-347ad6b6cc11', '2025-01-06 21:42:52.133132', '2025-01-06 21:42:52.133132');
+INSERT INTO sellers VALUES ('c3aebbda-589f-4d08-b02e-14aba8ba4960', '392d8fef-f427-469e-ab6b-8fbdb9f6d347', '2025-01-06 21:42:52.133132', '2025-01-06 21:42:52.133132');
+INSERT INTO sellers VALUES ('32c48f32-8732-455b-a037-5db59209c2a7', 'fbb77b7a-66ed-4390-bee3-0c6e7a29a14c', '2025-01-06 21:42:52.133132', '2025-01-06 21:42:52.133132');
+
+INSERT INTO user_roles VALUES ('e8cf6901-64d5-4969-b315-664addaedd0f', '2025-01-06 21:42:51.575646', '2025-01-06 21:42:51.575646', 'client');
+INSERT INTO user_roles VALUES ('e838ed44-da6e-40f4-8e73-827ff50324c6', '2025-01-06 21:42:51.575646', '2025-01-06 21:42:51.575646', 'seller');
+
+INSERT INTO users VALUES ('6d637fa5-e9a4-4c10-a9c6-6bdb804f7afe', 'e838ed44-da6e-40f4-8e73-827ff50324c6', '2025-01-06 21:42:51.934712', '2025-01-06 21:42:51.934712', 'Mr. Jack Prosacco', 'Ila.Feest@gmail.com', 'Zsvi3r98O8sx9PV');
+INSERT INTO users VALUES ('ffe61621-7f4a-4209-8f77-6204a599ada9', 'e838ed44-da6e-40f4-8e73-827ff50324c6', '2025-01-06 21:42:51.934712', '2025-01-06 21:42:51.934712', 'Timothy Hudson', 'Abagail78@yahoo.com', '_EcCw5Pya92p0F6');
+INSERT INTO users VALUES ('b89ba446-46eb-403e-a2e0-77a2db42205a', 'e838ed44-da6e-40f4-8e73-827ff50324c6', '2025-01-06 21:42:51.934712', '2025-01-06 21:42:51.934712', 'Roderick Hirthe', 'Boris_Frami@hotmail.com', 'pgi7lvoZt5GWCO_');
+INSERT INTO users VALUES ('e9613864-5a55-4e0f-be93-5718f99b5b97', 'e838ed44-da6e-40f4-8e73-827ff50324c6', '2025-01-06 21:42:51.934712', '2025-01-06 21:42:51.934712', 'Barry Bergstrom', 'Magnolia.Homenick37@yahoo.com', 'YseyG1TN7TBjZKI');
+INSERT INTO users VALUES ('30caa1b1-674a-4c8a-afb4-b05a7e47b95e', 'e8cf6901-64d5-4969-b315-664addaedd0f', '2025-01-06 21:42:51.934712', '2025-01-06 21:42:51.934712', 'Bernadette Koss', 'Candida47@yahoo.com', 'n2vF6XzkhyohYnJ');
+INSERT INTO users VALUES ('60ea2a12-2bf6-4997-8c85-412536e63807', 'e8cf6901-64d5-4969-b315-664addaedd0f', '2025-01-06 21:42:51.934712', '2025-01-06 21:42:51.934712', 'Carl Tillman', 'Jarret_Osinski-Ryan@gmail.com', 'qDIOVMxPUf3HT6j');
+INSERT INTO users VALUES ('e0602972-ada1-498b-995f-01d765d03663', 'e8cf6901-64d5-4969-b315-664addaedd0f', '2025-01-06 21:42:51.934712', '2025-01-06 21:42:51.934712', 'Dr. Jaime Mertz-West', 'Darrell_Langworth@hotmail.com', 'HbpMId2_WAfaYtB');
+INSERT INTO users VALUES ('307f8fdc-2e01-4e4a-afb3-39fba9c0934f', 'e838ed44-da6e-40f4-8e73-827ff50324c6', '2025-01-06 21:42:51.934712', '2025-01-06 21:42:51.934712', 'Dr. Abraham Medhurst-West', 'Lacy_Reynolds@gmail.com', 'jqSnmZNYkNSDieJ');
+INSERT INTO users VALUES ('9f6eb270-dc8e-44be-ac5d-3221bb76d0fd', 'e838ed44-da6e-40f4-8e73-827ff50324c6', '2025-01-06 21:42:51.934712', '2025-01-06 21:42:51.934712', 'Ms. Marian Davis II', 'Callie.Stanton@hotmail.com', 'sFYT5xFuO4hhzRs');
+INSERT INTO users VALUES ('208c3c57-d9da-4d1e-9bbc-fc8bfb8388a5', 'e8cf6901-64d5-4969-b315-664addaedd0f', '2025-01-06 21:42:51.934712', '2025-01-06 21:42:51.934712', 'Keith Muller', 'Reid_Prosacco@yahoo.com', 'AEBuHRnNHew3H2S');
+INSERT INTO users VALUES ('6402d5d9-f763-4ea1-b7f9-209e0a0ad9cd', 'e8cf6901-64d5-4969-b315-664addaedd0f', '2025-01-06 21:42:51.934712', '2025-01-06 21:42:51.934712', 'Marta Connelly II', 'Fanny86@hotmail.com', 'ynbaKwwhRB2h_qP');
+INSERT INTO users VALUES ('2766101c-3b58-4563-961f-a7952214941e', 'e838ed44-da6e-40f4-8e73-827ff50324c6', '2025-01-06 21:42:51.934712', '2025-01-06 21:42:51.934712', 'Juan Howe', 'Leora.Borer39@gmail.com', 'EmNZ00JPufjDMDQ');
+INSERT INTO users VALUES ('893cee7a-290b-40aa-b410-69bd862ec1e6', 'e838ed44-da6e-40f4-8e73-827ff50324c6', '2025-01-06 21:42:51.934712', '2025-01-06 21:42:51.934712', 'Loren Williamson', 'Roman21@hotmail.com', 'fBwQHAsZr7cFhUB');
+INSERT INTO users VALUES ('c7f63636-16eb-4112-91c8-ee94d596b0ed', 'e838ed44-da6e-40f4-8e73-827ff50324c6', '2025-01-06 21:42:51.934712', '2025-01-06 21:42:51.934712', 'Mrs. Michele Muller Sr.', 'Darrin48@hotmail.com', 'W1cUn7TQAzEPHfS');
+INSERT INTO users VALUES ('55f50aac-6aad-48ed-b80c-c7ae4ac0cbeb', 'e838ed44-da6e-40f4-8e73-827ff50324c6', '2025-01-06 21:42:51.934712', '2025-01-06 21:42:51.934712', 'Debra Glover', 'Mertie75@gmail.com', 'f9Qij7XsVk5kXzO');
+INSERT INTO users VALUES ('c8052ab0-1656-4244-92ea-1f06234e49b0', 'e8cf6901-64d5-4969-b315-664addaedd0f', '2025-01-06 21:42:51.934712', '2025-01-06 21:42:51.934712', 'Juanita Emard', 'Kenna.Abbott@hotmail.com', 'Zu6hTf0l5pSCu3u');
+INSERT INTO users VALUES ('3cb34323-29c6-4d32-a776-347ad6b6cc11', 'e838ed44-da6e-40f4-8e73-827ff50324c6', '2025-01-06 21:42:51.934712', '2025-01-06 21:42:51.934712', 'Elmer Carroll', 'Bonita.Bauch9@yahoo.com', 'Q7NHRdnbpVj2kqk');
+INSERT INTO users VALUES ('6b2ebbcb-701c-4664-b039-b2ccec11a237', 'e8cf6901-64d5-4969-b315-664addaedd0f', '2025-01-06 21:42:51.934712', '2025-01-06 21:42:51.934712', 'Jay Murray V', 'Blanca_Klocko@gmail.com', 'zM2XdCWXhFQ94iz');
+INSERT INTO users VALUES ('392d8fef-f427-469e-ab6b-8fbdb9f6d347', 'e838ed44-da6e-40f4-8e73-827ff50324c6', '2025-01-06 21:42:51.934712', '2025-01-06 21:42:51.934712', 'Marcia Towne', 'Tremayne_Krajcik31@hotmail.com', 'AtOewE_ntdJny9O');
+INSERT INTO users VALUES ('fbb77b7a-66ed-4390-bee3-0c6e7a29a14c', 'e838ed44-da6e-40f4-8e73-827ff50324c6', '2025-01-06 21:42:51.934712', '2025-01-06 21:42:51.934712', 'Casey Crona Jr.', 'Raul_Keeling92@gmail.com', 'UCC_eXGj47s1by_');
