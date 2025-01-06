@@ -5,7 +5,7 @@ import { seedOrders } from './seed-orders';
 import { seedOrdersToProducts } from './seed-orders-to-products';
 import { seedProducts } from './seed-products';
 import { seedSellers } from './seed-sellers';
-import { seedUsersToUserRoles } from './seed-users-to-user-roles';
+import { seedUsers } from './seed-users';
 import { truncateTables } from './truncate-tables';
 
 const seedDatabase = async () => {
@@ -18,16 +18,16 @@ const seedDatabase = async () => {
 
     // Seed: requires base tables to be seeded
     await seedProducts();
-    await seedUsersToUserRoles();
+    await seedUsers();
 
-    // Seed: requires usersToUserRoles to be seeded
+    // Seed: requires users to be seeded
     await seedSellers();
     await seedClients();
 
     // Seed: requires sellers and clients to be seeded
     await seedOrders();
 
-    // Seed: requires products and orders to be seeded
+    // Seed: requires orders and products to be seeded
     await seedOrdersToProducts();
 
     console.log('Database seeded successfully');
