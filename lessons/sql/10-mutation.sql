@@ -1,4 +1,4 @@
-/* Data Modification */
+/* Mutation */
 
 /* `INSERT INTO` */
 -- Adds data to a table

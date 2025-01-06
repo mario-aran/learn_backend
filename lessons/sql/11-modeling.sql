@@ -1,5 +1,4 @@
-/* Data Modeling */
-
+/* Modeling */
 
 /* Constraints */
 -- Primary Key: Ensures unique identifiers for each row

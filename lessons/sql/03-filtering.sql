@@ -1,4 +1,4 @@
-/* Filtering Data */
+/* Filtering */
 
 /* `WHERE` */
 SELECT *

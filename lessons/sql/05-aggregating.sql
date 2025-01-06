@@ -1,4 +1,4 @@
-/* Aggregating Data */
+/* Aggregating */
 
 /* Aggregate Functions: `COUNT`, `SUM`, `AVG`, `MIN`, `MAX`
 - Can't be used inside `WHERE`

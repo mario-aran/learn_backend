@@ -8,14 +8,14 @@
 - Data Types
 - Comments
 
-## Retrieving Data
+## Retrieving
 
 - `SELECT FROM`
 - `SELECT DISTINCT`
 - Arithmetic Operators: `+`, `-`, `*`, `/`, `%`
 - Aliases: `AS`
 
-## Filtering Data
+## Filtering
 
 - `WHERE`
 - Comparison Operators: `=`, `>`, `<`, `>=`, `<=`, `<>`
@@ -23,12 +23,12 @@
 - Null Values: `IS NULL`, `IS NOT NULL`
 - Logical Operators: `AND`, `OR`, `NOT`
 
-## Sorting and Limiting Data
+## Sorting and Limiting
 
 - `ORDER BY ASC/DESC`
 - `LIMIT OFFSET`
 
-## Aggregating Data
+## Aggregating
 
 - Aggregate Functions: `COUNT`, `SUM`, `AVG`, `MIN`, `MAX`
 - `GROUP BY`
@@ -67,13 +67,13 @@
 - Correlated Subqueries
 - Subqueries in `SELECT`, `WHERE` and `FROM`
 
-## Data Modification
+## Mutation
 
 - `INSERT INTO`
 - `UPDATE SET`
 - `DELETE FROM`
 
-## Data Modeling
+## Modeling
 
 - Keys: Primary, Foreign
 - Concepts: Cardinality, Ordinality, Normalization, Notations
@@ -84,4 +84,4 @@
 - `ALTER`
 - `DROP`
 
-![img-data-modeling](/lessons/sql/resources/data-modeling.png)
+![img-data-modeling](/lessons/sql/resources/modeling.png)

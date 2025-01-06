@@ -1,4 +1,4 @@
-/* Sorting and Limiting Data */
+/* Sorting and Limiting */
 
 /* `ORDER BY ASC/DESC`
 - Ascending by default

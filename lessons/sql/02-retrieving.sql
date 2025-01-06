@@ -1,4 +1,4 @@
-/* Retrieving Data */
+/* Retrieving */
 
 /* `SELECT FROM` */
 -- All columns
