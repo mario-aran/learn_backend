@@ -1,7 +1,7 @@
 import { relations } from 'drizzle-orm';
 import { pgTable, varchar } from 'drizzle-orm/pg-core';
 import { createdAt, id, updatedAt } from './columns';
-import { usersToUserRolesSchema } from './users-to-user-roles.schema';
+import { usersSchema } from './users.schema';
 
 // Constants
 export const TABLE_USER_ROLES = 'user_roles';
@@ -14,5 +14,5 @@ export const userRolesSchema = pgTable(TABLE_USER_ROLES, {
 });
 
 export const userRolesRelations = relations(userRolesSchema, ({ many }) => ({
-  usersToUserRoles: many(usersToUserRolesSchema),
+  users: many(usersSchema),
 }));

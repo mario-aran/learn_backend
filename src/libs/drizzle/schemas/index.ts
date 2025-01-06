@@ -6,5 +6,4 @@ export * from './product-categories.schema';
 export * from './products.schema';
 export * from './sellers.schema';
 export * from './user-roles.schema';
-export * from './users-to-user-roles.schema';
 export * from './users.schema';
