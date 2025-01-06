@@ -44,7 +44,7 @@
 - Self Join
 - Multiple Joins
 
-![img-joins](/lessons/sql/resources/img-joins.png)
+![img-joins](/lessons/sql/resources/joins.png)
 
 ## Case Statements
 
@@ -81,4 +81,4 @@
 - `ALTER`
 - `DROP`
 
-![img-data-modeling](/lessons/sql/resources/img-data-modeling.png)
+![img-data-modeling](/lessons/sql/resources/data-modeling.png)
