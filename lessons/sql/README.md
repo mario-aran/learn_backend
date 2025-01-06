@@ -75,6 +75,9 @@
 
 ## Data Modeling
 
+- Keys: Primary, Foreign
+- Concepts: Cardinality, Ordinality, Normalization, Notations
+- Relationships: One-to-One, One-to-Many, Many-to-Many
 - Constraints
 - Indexes
 - `CREATE`

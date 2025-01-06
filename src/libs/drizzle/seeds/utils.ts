@@ -1,8 +1,5 @@
 import { db } from '@/libs/drizzle/db';
-import {
-  userRolesSchema,
-  usersToUserRolesSchema,
-} from '@/libs/drizzle/schemas';
+import { userRolesSchema, usersSchema } from '@/libs/drizzle/schemas';
 import { eq } from 'drizzle-orm';
 
 export const findUsersByRoleName = async (roleName: string) => {
@@ -13,16 +10,11 @@ export const findUsersByRoleName = async (roleName: string) => {
   });
   if (!userRole) throw new Error(`No ${roleName} user role found`);
 
-  const roleUsers = await db.query.usersSchema.findMany({
+  const users = await db.query.usersSchema.findMany({
     columns: { id: true },
-    with: {
-      usersToUserRoles: {
-        columns: { userId: true },
-        where: eq(usersToUserRolesSchema.userRoleId, userRole.id),
-      },
-    },
+    where: eq(usersSchema.userRoleId, userRole.id),
   });
-  if (roleUsers.length === 0) throw new Error(`No ${roleName} users found`);
+  if (users.length === 0) throw new Error(`No ${roleName} users found`);
 
-  return roleUsers.map(({ id }) => ({ id }));
+  return users;
 };
