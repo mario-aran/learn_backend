@@ -14,25 +14,25 @@ import {
 } from '@/libs/drizzle/schemas';
 
 // Types
-type UserRole = typeof userRolesSchema.$inferInsert;
-type ClientDiscount = typeof clientDiscountsSchema.$inferInsert;
-type ProductCategory = typeof productCategoriesSchema.$inferInsert;
+type UserRoleRow = typeof userRolesSchema.$inferInsert;
+type ClientDiscountRow = typeof clientDiscountsSchema.$inferInsert;
+type ProductCategoryRow = typeof productCategoriesSchema.$inferInsert;
 
 // Prepare mocks
 const mockedUserRoles = Object.values(USER_ROLES).map(
-  (name): UserRole => ({
+  (name): UserRoleRow => ({
     name,
   }),
 );
 
 const mockedClientDiscounts = CLIENT_DISCOUNTS.map(
-  (discount): ClientDiscount => ({
+  (discount): ClientDiscountRow => ({
     discount,
   }),
 );
 
 const mockedProductCategories = Object.values(PRODUCT_CATEGORIES).map(
-  (name): ProductCategory => ({
+  (name): ProductCategoryRow => ({
     name,
   }),
 );
