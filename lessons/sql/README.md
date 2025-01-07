@@ -2,15 +2,12 @@
 
 ## Basics
 
-- Concepts
-- Tools
+- Concepts & Tools
 - Syntax
-- Data Types
-- Comments
 
 ## Retrieving
 
-- `SELECT FROM`
+- `SELECT, FROM`
 - `SELECT DISTINCT`
 - Arithmetic Operators: `+`, `-`, `*`, `/`, `%`
 - Aliases: `AS`
@@ -25,14 +22,22 @@
 
 ## Sorting and Limiting
 
-- `ORDER BY ASC/DESC`
-- `LIMIT OFFSET`
+- `ORDER BY, ASC/DESC`
+- `LIMIT, OFFSET`
+
+## Fields Manipulation
+
+- Data Types (e.g., INT, VARCHAR, DATE)
+- COALESCE (Replacing NULL values)
+- String Functions (e.g., CONCAT(), SUBSTRING())
+- Date Functions (e.g., EXTRACT(), DATE_TRUNC())
+- Casting (e.g., CAST(), CONVERT())
 
 ## Aggregating
 
 - Aggregate Functions: `COUNT`, `SUM`, `AVG`, `MIN`, `MAX`
 - `GROUP BY`
-- With `ORDER BY`
+- Aggregate Functions with `ORDER BY`
 - `HAVING`
 
 ## Joins
@@ -46,11 +51,19 @@
 
 ![img-joins](/lessons/sql/resources/joins.png)
 
+## CTEs
+
+## Subqueries
+
+- Single-Row Subqueries
+- Multi-Row Subqueries
+- Correlated Subqueries
+- Subqueries in `SELECT`, `WHERE` and `FROM`
+
 ## Case Statements
 
-- `CASE`
-- Case in `SELECT`
-- Case with Other Commands
+- `CASE` in `SELECT`
+- `CASE` in Other Keywords
 
 ## Set Operations
 
@@ -59,15 +72,9 @@
 - `INTERSECT`
 - `EXCEPT`
 
-## Subqueries
+## Window Functions
 
-- Subquery Syntax
-- Single-Row Subqueries
-- Multi-Row Subqueries
-- Correlated Subqueries
-- Subqueries in `SELECT`, `WHERE` and `FROM`
-
-## Mutation
+## Mutations
 
 - `INSERT INTO`
 - `UPDATE SET`
