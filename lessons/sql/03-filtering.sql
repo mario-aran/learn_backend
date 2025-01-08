@@ -1,28 +1,33 @@
 /* Filtering */
 
 /* `WHERE` */
-SELECT *
-FROM table_name
-WHERE condition;
+-- Syntax
+SELECT columns
+FROM table
+WHERE (condition); -- Optional parentheses for conditions.
 
 /* Comparison Operators: `=`, `>`, `<`, `>=`, `<=`, `<>` */
-WHERE id = 1;
-WHERE id > 1;
-WHERE id < 1;
-WHERE id >= 1;
-WHERE id <= 1;
-WHERE id <> 1;
+SELECT * FROM products
+    WHERE unit_price = 100;
+    WHERE unit_price > 100;
+    WHERE unit_price < 100;
+    WHERE unit_price >= 100;
+    WHERE unit_price <= 100;
+    WHERE unit_price <> 100;
 
-/* Conditional Operators: `BETWEEN`, `IN`, `LIKE` */
-WHERE id BETWEEN 1 AND 3;
-WHERE id IN (1, 2, 3);
-WHERE name LIKE 'a__%'; -- String column and wildcards (_ %)
-
-/* Null Values: `IS NULL`, `IS NOT NULL` */
-WHERE name IS NULL;
-WHERE name IS NOT NULL;
+/* Null Operators: `IS NULL`, `IS NOT NULL` */
+SELECT * FROM products
+    WHERE unit_price IS NULL;
+    WHERE unit_price IS NOT NULL;
 
 /* Logical Operators: `AND`, `OR`, `NOT` */
-WHERE id = 1 AND product_category_id = 1;
-WHERE id = 1 OR product_category_id = 1;
-WHERE NOT id = 1;
+SELECT * FROM products
+    WHERE (unit_price > 200) AND (unit_price < 1000);
+    WHERE (unit_price > 200) OR (unit_price < 1000);
+    WHERE NOT unit_price > 200;
+
+/* Conditional Operators: `BETWEEN`, `IN`, `LIKE` */
+SELECT * FROM products
+    WHERE unit_price BETWEEN 200 AND 1000;
+    WHERE unit_price IN (100, 200, 300);
+    WHERE name LIKE 'A%e%'; -- For string columns only, % is a wildcard.
