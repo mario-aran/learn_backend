@@ -1,6 +1,7 @@
 /* Retrieving */
 
-/* `SELECT, FROM` */
+/* 1. `SELECT`, `FROM`
+*/
 -- Syntax
 SELECT columns
 FROM table;
@@ -17,7 +18,8 @@ FROM products;
 SELECT *, id, 1, 'soy una frase'
 FROM products;
 
-/* Aliases: `AS`
+
+/* 2. Aliases: `AS`
 - Use double quotes ("") for aliases to avoid errors with reserved keywords
 - `AS` is optional
 - Can be used for columns or tables (primarily used with joins)
@@ -25,7 +27,9 @@ FROM products;
 SELECT id AS "order_id"
 FROM orders o;
 
-/* Arithmetic Operators: `+`, `-`, `*`, `/`, `%` */
+
+/* 3. Arithmetic Operators: `+`, `-`, `*`, `/`, `%`
+*/
 SELECT 1 + 1;
 SELECT 1 - 1;
 SELECT 1 * 1;
@@ -33,6 +37,8 @@ SELECT 1 / 1;
 SELECT 1 % 1;
 SELECT 2 * (1 + 1); -- Optional parentheses P. E. M. D. A. S.
 
-/* Removing Duplicates: `SELECT DISTINCT` */
+
+/* 4. `SELECT DISTINCT`
+*/
 SELECT DISTINCT product_category_id, unit_price
 FROM products;
