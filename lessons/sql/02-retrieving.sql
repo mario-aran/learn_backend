@@ -29,6 +29,6 @@ SELECT 1 / 1;
 SELECT 1 % 1;
 SELECT 2 * (1 + 1); -- P. E. M. D. A. S.
 
-/* Removing duplicates: `SELECT DISTINCT` */
+/* Removing Duplicates: `SELECT DISTINCT` */
 SELECT DISTINCT product_category_id, unit_price
 FROM products;
