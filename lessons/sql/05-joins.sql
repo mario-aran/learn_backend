@@ -1,6 +1,6 @@
 /* Joins */
 
-/* Outer Joins: `LEFT (OUTER) JOIN`, `RIGHT (OUTER) JOIN`, `FULL (OUTER) JOIN`
+/* 1. `OUTER JOIN`: `LEFT JOIN`, `RIGHT JOIN`, `FULL JOIN`
 - OUTER keyword is optional
 */
 -- Syntax
@@ -23,21 +23,23 @@ FROM products p
 	FULL JOIN product_categories pc ON p.product_category_id = pc.id;
 
 
-/* `(INNER) JOIN`
-- INNER word is optional
+/* 2. `INNER JOIN`
+- INNER keyword is optional
 */
 SELECT p.name AS "product", pc.name AS "product_category"
 FROM products p
 	INNER JOIN product_categories pc ON p.product_category_id = pc.id;
 
 
-/* Self Joins */
+/* 3. Self Join
+*/
 SELECT p1.name AS "product1", p2.name AS "product2"
 FROM products p1
 	LEFT JOIN products p2 ON p1.id = p2.id;
 
 
-/* Multiple Joins */
+/* 4. Multiple Joins
+*/
 SELECT o.id AS "order_id",
 	o.created_at AS "order_created_at",
 	otp.unit_price AS "order_unit_price",
