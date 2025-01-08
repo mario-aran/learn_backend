@@ -1,6 +1,10 @@
 /* Retrieving */
 
 /* `SELECT FROM` */
+-- Syntax
+SELECT columns
+FROM table;
+
 -- All columns
 SELECT *
 FROM products;
