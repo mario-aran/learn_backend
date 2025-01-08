@@ -9,14 +9,15 @@ FROM products;
 SELECT id
 FROM products;
 
--- Multiple values, separated by commas
-SELECT *, id, 1
+-- Multiple columns, separated by commas
+SELECT *, id, 1, 'soy una frase'
 FROM products;
 
-/* `SELECT DISTINCT` */
--- Unique values
-SELECT DISTINCT product_category_id, price
-FROM table;
+/* `SELECT DISTINCT` 
+- Remove duplicates.
+*/
+SELECT DISTINCT product_category_id, unit_price
+FROM products;
 
 /* Arithmetic Operators: `+`, `-`, `*`, `/`, `%` */
 SELECT 1 + 1;
@@ -27,9 +28,9 @@ SELECT 1 % 1;
 SELECT 2 * (1 + 1); -- P. E. M. D. A. S.
 
 /* Aliases: `AS`
-- Use "" to avoid errors on reserved keywords
-- `AS` is optional
+- Use double quotes ("") for aliases to avoid errors with reserved keywords.
+- `AS` is optional.
+- Can be used for columns or tables (primarily used with joins).
 */
--- Column and table
-SELECT price AS "alias"
-FROM products AS "p";
+SELECT id AS "order_id"
+FROM orders o;
