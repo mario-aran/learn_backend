@@ -23,6 +23,7 @@ FROM products;
 - Use double quotes ("") for aliases to avoid errors with reserved keywords
 - `AS` is optional
 - Can be used for columns or tables (primarily used with joins)
+- It doesn't replace the column name, it just changes its appearance
 */
 SELECT id AS "order_id"
 FROM orders o;
