@@ -13,11 +13,13 @@ FROM products;
 SELECT *, id, 1, 'soy una frase'
 FROM products;
 
-/* `SELECT DISTINCT` 
-- Remove duplicates.
+/* Aliases: `AS`
+ - Use double quotes ("") for aliases to avoid errors with reserved keywords.
+ - `AS` is optional.
+ - Can be used for columns or tables (primarily used with joins).
 */
-SELECT DISTINCT product_category_id, unit_price
-FROM products;
+SELECT id AS "order_id"
+FROM orders o;
 
 /* Arithmetic Operators: `+`, `-`, `*`, `/`, `%` */
 SELECT 1 + 1;
@@ -27,10 +29,6 @@ SELECT 1 / 1;
 SELECT 1 % 1;
 SELECT 2 * (1 + 1); -- P. E. M. D. A. S.
 
-/* Aliases: `AS`
-- Use double quotes ("") for aliases to avoid errors with reserved keywords.
-- `AS` is optional.
-- Can be used for columns or tables (primarily used with joins).
-*/
-SELECT id AS "order_id"
-FROM orders o;
+/* Removing duplicates: `SELECT DISTINCT` */
+SELECT DISTINCT product_category_id, unit_price
+FROM products;
