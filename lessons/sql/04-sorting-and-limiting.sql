@@ -1,25 +1,24 @@
 /* Sorting and Limiting */
 
-/* `ORDER BY ASC/DESC`
+/* `ORDER BY, ASC/DESC`
 - Ascending by default
 */
+-- Syntax
+SELECT columns
+FROM table
+ORDER BY columns;
+
 -- By column
-SELECT *
-FROM products
-ORDER BY name
+SELECT * FROM products
+    ORDER BY unit_price;
 
--- Ascending, Descending
-ORDER BY id ASC
-ORDER BY id DESC
-ORDER BY id DESC, name ASC
+/* `ASC`, `DESC` */
+SELECT * FROM products
+    ORDER BY unit_price ASC;
+    ORDER BY unit_price DESC;
+    ORDER BY unit_price DESC, name ASC;
 
-/* `LIMIT OFFSET` */
--- Limit to 5 rows
-SELECT *
-FROM table
-LIMIT 5;
-
--- Skipping the first 5 rows
-SELECT *
-FROM table
-LIMIT 5 OFFSET 5;
+/* `LIMIT`, `OFFSET` */
+SELECT * FROM products ORDER BY unit_price DESC
+    LIMIT 5; -- Limit to 5 rows
+    LIMIT 5 OFFSET 5; -- Skipping the first 5 rows
