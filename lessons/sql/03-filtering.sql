@@ -5,7 +5,7 @@
 -- Syntax
 SELECT columns
 FROM table
-WHERE (condition); -- Optional parentheses
+WHERE conditions
 
 
 /* 2. Comparison Operators: `=`, `>`, `<`, `>=`, `<=`, `<>`
@@ -29,7 +29,7 @@ SELECT * FROM products
 /* 4. Logical Operators: `AND`, `OR`, `NOT`
 */
 SELECT * FROM products
-    WHERE (unit_price > 200) AND (unit_price < 1000);
+    WHERE (unit_price > 200) AND (unit_price < 1000); -- Optional parentheses
     WHERE (unit_price > 200) OR (unit_price < 1000);
     WHERE NOT unit_price > 200;
 
