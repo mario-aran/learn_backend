@@ -67,21 +67,21 @@ SELECT o.id AS "order_id",
 	urc.name AS "client_user_role"
 FROM orders o
 	/* orders -> products */
-	LEFT JOIN orders_to_products AS "otp" ON o.id = otp.order_id
-	LEFT JOIN products AS "p" ON otp.product_id = p.id
-	LEFT JOIN product_categories AS "pc" ON p.product_category_id = pc.id
+	LEFT JOIN orders_to_products otp ON o.id = otp.order_id
+	LEFT JOIN products p ON otp.product_id = p.id
+	LEFT JOIN product_categories pc ON p.product_category_id = pc.id
 
 	/* orders -> sellers */
-	LEFT JOIN sellers AS "s" ON o.seller_id = s.id
-	LEFT JOIN users AS "us" ON s.user_id = us.id
-	LEFT JOIN user_roles AS "urs" ON us.user_role_id = urs.id
+	LEFT JOIN sellers s ON o.seller_id = s.id
+	LEFT JOIN users us ON s.user_id = us.id
+	LEFT JOIN user_roles urs ON us.user_role_id = urs.id
 
 	/* orders -> clients */
-	LEFT JOIN clients AS "c" ON o.client_id = c.id
+	LEFT JOIN clients c ON o.client_id = c.id
 
 	/* clients -> client_discounts */
-	LEFT JOIN client_discounts AS "cd" ON c.client_discount_id = cd.id
+	LEFT JOIN client_discounts cd ON c.client_discount_id = cd.id
 
 	/* clients -> users */
-	LEFT JOIN users AS "uc" ON c.user_id = uc.id
-	LEFT JOIN user_roles AS "urc" ON uc.user_role_id = urc.id;
+	LEFT JOIN users uc ON c.user_id = uc.id
+	LEFT JOIN user_roles urc ON uc.user_role_id = urc.id;
