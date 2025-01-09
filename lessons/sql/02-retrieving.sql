@@ -10,11 +10,11 @@ FROM table;
 SELECT *
 FROM products;
 
--- One column
-SELECT id
+-- Specific columns, separated by commas
+SELECT id, name
 FROM products;
 
--- Multiple columns, separated by commas
+-- Combined values
 SELECT *, id, 1, 'soy una frase'
 FROM products;
 
