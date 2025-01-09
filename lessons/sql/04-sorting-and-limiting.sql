@@ -15,13 +15,14 @@ SELECT * FROM products
 /* 2. `ASC`, `DESC`
 */
 SELECT * FROM products
-    ORDER BY unit_price ASC;
-    ORDER BY unit_price DESC;
-    ORDER BY unit_price DESC, name ASC;
+    ORDER BY unit_price ASC; -- Ascending
+    ORDER BY unit_price DESC; -- Descending
+    ORDER BY unit_price DESC, name ASC; -- Combined
 
 
 /* 3. `LIMIT`, `OFFSET`
 */
-SELECT * FROM products ORDER BY unit_price DESC
-    LIMIT 5; -- Limit to 5 rows
-    LIMIT 5 OFFSET 5; -- Skip the first 5 rows
+SELECT * FROM products ORDER BY unit_price
+    LIMIT 5; -- Limit to 5 rows    
+    OFFSET 5; -- Skip the first 5 rows
+    LIMIT 5 OFFSET 5; -- Combined
