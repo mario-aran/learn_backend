@@ -5,7 +5,7 @@
 -- Syntax
 SELECT columns
 FROM table
-WHERE conditions
+WHERE conditions;
 
 
 /* 2. Comparison Operators: `=`, `>`, `<`, `>=`, `<=`, `<>`
@@ -39,4 +39,4 @@ SELECT * FROM products
 SELECT * FROM products
     WHERE unit_price BETWEEN 200 AND 1000;
     WHERE unit_price IN (100, 200, 300);
-    WHERE name LIKE 'A%e%'; -- For string columns only, % is a wildcard
+    WHERE name LIKE 'A%e%'; -- Only for string columns, % is a wildcard
