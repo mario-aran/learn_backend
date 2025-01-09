@@ -23,10 +23,10 @@ SELECT *, id, 1, 'soy una frase'
 FROM products;
 
 /* 2. Aliases: `AS`
-- Use double quotes ("") for aliases to avoid errors
-- `AS` keyword is optional
 - Can be used for columns and tables(primarily with joins)
-- It does not replace the column name
+- Use double quotes ("") for aliases on columns to avoid errors
+- `AS` keyword is optional but recommended for columns
+- It does not replace the column name but it does replace the table name
 */
 SELECT id AS "order_id"
 FROM orders o;

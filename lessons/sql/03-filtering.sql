@@ -1,7 +1,7 @@
 /* Filtering */
 
 /* 1. `WHERE`
-- Parentheses per condition are optional
+- Parentheses per condition are optional but recommended
 */
 -- Syntax
 SELECT columns
