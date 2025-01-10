@@ -11,7 +11,7 @@
 - `SELECT`, `FROM`
 - Aliases: `AS`
 - Arithmetic Operators: `+`, `-`, `*`, `/`, `%`
-- `SELECT DISTINCT`
+- Removing Duplicates: `SELECT DISTINCT`
 
 ## Lesson 03: Filtering
 
