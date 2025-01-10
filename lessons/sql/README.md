@@ -42,7 +42,7 @@
 
 ## Lesson 07: Modeling
 
-![img-data-modeling](/lessons/sql/resources/modeling-relationships.png)
+![img-data-modeling](/lessons/sql/resources/img-modeling.png)
 
 - Normalization
 - Keys: Primary, Foreign, Composite
@@ -52,7 +52,7 @@
 
 ## Lesson 08: Joins
 
-![img-joins](/lessons/sql/resources/joins.png)
+![img-joins](/lessons/sql/resources/img-joins.png)
 
 - Outer Joins: `LEFT JOIN`, `RIGHT JOIN`, `FULL JOIN`
 - `INNER JOIN`
