@@ -1,94 +1,81 @@
-# Learn SQL
+# Learn SQL and DBs
 
-## Basics
+## 01. Introduction
 
-- Concepts & Tools
-- Syntax
+- Concepts: SQL, Databases, Tables, Columns, Rows, Keys, ERD
+- Tools: RDBMS, SQL Clients, Playgrounds
+- Syntax: Queries, Semicolons, Naming Conventions, Comments, Data Types
 
-## Retrieving
+## 02. Retrieving
 
-- `SELECT, FROM`
-- `SELECT DISTINCT`
-- Arithmetic Operators: `+`, `-`, `*`, `/`, `%`
+- `SELECT`, `FROM`
 - Aliases: `AS`
+- Arithmetic Operators: `+`, `-`, `*`, `/`, `%`
+- `SELECT DISTINCT`
 
-## Filtering
+## 03. Filtering
 
 - `WHERE`
 - Comparison Operators: `=`, `>`, `<`, `>=`, `<=`, `<>`
-- Conditional Operators: `BETWEEN`, `IN`, `LIKE`
-- Null Values: `IS NULL`, `IS NOT NULL`
+- NULL Values: `IS NULL`, `IS NOT NULL`
 - Logical Operators: `AND`, `OR`, `NOT`
+- Conditional Operators: `BETWEEN`, `IN`, `LIKE`
 
-## Sorting and Limiting
+## 04. Sorting and Limiting
 
-- `ORDER BY, ASC/DESC`
-- `LIMIT, OFFSET`
+- `ORDER BY`
+- `ASC`, `DESC`
+- `LIMIT`, `OFFSET`
 
-## Fields Manipulation
+## 05. Data Manipulation
 
-- Data Types (e.g., INT, VARCHAR, DATE)
-- COALESCE (Replacing NULL values)
-- String Functions (e.g., CONCAT(), SUBSTRING())
-- Date Functions (e.g., EXTRACT(), DATE_TRUNC())
-- Casting (e.g., CAST(), CONVERT())
+- Handling NULLs: `COALESCE`, `NULLIF`
+- String Functions: `CONCAT`, `SUBSTRING`, `TRIM`, `UPPER`, `LOWER`
+- Date Functions: `EXTRACT`, `DATE_TRUNC`, `AGE`
+- Type Casting: `CAST`, `::`
 
-## Aggregating
+## 06. Aggregating
 
 - Aggregate Functions: `COUNT`, `SUM`, `AVG`, `MIN`, `MAX`
 - `GROUP BY`
-- Aggregate Functions with `ORDER BY`
 - `HAVING`
 
-## Joins
+## 07. Modeling
 
-- `LEFT (OUTER) JOIN`
-- `RIGHT (OUTER) JOIN`
-- `FULL (OUTER) JOIN`
-- `(INNER) JOIN`
-- Self Join
-- Multiple Joins
+![img-data-modeling](/lessons/sql/resources/modeling.png)
+
+- Normalization
+- Keys: Primary, Foreign, Composite
+- Notations: Crow's Foot, Chen
+- Relationships: Cardinality, Ordinality
+- Constraints and Indexes
+
+## 08. Joins
 
 ![img-joins](/lessons/sql/resources/joins.png)
 
-## CTEs
+- Outer Joins: `LEFT JOIN`, `RIGHT JOIN`, `FULL JOIN`
+- `INNER JOIN`
+- Self Join
+- Multiple Joins
 
-## Subqueries
+## 09. Nesting
 
-- Single-Row Subqueries
-- Multi-Row Subqueries
-- Correlated Subqueries
-- Subqueries in `SELECT`, `WHERE` and `FROM`
+- `CASE`
+- Subqueries
+- CTEs
 
-## Case Statements
+## 10. Mutations
 
-- `CASE` in `SELECT`
-- `CASE` in Other Keywords
+- Schema Mutations: `CREATE`, `ALTER`, `DROP`
+- Data Mutations: `INSERT INTO`, `UPDATE SET`, `DELETE FROM`, `TRUNCATE`
 
-## Set Operations
+## 11. Window Functions - pending
 
-- `UNION ALL`
-- `UNION`
+- ??
+
+## 12. Set Operations
+
+- Unions: `UNION`, `UNION ALL`
 - `INTERSECT`
 - `EXCEPT`
-
-## Window Functions
-
-## Mutations
-
-- `INSERT INTO`
-- `UPDATE SET`
-- `DELETE FROM`
-
-## Modeling
-
-- Keys: Primary, Foreign
-- Concepts: Cardinality, Ordinality, Normalization, Notations
-- Relationships: One-to-One, One-to-Many, Many-to-Many
-- Constraints
-- Indexes
-- `CREATE`
-- `ALTER`
-- `DROP`
-
-![img-data-modeling](/lessons/sql/resources/modeling.png)

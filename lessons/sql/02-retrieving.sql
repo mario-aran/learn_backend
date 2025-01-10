@@ -1,4 +1,4 @@
-/* Retrieving */
+/* Retrieving Data */
 
 /* 1. `SELECT`, `FROM`
 */
