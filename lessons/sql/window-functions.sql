@@ -1,3 +1,5 @@
+/* Window Functions */
+
 ROW_NUMBER() OVER (PARTITION BY column ORDER BY column)
 RANK() OVER (PARTITION BY column ORDER BY column)
 DENSE_RANK() OVER (PARTITION BY column ORDER BY column)

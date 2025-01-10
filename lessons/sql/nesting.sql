@@ -1,4 +1,13 @@
-/* Case Statements */
+/* Nesting */
+
+/* 1. `CASE` */
+
+
+/* 2. Subqueries */
+
+
+/* 3. CTEs */
+
 
 /* `CASE` */
 SELECT CASE

@@ -1,3 +1,10 @@
+## 05. Data Manipulation
+
+- Handling NULLs: `COALESCE`, `NULLIF`
+- String Functions: `CONCAT`, `SUBSTRING`, `TRIM`, `UPPER`, `LOWER`
+- Date Functions: `EXTRACT`, `DATE_TRUNC`, `AGE`
+- Type Casting: `CAST`, `::`
+
 
 Fields Manipulation (PostgreSQL)
 1. Data Types
