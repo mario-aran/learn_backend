@@ -42,7 +42,7 @@
 
 ## 07. Modeling
 
-![img-data-modeling](/lessons/sql/resources/modeling.png)
+![img-data-modeling](/lessons/sql/resources/modeling-relationships.png)
 
 - Normalization
 - Keys: Primary, Foreign, Composite
