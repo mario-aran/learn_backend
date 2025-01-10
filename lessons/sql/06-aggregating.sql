@@ -1,7 +1,9 @@
-/* Aggregating */
+/* Lesson 06: Aggregating */
 
 /* 1. Aggregate Functions: `COUNT`, `SUM`, `AVG`, `MIN`, `MAX`
+- Counts as a single column
 - Can't be used inside `WHERE` or `GROUP BY`
+- Can be used with `ORDER BY`
 - Only COUNT(*) includes null values
 */
 SELECT COUNT(*) AS "total_count" FROM products;
@@ -12,19 +14,18 @@ SELECT MIN(unit_price) AS "min_value" FROM products;
 SELECT MAX(unit_price) AS "max_value"FROM products;
 
 
-/* 2. `GROUP BY`
-*/
+/* 2. `GROUP BY` */
 -- Syntax
 SELECT aggregate_functions, columns 
 FROM table
 GROUP BY columns;
 
--- Grouped Aggregate Functions
+-- Grouped Aggregate Function
 SELECT SUM(unit_price) AS "total_price",
 product_category_id
 FROM products
 GROUP BY product_category_id
-ORDER BY SUM(unit_price) DESC; -- `ORDER BY` is optional
+ORDER BY SUM(unit_price); -- Optional
 
 
 /* 3. `HAVING`
