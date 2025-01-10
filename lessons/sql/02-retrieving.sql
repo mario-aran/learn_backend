@@ -34,7 +34,7 @@ FROM orders o;
 
 /* 3. Arithmetic Operators: `+`, `-`, `*`, `/`, `%`
 - Any column can be used with this operators
-- Parentheses are optional but recommended
+- Parentheses are optional but recommended to show it’s a single column
 */
 SELECT (1 + 1) AS "addition";
 SELECT (1 - 1) AS "substraction";
