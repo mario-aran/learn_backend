@@ -1,7 +1,6 @@
-/* Retrieving Data */
+/* Lesson 02: Retrieving */
 
-/* 1. `SELECT`, `FROM`
-*/
+/* 1. `SELECT`, `FROM` */
 -- Syntax
 SELECT columns
 FROM table;
@@ -22,18 +21,19 @@ FROM products;
 SELECT *, id, 1, 'soy una frase'
 FROM products;
 
+
 /* 2. Aliases: `AS`
-- Can be used for columns and tables(primarily with joins)
+- Can be used for columns and tables (primarily with joins)
 - Use double quotes ("") for aliases on columns to avoid errors
-- `AS` keyword is optional but recommended for columns
-- It does not replace the column name but it does replace the table name
+- It replaces the column name on select
+- `AS` keyword is optional but recommended for columns only
 */
 SELECT id AS "order_id"
 FROM orders o;
 
 
 /* 3. Arithmetic Operators: `+`, `-`, `*`, `/`, `%`
-- Any column can be used for this operations
+- Any column can be used with this operators
 - Parentheses are optional but recommended
 */
 SELECT (1 + 1) AS "addition";
@@ -44,8 +44,6 @@ SELECT (1 % 1) AS "remainder";
 SELECT (2 * (1 + 1)) AS "combined"; -- P. E. M. D. A. S.
 
 
-/* 4. `SELECT DISTINCT`
-- Remove duplicates
-*/
+/* 4. Removing Duplicates: `SELECT DISTINCT` */
 SELECT DISTINCT product_category_id, unit_price
 FROM products;
