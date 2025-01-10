@@ -1,19 +1,19 @@
 # Learn SQL and DBs
 
-## 01. Introduction
+## Lesson 01: Introduction
 
 - Concepts: SQL, Databases, Tables, Columns, Rows, Keys, ERD
 - Tools: RDBMS, SQL Clients, Playgrounds
-- Syntax: Queries, Semicolons, Naming Conventions, Comments, Data Types
+- Syntax: Queries, Semicolons, Naming Conventions, Data Types, Comments
 
-## 02. Retrieving
+## Lesson 02: Retrieving
 
 - `SELECT`, `FROM`
 - Aliases: `AS`
 - Arithmetic Operators: `+`, `-`, `*`, `/`, `%`
 - `SELECT DISTINCT`
 
-## 03. Filtering
+## Lesson 03: Filtering
 
 - `WHERE`
 - Comparison Operators: `=`, `>`, `<`, `>=`, `<=`, `<>`
@@ -21,26 +21,26 @@
 - Logical Operators: `AND`, `OR`, `NOT`
 - Conditional Operators: `BETWEEN`, `IN`, `LIKE`
 
-## 04. Sorting and Limiting
+## Lesson 04: Sorting and Limiting
 
 - `ORDER BY`
 - `ASC`, `DESC`
 - `LIMIT`, `OFFSET`
 
-## 05. Data Manipulation
+## Lesson 05: Data Manipulation
 
 - Handling NULLs: `COALESCE`, `NULLIF`
 - String Functions: `CONCAT`, `SUBSTRING`, `TRIM`, `UPPER`, `LOWER`
 - Date Functions: `EXTRACT`, `DATE_TRUNC`, `AGE`
 - Type Casting: `CAST`, `::`
 
-## 06. Aggregating
+## Lesson 06: Aggregating
 
 - Aggregate Functions: `COUNT`, `SUM`, `AVG`, `MIN`, `MAX`
 - `GROUP BY`
 - `HAVING`
 
-## 07. Modeling
+## Lesson 07: Modeling
 
 ![img-data-modeling](/lessons/sql/resources/modeling-relationships.png)
 
@@ -50,7 +50,7 @@
 - Relationships: Cardinality, Ordinality
 - Constraints and Indexes
 
-## 08. Joins
+## Lesson 08: Joins
 
 ![img-joins](/lessons/sql/resources/joins.png)
 
@@ -59,23 +59,24 @@
 - Self Join
 - Multiple Joins
 
-## 09. Nesting
+## Lesson 09: Nesting
 
 - `CASE`
 - Subqueries
 - CTEs
 
-## 10. Mutations
+## Lesson 10: Mutations
 
 - Schema Mutations: `CREATE`, `ALTER`, `DROP`
 - Data Mutations: `INSERT INTO`, `UPDATE SET`, `DELETE FROM`, `TRUNCATE`
 
-## 11. Window Functions - pending
+## Lesson 11: Window Functions
 
-- ??
+- Common Windows Functions:
+- `UNBOUNDED PRECEDING/FOLLOWING`
 
-## 12. Set Operations
+## Lesson 12: Set Operations
 
-- Unions: `UNION`, `UNION ALL`
+- Unions: `UNION ALL`, `UNION`
 - `INTERSECT`
 - `EXCEPT`
