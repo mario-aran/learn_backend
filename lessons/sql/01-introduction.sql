@@ -1,13 +1,13 @@
 /* Lesson 01: Introduction */
 
 /* 1. Concepts: SQL, Databases, Tables, Columns, Rows, Keys, ERD */
--- SQL: (Structured Query Language), allows to interact with a database
--- Databases: (DB), data organized and structured in multiple tables (it's a huge text file)
+-- SQL: Structured Query Language, allows to interact with a database
+-- DBs: Databases, data organized and structured in multiple tables (like huge text file)
 -- Tables: Matrix of records, like excel sheets
 -- Columns: Fields of a table
 -- Rows: Records of a table
 -- Keys: Identify records in a table (ids)
--- ERD: (Entity Relationship Diagram), used to visualize the relationships between tables
+-- ERD: Entity Relationship Diagram, used to visualize the relationships between tables
 
 
 /* 2. Tools: RDBMS, SQL Clients, Playgrounds */

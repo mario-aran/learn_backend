@@ -2,7 +2,7 @@
 
 ## Lesson 01: Introduction
 
-- Concepts: SQL, Databases, Tables, Columns, Rows, Keys, ERD
+- Concepts: SQL, DBs, Tables, Columns, Rows, Keys, ERD
 - Tools: RDBMS, SQL Clients, Playgrounds
 - Syntax: Queries, Semicolons, Naming Conventions, Data Types, Comments
 
@@ -29,10 +29,10 @@
 
 ## Lesson 05: Data Manipulation
 
-- Handling NULLs: `COALESCE`, `NULLIF`
+- Handling NULLs: `COALESCE`
 - String Functions: `CONCAT`, `SUBSTRING`, `TRIM`, `UPPER`, `LOWER`
 - Date Functions: `EXTRACT`
-- Type Casting: `CAST`, `::`
+- Type Casting: `CAST`
 
 ## Lesson 06: Aggregating
 
