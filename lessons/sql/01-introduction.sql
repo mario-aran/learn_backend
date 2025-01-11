@@ -11,7 +11,7 @@
 
 
 /* 2. Tools: RDBMS, SQL Clients, Playgrounds */
--- RDBMS: (Relational Database Management System), PostgreSQL, MySQL, Micorsoft SQL Server, Oracle
+-- RDBMS: (Relational Database Management System), PostgreSQL, MySQL, Microsoft SQL Server, Oracle
 -- Clients: DBeaver, SQL Server Management Studio, MySQL Workbench
 -- Playgrounds: SQL Playground
 
