@@ -1,7 +1,7 @@
 /* Lesson 07: Modeling */
 
 /* 1. Normalization */
--- D.R.Y.: (Don't Reapeat Yourself), Data is stored in multiple tables, with each table having a single responsibility 
+-- D.R.Y.: (Don't Repeat Yourself), Data is stored in multiple tables, with each table having a single responsibility 
 
 
 /* 2. Keys: Primary, Foreign, Composite */
