@@ -32,5 +32,5 @@
 
 
 /* 5. Constraints: Unique, Not Null */
--- Unique: Ensures distinct values in a column, even if its not a primary key
+-- Unique: Ensures distinct values in a column, even if it's not a primary key
 -- Not Null: Prevents NULL values in a column
