@@ -42,22 +42,24 @@
 
 ## Lesson 07: Modeling
 
-![img-data-modeling](/lessons/sql/resources/img-modeling.png)
-
 - Normalization
 - Keys: Primary, Foreign, Composite
-- Notations: Crow's Foot, Chen
 - Relationships: Cardinality, Ordinality
-- Constraints and Indexes
+- Notations: Crow's Foot, Number
+- Constraints: Unique, Not Null
+
+![img-data-modeling](/lessons/sql/resources/img-modeling.png)
 
 ## Lesson 08: Joins
-
-![img-joins](/lessons/sql/resources/img-joins.png)
 
 - Outer Joins: `LEFT JOIN`, `RIGHT JOIN`, `FULL JOIN`
 - `INNER JOIN`
 - Self Join
 - Multiple Joins
+
+![img-joins](/lessons/sql/resources/img-joins.png)
+
+---
 
 ## Lesson 09: Nesting
 
@@ -69,6 +71,7 @@
 
 - Schema Mutations: `CREATE`, `ALTER`, `DROP`
 - Data Mutations: `INSERT INTO`, `UPDATE SET`, `DELETE FROM`, `TRUNCATE`
+- Indexes: Unique Indexes, Non-Unique Indexes
 
 ## Lesson 11: Window Functions
 
