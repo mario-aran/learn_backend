@@ -1,28 +1,36 @@
-/* Modeling */
+/* Lesson 07: Modeling */
 
-/* Constraints */
--- Primary Key: Ensures unique identifiers for each row
--- Foreign Key: Links tables and enforces referential integrity
--- Unique: Ensures distinct values in a column thats not a pk
--- Not Null: Prevents NULL values.
--- Default: Sets a default value when none is provided.
--- Check: Defines conditions for column values.
+/* 1. Normalization */
+-- D.R.Y.: (Don't Reapeat Yourself), Data is stored in multiple tables, with each table having a single responsibility 
 
-/* Indexes
-- Primary Key and Unique columns have Indexes by default
+
+/* 2. Keys: Primary, Foreign, Composite */
+-- Primary Keys: (PK), ensures unique identifiers for each row
+-- Foreign Keys: (FK), links tables and enforces referential integrity
+-- Composite Keys: Used in Many-to-Many tables to ensure uniqueness through two foreign primary keys
+
+
+/* 3. Relationships: Cardinality, Ordinality
+- To evaluate the relationship of a table, always place the symbols on the destination table
 */
+-- Cardinality: One-to-One, One-to-Many, Many-to-Many
+-- Ordinality: Mandatory (1), Optional (0)
 
--- Non-Unique Index: Manually created to speed up searches without uniqueness.
-CREATE INDEX idx_product_name ON products(name);
 
--- Composite Index: Combines multiple columns into a single index.
-CREATE INDEX idx_product_name_category ON products(name, category_id);
+/* 4. Notations: Crow's Foot, Number */
+-- Crow's Foot, Number:
+    - "One":              |, (1)
+    - "Many":             <, (N) 
+    - "Zero-or-one":      O|, (0..1)
+    - "One-and-only-one": ||, (1..1) 
+    - "Zero-or-many":     O<, (0..N) 
+    - "One-or-many":      |<, (1..N)
 
-/* `CREATE` */
-CREATE TABLE test (id INT PRIMARY KEY, name VARCHAR(100)); -- Creates a new table
+-- Examples:
+    - "Crow's Foot Notation": 'Students || -- |< Enrolls >| -- O| Courses'
+    - "Numeric Notation": 'Students (1..1) -- (1..N) Enrolls (N..1) -- (0..1) Courses'
 
-/* `ALTER` */
-ALTER TABLE test ADD COLUMN description VARCHAR(100); -- Modifies an existing table
 
-/* `DROP` */
-DROP TABLE test; -- Deletes a table from the database
+/* 5. Constraints: Unique, Not Null */
+-- Unique: Ensures distinct values in a column, even if its not a primary key
+-- Not Null: Prevents NULL values in a column

@@ -27,3 +27,15 @@ ALTER TABLE test ADD COLUMN description VARCHAR(100); -- Modifies an existing ta
 
 /* `DROP` */
 DROP TABLE test; -- Deletes a table from the database
+
+
+/* 6. Indexes: Unique Indexes, Non-Unique Indexes
+- Indexes are asigned to columns and allow faster queries
+*/
+-- Unique Indexes: By default, all keys and unique columns have indexes
+    
+-- Non-Unique Indexes: Manually created on fields to speed up searches without uniqueness.
+CREATE INDEX idx_product_name ON products(name);
+
+-- Composite Index: Combines multiple columns into a single index.
+CREATE INDEX idx_product_name_category ON products(name, category_id);
