@@ -1,7 +1,7 @@
-/* Joins */
+/* Lesson 08: Joins */
 
-/* 1. `OUTER JOIN`: `LEFT JOIN`, `RIGHT JOIN`, `FULL JOIN`
-- OUTER keyword is optional
+/* 1. Outer Joins: `LEFT JOIN`, `RIGHT JOIN`, `FULL JOIN`
+- OUTER keyword before JOIN is optional but don't use it
 */
 -- Syntax
 SELECT columns
@@ -31,15 +31,13 @@ FROM products p
 	INNER JOIN product_categories pc ON p.product_category_id = pc.id;
 
 
-/* 3. Self Join
-*/
+/* 3. Self Join */
 SELECT p1.name AS "product1", p2.name AS "product2"
 FROM products p1
 	LEFT JOIN products p2 ON p1.id = p2.id;
 
 
-/* 4. Multiple Joins
-*/
+/* 4. Multiple Joins */
 SELECT o.id AS "order_id",
 	o.created_at AS "order_created_at",
 	otp.unit_price AS "order_unit_price",
@@ -70,15 +68,15 @@ FROM orders o
 	LEFT JOIN orders_to_products otp ON o.id = otp.order_id
 	LEFT JOIN products p ON otp.product_id = p.id
 	LEFT JOIN product_categories pc ON p.product_category_id = pc.id
-
+	
 	/* orders -> sellers */
 	LEFT JOIN sellers s ON o.seller_id = s.id
 	LEFT JOIN users us ON s.user_id = us.id
 	LEFT JOIN user_roles urs ON us.user_role_id = urs.id
-
+	
 	/* orders -> clients */
 	LEFT JOIN clients c ON o.client_id = c.id
-
+	
 	/* clients -> client_discounts */
 	LEFT JOIN client_discounts cd ON c.client_discount_id = cd.id
 
