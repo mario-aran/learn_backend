@@ -1,4 +1,4 @@
-# Learn SQL and DBs
+# Learn SQL and Databases
 
 ## Lesson 01: Introduction
 
@@ -31,7 +31,7 @@
 
 - Handling NULLs: `COALESCE`, `NULLIF`
 - String Functions: `CONCAT`, `SUBSTRING`, `TRIM`, `UPPER`, `LOWER`
-- Date Functions: `EXTRACT`, `DATE_TRUNC`, `AGE`
+- Date Functions: `EXTRACT`
 - Type Casting: `CAST`, `::`
 
 ## Lesson 06: Aggregating
