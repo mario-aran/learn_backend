@@ -37,7 +37,7 @@ FROM orders o;
 - Parentheses are optional but recommended to show it’s a single column
 */
 SELECT (1 + 1) AS "addition";
-SELECT (1 - 1) AS "substraction";
+SELECT (1 - 1) AS "subtraction";
 SELECT (1 * 1) AS "multiplication";
 SELECT (1 / 1) AS "division";
 SELECT (1 % 1) AS "remainder";

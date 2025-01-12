@@ -24,8 +24,7 @@ GROUP BY columns;
 SELECT SUM(unit_price) AS "total_price",
 product_category_id
 FROM products
-GROUP BY product_category_id
-ORDER BY SUM(unit_price); -- Optional
+GROUP BY product_category_id;
 
 
 /* 3. `HAVING`

@@ -12,7 +12,7 @@
 -- Show all the data in orders to products table, filtered by unit price bigger than 100.
 -- Now add a condition to make sure the price is bigger than 100 and less than 1000.
 -- Convert the previous condition to a between.
--- Add a condition to still comply with the previous condition, but show only the orders to products that doesn't have empty created at dates
+-- Add a condition to still comply with the previous condition, but show only the orders to products that doesn't have empty created at dates.
 -- Now, all the previous should work as a group, but add an or condition where quantity is less than 2.
 -- Negate the previous condition.
 
