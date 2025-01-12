@@ -3,34 +3,35 @@
 /* 1. `CASE`
 - Counts as a single column
 - Parentheses are optional but recommended
-- Optional, but if not present the default value is NULL
+- The `ELSE` is Optional, but if not present the default value is NULL
 */
 -- Syntax
 CASE
 	WHEN conditions1 THEN result1
     WHEN conditionsN THEN resultN
     ELSE default_result
-END
+END;
 
 -- Usage
 SELECT
-	(CASE WHEN unit_price > 200 THEN 'blue' ELSE 'red' END); -- Regular case
-	(CASE WHEN unit_price > 200 THEN 'blue'); -- NULL as default value
+	(CASE WHEN unit_price > 200 THEN 'blue' ELSE 'red' END); -- With default value
+	(CASE WHEN unit_price > 200 THEN 'blue' END); -- Without default value
 FROM products;
 
 
 /* 2. Subqueries
+- Counts as a single column
 - Parentheses are optional but recommended
 */
 -- Syntax
 SELECT 
 	(subquery)
-FROM table_name;
+FROM table;
 
 -- Usage
 SELECT name 
-FROM employees
-WHERE salary = (SELECT MAX(salary) FROM employees);
+FROM products
+WHERE unit_price = (SELECT MAX(unit_price) FROM products);
 
 
 /* 3. CTEs */

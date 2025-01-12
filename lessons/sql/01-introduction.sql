@@ -18,7 +18,7 @@
 
 /* 3. Syntax: Queries, Semicolons, Naming Conventions, Data Types, Comments */
 -- Queries:
-    - "Query Example": `SELECT * FROM products;`
+    - "Query Example": SELECT * FROM products;
     - "Query Template":
         /* Select */
         /* From, Join */

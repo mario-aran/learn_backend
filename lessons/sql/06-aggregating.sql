@@ -2,8 +2,8 @@
 
 /* 1. Aggregate Functions: `COUNT`, `SUM`, `AVG`, `MIN`, `MAX`
 - Counts as a single column
-- Can't be used inside `WHERE` or `GROUP BY`
-- Can be used with `ORDER BY`
+- Can't be used in `WHERE` or `GROUP BY`
+- Can be used in `ORDER BY`
 - Only COUNT(*) includes null values
 */
 SELECT COUNT(*) AS "total_count" FROM products;

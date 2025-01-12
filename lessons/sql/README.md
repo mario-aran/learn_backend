@@ -29,10 +29,10 @@
 
 ### Lesson 05: Data Manipulation
 
-- Handling NULLs: `COALESCE`
-- String Functions: `CONCAT`, `SUBSTRING`, `TRIM`, `UPPER`, `LOWER`
-- Date Functions: `EXTRACT`
 - Type Casting: `CAST`
+- Handling NULLs: `COALESCE`
+- Date Functions: `EXTRACT`
+- String Functions: `CONCAT`, `SUBSTRING`, `TRIM`, `UPPER`, `LOWER`
 
 ### Lesson 06: Aggregating
 
