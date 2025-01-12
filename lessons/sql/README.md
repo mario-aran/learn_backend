@@ -63,13 +63,16 @@
 
 ### Annexes
 
-**Image 2: ERD**
+#### Image 2: ERD
+
 ![img-data-modeling](/lessons/sql/resources/imgs/erd.png)
 
-**Image 1: Cardinality**
+#### Image 1: Cardinality
+
 ![img-data-modeling](/lessons/sql/resources/imgs/modeling.png)
 
-**Image 3: Joins**
+#### Image 3: Joins
+
 ![img-joins](/lessons/sql/resources/imgs/joins.png)
 
 ---
