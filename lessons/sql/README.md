@@ -84,14 +84,14 @@
 
 ### Annexes
 
-#### Image 1: ERD
+#### img 1: erd
 
 ![img-data-modeling](/lessons/sql/resources/imgs/erd.png)
 
-#### Image 2: Cardinality
+#### img 2: cardinality
 
 ![img-data-modeling](/lessons/sql/resources/imgs/modeling.png)
 
-#### Image 3: Joins
+#### img 3: joins
 
 ![img-joins](/lessons/sql/resources/imgs/joins.png)
