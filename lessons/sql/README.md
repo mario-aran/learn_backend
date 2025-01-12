@@ -61,20 +61,6 @@
 - Subqueries
 - CTEs
 
-### Annexes
-
-#### Image 2: ERD
-
-![img-data-modeling](/lessons/sql/resources/imgs/erd.png)
-
-#### Image 1: Cardinality
-
-![img-data-modeling](/lessons/sql/resources/imgs/modeling.png)
-
-#### Image 3: Joins
-
-![img-joins](/lessons/sql/resources/imgs/joins.png)
-
 ---
 
 ### Lesson 10: Mutations
@@ -93,3 +79,19 @@
 - Unions: `UNION ALL`, `UNION`
 - `INTERSECT`
 - `EXCEPT`
+
+---
+
+### Annexes
+
+#### Image 1: ERD
+
+![img-data-modeling](/lessons/sql/resources/imgs/erd.png)
+
+#### Image 2: Cardinality
+
+![img-data-modeling](/lessons/sql/resources/imgs/modeling.png)
+
+#### Image 3: Joins
+
+![img-joins](/lessons/sql/resources/imgs/joins.png)
