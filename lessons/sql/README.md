@@ -61,6 +61,13 @@
 - Subqueries
 - CTEs
 
+### Lesson 12: Set Operations
+
+- Key Concepts
+- Unions: `UNION ALL`, `UNION`
+- `INTERSECT`
+- `EXCEPT`
+
 ---
 
 ### Lesson 10: Mutations
@@ -73,12 +80,6 @@
 
 - Common Windows Functions:
 - `UNBOUNDED PRECEDING/FOLLOWING`
-
-### Lesson 12: Set Operations
-
-- Unions: `UNION ALL`, `UNION`
-- `INTERSECT`
-- `EXCEPT`
 
 ---
 
