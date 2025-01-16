@@ -61,25 +61,22 @@
 - Subqueries
 - CTEs
 
+### Lesson 10: Mutations
+
+- Schema Mutations: `CREATE`, `ALTER`, `DROP`
+- Data Mutations: `INSERT`, `UPDATE`, `DELETE`, `TRUNCATE`
+- Indexes: Unique Indexes, Non-Unique Indexes
+
+### Lesson 11: Window Functions
+
+- Common Windows Functions
+
 ### Lesson 12: Set Operations
 
 - Key Concepts
 - Unions: `UNION ALL`, `UNION`
 - `INTERSECT`
 - `EXCEPT`
-
----
-
-### Lesson 10: Mutations
-
-- Schema Mutations: `CREATE`, `ALTER`, `DROP`
-- Data Mutations: `INSERT INTO`, `UPDATE SET`, `DELETE FROM`, `TRUNCATE`
-- Indexes: Unique Indexes, Non-Unique Indexes
-
-### Lesson 11: Window Functions
-
-- Common Windows Functions:
-- `UNBOUNDED PRECEDING/FOLLOWING`
 
 ---
 
