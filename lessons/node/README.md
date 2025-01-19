@@ -1,4 +1,4 @@
-# Learn Typescript
+# Learn Node.js
 
 ### Lesson 01: Introduction
 
